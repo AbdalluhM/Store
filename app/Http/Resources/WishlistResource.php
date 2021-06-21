@@ -16,12 +16,9 @@ class WishlistResource extends JsonResource
     {
         return [
             'id'=>$this->id,
-            'name'=>$this->collection([]),
-            'image'=>$this->image,
-            'price'=>$this->price,
-            'size'=>$this->sizes,
-            'color'=>$this->colors,
-            'is_wishlist' => $this->is_wishlist_to_user()
+            'name'=>$this->product->name_product,
+            'image'=>$this->product->image,
+            // 'user'=>$this->user->name,
         ];
     }
 }
