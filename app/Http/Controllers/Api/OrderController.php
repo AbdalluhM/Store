@@ -42,8 +42,8 @@ class OrderController extends Controller
         // // }
         // $totalPrice=cart::sum('total_price');
         // dd($user);
-        $carts=cart::all();
-        if ( $carts->contains('id','>=','1')) {
+        $carts=cart::where('user_id',$user->id)->get();
+        if ( $carts->count() !== 0) {
             try {
                 $order= Order::create([
                     'user_id'=>$user->id,

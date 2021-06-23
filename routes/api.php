@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CityController;
+use App\Http\Controllers\Api\PaymentContrller;
 use App\Http\Controllers\Api\StateController;
 use App\Http\Controllers\Api\SupCategoryController;
 use App\Http\Controllers\Api\UserProfileController;
@@ -32,6 +33,7 @@ use App\Http\Controllers\Api\WishListController;
 //     return $request->user();
 // });
 
+
 // route:auth for user
 Route::post('/forgot-password', [AuthController::class, 'forgot_password']);
 Route::middleware('api')->prefix('auth')-> group(function ($router) {
@@ -50,6 +52,8 @@ Route::middleware('auth:api')->group(function () {
     Route::get('order',[OrderController::class,'index'])->name('order');
     Route::post('cart',[CartController::class,'store'])->name('cart');
 });
+
+
 // route:profile user
 Route::middleware('auth:api')->group(function () {
     Route::post('update',[UserProfileController::class,'update'])->name('update_user');
@@ -64,16 +68,11 @@ Route::middleware('auth:api')->group(function () {
 
 
 
-
-
-
 // route category
 Route::prefix('category')->group(function () {
     Route::get('/',[CategoryController::class,'index'])->name('all_category');
 });
 Route::get('supCategory',[SupCategoryController::class,'index'])->name('all_sup_category');
-
-
 
 
 // route : product
@@ -97,4 +96,11 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/fav',[WishListController::class,'index']);
     Route::post('/fav/store',[WishListController::class,'store']);
 });
+
+
+// payment
+Route::middleware('auth:api')->group(function () {
+    Route::post('/payment',[PaymentContrller::class,'store']);
+});
+
 

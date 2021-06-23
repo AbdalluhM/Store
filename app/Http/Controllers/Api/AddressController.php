@@ -20,8 +20,7 @@ class addressController extends Controller
             $user=Auth::user();
             $user_id=$user->id;
             address::create(array_merge($request->all(),['user_id'=>$user_id]));
-            $msg='تم تسجيل العنوان بنجاح ';
-            return response()->json($this->returnSuccessMessage($msg,200));
+            return response()->json($this->returnSuccessMessage("address saved successfully",200));
         } catch (\Throwable $th) {
             return $this->returnError(500,$th->getMessage()) ;
         }
