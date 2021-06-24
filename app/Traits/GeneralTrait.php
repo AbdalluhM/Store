@@ -22,11 +22,11 @@ trait GeneralTrait
 
     public function returnSuccessMessage($msg = "", $errNum = "S000")
     {
-        return [
+        return response()->json([
             'status' => true,
             'errNum' => 200,
             'msg' => $msg
-        ];
+        ]);
     }
 
     public function returnData($key, $value, $msg = "")

@@ -109,14 +109,22 @@ class AuthController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function register(UserRequest $request) {
-
+       if (request()->hasFile('image')) {
         $image=$request->image->store('images/users',);
         $user = User::create(array_merge(
             $request->all(),
                     ['password' => bcrypt($request->password),'image'=>$image]
                 ));
-
+       }
+       else{
+        User::create($request->all());
         return $this->returnSuccessMessage('user signup',200);
+       }
+
+
+
+
+
     }
 
 
