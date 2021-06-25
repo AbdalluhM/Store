@@ -136,7 +136,7 @@ class AuthController extends Controller
         	'email' => $request->email,
         	'password' => bcrypt($request->password),
             'phone'=>$request->phone,
-            'image'=>$request->image
+            'image'=>$image
         ]);
 
         //User created, return success response
