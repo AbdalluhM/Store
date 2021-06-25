@@ -112,40 +112,40 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
-        try {
-            $req = Validator::make($request->all(), [
-                'name' => 'required|string|between:2,100',
-                'email' => 'required|string|email|max:100|unique:users',
-                'phone' => 'required|string|unique:users',
-                'image' => 'image|mimes:png,jpg',
-                'password' => 'required|string|confirmed|min:6|',
-            ]);
-            if ($req->fails()) {
-                return response()->json($req->errors(), 422);
-            }
+    	//Validate data
+        $data = $request->only('name', 'email', 'password','phone','image');
+        $validator = Validator::make($data, [
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|string|min:6|max:50',
+            'phone' => 'required|string|unique:users',
+            'image' => 'image|mimes:png,jpg',
+        ]);
 
-            if (request()->hasFile('image')) {
-                $image = $request->image->store('images/users');
-                User::create(array_merge(
-                    $request->all(),
-                    ['password' => bcrypt($request->password), 'image' => $image]
-                ));
-            } else {
-                User::create($request->all());
-            }
-            return response()->json([
-                'status' => 'true',
-                'errnum' => 200,
-                'msg' => 'sign up'
-            ]);
-        } catch (\Throwable $th) {
-            return response()->json([
-                'status'=>'false',
-                'msg'=>$th->getMessage()
-            ]);
-            }
+        //Send failed response if request is not valid
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 200);
+        }
+
+        //Request is valid, create new user
+        if (request()->hasFile('image')) {
+            $image = $request->image->store('images/users');
+        }
+        $user = User::create([
+        	'name' => $request->name,
+        	'email' => $request->email,
+        	'password' => bcrypt($request->password),
+            'phone'=>$request->phone,
+            'image'=>$request->image
+        ]);
+
+        //User created, return success response
+        return response()->json([
+            'success' => true,
+            'message' => 'User created successfully',
+            'data' => $user
+        ]);
     }
-
 
     /**
      * Sign out
