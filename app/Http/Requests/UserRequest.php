@@ -31,4 +31,10 @@ class UserRequest extends FormRequest
             'password' => 'required|string|confirmed|min:6|',
         ];
     }
+
+    public $validator = null;
+    protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
+    {
+        $this->validator = $validator;
+    }
 }

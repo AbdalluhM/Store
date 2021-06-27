@@ -114,10 +114,8 @@ class AuthController extends Controller
     {
 
         try {
-            $validator = $this->getValidator($request);
-
-            if ($validator->fails()) {
-                return $this->errorResponse($validator->errors()->all());
+            if (isset($request->validator) && $request->validator->fails()) {
+                return response()->json($request->validator->messages(), 400);
             }
             $password= bcrypt($request->password);
             if (request()->hasFile('image')) {
