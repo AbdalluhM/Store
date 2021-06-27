@@ -110,61 +110,61 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function register(UserRequest $request)
-    {
-
-        try {
-            if (isset($request->validator) && $request->validator->fails()) {
-                return response()->json($request->validator->messages(), 400);
-            }
-            $password= bcrypt($request->password);
-            if (request()->hasFile('image')) {
-                $image = $request->image->store('images/users');
-                User::create(array_merge($request->validated(), ['image' => $image,'password'=>$password]));
-            } else {
-                User::create(array_merge($request->validated(), ['password'=>$password]));
-            }
-            return $this->returnSuccessMessage("user signup",200);
-        } catch (\Throwable $th) {
-            return $this->returnError(400,$th->getMessage());
-        }
-    }
-    // public function register(Request $request)
+    // public function register(UserRequest $request)
     // {
-    //     //Validate data
-    //     $data = $request->only('name', 'email', 'password', 'phone', 'image');
-    //     $validator = Validator::make($data, [
-    //         'name' => 'required|string',
-    //         'email' => 'required|email|unique:users',
-    //         'password' => 'required|string|min:6|max:50',
-    //         'phone' => 'required|string|unique:users',
-    //         'image' => 'image|mimes:png,jpg',
-    //     ]);
 
-    //     //Send failed response if request is not valid
-    //     if ($validator->fails()) {
-    //         return response()->json(['error' => $validator->errors()], 200);
+    //     try {
+    //         if (isset($request->validator) && $request->validator->fails()) {
+    //             return response()->json($request->validator->messages(), 400);
+    //         }
+    //         $password= bcrypt($request->password);
+    //         if (request()->hasFile('image')) {
+    //             $image = $request->image->store('images/users');
+    //             User::create(array_merge($request->validated(), ['image' => $image,'password'=>$password]));
+    //         } else {
+    //             User::create(array_merge($request->validated(), ['password'=>$password]));
+    //         }
+    //         return $this->returnSuccessMessage("user signup",200);
+    //     } catch (\Throwable $th) {
+    //         return $this->returnError(400,$th->getMessage());
     //     }
-
-    //     //Request is valid, create new user
-    //     if (request()->hasFile('image')) {
-    //         $image = $request->image->store('images/users');
-    //     }
-    //     $user = User::create([
-    //         'name' => $request->name,
-    //         'email' => $request->email,
-    //         'password' => bcrypt($request->password),
-    //         'phone' => $request->phone,
-    //         'image' => $image
-    //     ]);
-
-    //     //User created, return success response
-    //     return response()->json([
-    //         'success' => true,
-    //         'message' => 'User created successfully',
-    //         'data' => $user
-    //     ]);
     // }
+    public function register(Request $request)
+    {
+        //Validate data
+        $data = $request->only('name', 'email', 'password', 'phone', 'image');
+        $validator = Validator::make($data, [
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|string|min:6|max:50',
+            'phone' => 'required|string|unique:users',
+            'image' => 'image|mimes:png,jpg',
+        ]);
+
+        //Send failed response if request is not valid
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 200);
+        }
+
+        //Request is valid, create new user
+        if (request()->hasFile('image')) {
+            $image = $request->image->store('images/users');
+        }
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'phone' => $request->phone,
+            'image' => $image
+        ]);
+
+        //User created, return success response
+        return response()->json([
+            'success' => true,
+            'message' => 'User created successfully',
+            'data' => $user
+        ]);
+    }
 
     /**
      * Sign out
