@@ -14,13 +14,12 @@ class SupCategoryController extends Controller
     public function index(Request $request){
         $validaator=Validator::make($request->all(),[
             'parent_id'=>'required|integer|exists:categories,parent_id'
-        ],[
+        ],
+        [
           'parent_id.exists'=>'هذا الصنف لا يوجد منه اصناف فرعيه'
         ]);
         if($validaator->fails()){
-             return response()->json([
-                'mesg'=>$validaator->errors()
-             ]);
+             return $this->returnError(400,$validaator->errors());
         }
         try {
             $supCategory=Category::where('parent_id',$request->parent_id)->get();

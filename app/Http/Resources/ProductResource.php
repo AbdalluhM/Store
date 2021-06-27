@@ -2,8 +2,10 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Size;
 use App\Models\WishList;
 use Illuminate\Http\Resources\Json\JsonResource;
+use PhpParser\ErrorHandler\Collecting;
 
 class ProductResource extends JsonResource
 {
@@ -19,9 +21,11 @@ class ProductResource extends JsonResource
             'id'=>$this->id,
             'name'=>$this->name_product,
             'image'=>$this->image,
+            'recomend'=>$this->recomend,
+            'sell'=>$this->sell,
             'price'=>$this->price,
-            'size'=>$this->sizes,
-            'color'=>$this->colors,
+            'sizes'=>$this->get_size(),
+            'colors'=>$this->get_color(),
             'is_wishlist' => $this->is_wishlist_to_user()
         ];
     }
@@ -35,5 +39,13 @@ class ProductResource extends JsonResource
             }
         }
         return 0;
+    }
+    public function get_size(){
+        $sizeProduct=$this->sizes;
+        return SizeResource::collection($sizeProduct);
+    }
+    public function get_color(){
+        $colorProduct=$this->colors;
+        return ColorResource::collection($colorProduct);
     }
 }

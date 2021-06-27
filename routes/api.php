@@ -77,6 +77,10 @@ Route::get('supCategory',[SupCategoryController::class,'index'])->name('all_sup_
 
 // route : product
 Route::get('/product',[ProductController::class,'index']);
+Route::get('/product/detail',[ProductController::class,'productDetails']);
+
+
+// route : home page
 Route::prefix('home')->group(function () {
     Route::get('/slider',[HomeController::class,'sliders']);
     Route::get('/offer',[HomeController::class,'offers']);
