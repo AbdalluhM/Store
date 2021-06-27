@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class CartRequest extends FormRequest
 {
@@ -27,5 +29,13 @@ class CartRequest extends FormRequest
             'product_id'=>'required|exists:products,id',
             'qty'=>'required|integer',
         ];
+    }
+    protected function failedValidation(Validator $validator)
+    {
+        $errors= $validator->errors()->first();
+        throw new HttpResponseException(response()->json([
+            'status'=>'false',
+            'msg'=>$errors,
+            'errnum'=>422], 422));
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class PaymentRequest extends FormRequest
 {
@@ -30,5 +32,13 @@ class PaymentRequest extends FormRequest
             'status'=>'required',
             'transaction_id'=>'required',
         ];
+    }
+    protected function failedValidation(Validator $validator)
+    {
+        $errors= $validator->errors()->first();
+        throw new HttpResponseException(response()->json([
+            'status'=>'false',
+            'msg'=>$errors,
+            'errnum'=>422], 422));
     }
 }

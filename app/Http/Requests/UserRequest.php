@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+// use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class UserRequest extends FormRequest
 {
@@ -32,9 +35,12 @@ class UserRequest extends FormRequest
         ];
     }
 
-    public $validator = null;
-    protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
+    protected function failedValidation(Validator $validator)
     {
-        $this->validator = $validator;
+        $errors= $validator->errors()->first();
+        throw new HttpResponseException(response()->json([
+            'status'=>'false',
+            'msg'=>$errors,
+            'errnum'=>422], 422));
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class CategoryRequest extends FormRequest
 {
@@ -35,5 +37,13 @@ class CategoryRequest extends FormRequest
             'category_image.mimes'=>'jpg , png يجب ان يكون نوع الصوره ',
             'category_image.required'=>'يجب ارفاق صورة للصنف'
         ];
+    }
+    protected function failedValidation(Validator $validator)
+    {
+        $errors= $validator->errors()->first();
+        throw new HttpResponseException(response()->json([
+            'status'=>'false',
+            'msg'=>$errors,
+            'errnum'=>422], 422));
     }
 }
