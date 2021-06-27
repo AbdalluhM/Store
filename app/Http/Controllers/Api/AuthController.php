@@ -112,13 +112,19 @@ class AuthController extends Controller
      */
     public function register(UserRequest $request)
     {
+
         try {
+            $validator = $this->getValidator($request);
+
+            if ($validator->fails()) {
+                return $this->errorResponse($validator->errors()->all());
+            }
             $password= bcrypt($request->password);
             if (request()->hasFile('image')) {
                 $image = $request->image->store('images/users');
-                User::create(array_merge($request->all(), ['image' => $image,'password'=>$password]));
+                User::create(array_merge($request->validated(), ['image' => $image,'password'=>$password]));
             } else {
-                User::create(array_merge($request->all(), ['password'=>$password]));
+                User::create(array_merge($request->validated(), ['password'=>$password]));
             }
             return $this->returnSuccessMessage("user signup",200);
         } catch (\Throwable $th) {
