@@ -3,20 +3,20 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CartController;
+use App\Http\Controllers\Api\CityController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\StateController;
 use Illuminate\Routing\Route as RoutingRoute;
+use App\Http\Controllers\Api\PaymentContrller;
 use App\Http\Controllers\Api\AddressController;
-use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CategoryController;
-use App\Http\Controllers\Api\CityController;
-use App\Http\Controllers\Api\PaymentContrller;
-use App\Http\Controllers\Api\StateController;
+use App\Http\Controllers\Api\WishListController;
 use App\Http\Controllers\Api\SupCategoryController;
 use App\Http\Controllers\Api\UserProfileController;
-use App\Http\Controllers\Api\WishListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,8 +62,8 @@ Route::middleware('auth:api')->group(function () {
 
 // route:address
 Route::middleware('auth:api')->group(function () {
-    Route::post('address/store',[AddressController::class,'store'])->name('store_address');
-    Route::post('address/update/{address}',[AddressController::class,'update'])->name('store_address');
+    Route::post('address/store/',[AddressController::class,'store'])->name('store_address');
+    Route::post('address/update/{address}',[AddressController::class,'update'])->name('update_address');
 });
 
 

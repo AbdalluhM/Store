@@ -25,7 +25,7 @@ class ProductResource extends JsonResource
             'sell' => $this->sell,
             'price' => $this->price,
             'offer' => $this->get_offer(),
-            'sizes' => $this->get_size(),
+            // 'sizes' => $this->get_size(),
             'colors' => $this->get_color(),
             'is_wishlist' => $this->is_wishlist_to_user()
         ];

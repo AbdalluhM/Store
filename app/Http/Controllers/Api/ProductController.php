@@ -22,8 +22,8 @@ class ProductController extends Controller
             if ($validator->fails()) {
                 return $this->returnError('400',$validator->errors());
             }
-            $product =Product::where('category_id',$request->supcategory_id)->get();
-            return $this->returnData('products',$product,"");
+            $product =Product::where('category_id',$request->supcategory_id) ->get();
+            return $this->returnData('products',ProductResource::collection($product),"");
         } catch (\Throwable $th) {
               return $this->returnError(500,$th->getMessage());;
         }

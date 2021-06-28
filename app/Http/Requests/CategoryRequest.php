@@ -3,8 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Http\Exceptions\HttpResponseException;
 
 class CategoryRequest extends FormRequest
 {
@@ -26,24 +24,8 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_name'=>'required|unique:categories',
-            'category_image'=>'required|image|mimes:jpg,png'
+            'category_name'=>'required',
+            'category_image'=>'required',
         ];
-    }
-    public function messages()
-    {
-        return[
-            'category_name.required'=>'يجب عليك ادخال الصنف ',
-            'category_image.mimes'=>'jpg , png يجب ان يكون نوع الصوره ',
-            'category_image.required'=>'يجب ارفاق صورة للصنف'
-        ];
-    }
-    protected function failedValidation(Validator $validator)
-    {
-        $errors= $validator->errors()->first();
-        throw new HttpResponseException(response()->json([
-            'status'=>'false',
-            'msg'=>$errors,
-            'errnum'=>422], 422));
     }
 }
