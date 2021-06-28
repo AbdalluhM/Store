@@ -9,6 +9,7 @@ use App\Traits\GeneralTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\OfferResource;
 use App\Http\Resources\ProductResource;
 
 class HomeController extends Controller
@@ -27,9 +28,9 @@ class HomeController extends Controller
 
     public function offers()
     {
-        $offers = offer::select('value','image','id')->get();
+        $offers = offer::all();
         try {
-            return $this->returnData('offers', $offers, "");
+            return $this->returnData('offers', OfferResource::collection($offers), "");
         } catch (\Throwable $th) {
             return $this->returnError(500,$th->getMessage());
         }
