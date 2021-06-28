@@ -47,7 +47,7 @@ class HomeController extends Controller
     }
     public function newProduct(){
        try {
-        $products = Product::orderBy('created_at','DESC')->get();
+        $products = Product::orderBy('id','DESC')->get();
         return $this->returnData('new_products',$products, "");
        } catch (\Throwable $th) {
           return $this->returnError(500,$th->getMessage());

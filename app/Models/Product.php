@@ -19,7 +19,7 @@ public function ordersDetails(){
     return $this->hasMany(OrderDetails::class);
 }
 public function colors(){
-    return $this->belongsToMany(Color::class);
+    return $this->hasMany(Color::class);
 }
 public function sizes(){
     return $this->belongsToMany(Size::class);
