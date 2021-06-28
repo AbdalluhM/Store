@@ -34,10 +34,11 @@ class SocialRequest extends FormRequest
     }
     protected function failedValidation(Validator $validator)
     {
-        $errors= $validator->errors()->first();
+
         throw new HttpResponseException(response()->json([
-            'status'=>'false',
-            'msg'=>$errors,
-            'errnum'=>422], 422));
+            'status' => 'false',
+            'errnum' => 422,
+            'errors' => $validator->errors(),
+        ], 422));
     }
 }
