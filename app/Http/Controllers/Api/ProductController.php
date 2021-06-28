@@ -23,6 +23,8 @@ class ProductController extends Controller
                 return $this->returnError('400',$validator->errors());
             }
             $product =Product::where('category_id',$request->supcategory_id) ->get();
+            // $newPrice=$product->price;
+            // dd($newPrice);
             return $this->returnData('products',ProductResource::collection($product),"");
         } catch (\Throwable $th) {
               return $this->returnError(500,$th->getMessage());;

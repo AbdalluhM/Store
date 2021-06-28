@@ -25,7 +25,7 @@ class ProductResource extends JsonResource
             'sell' => $this->sell,
             'price' => $this->price,
             'offer' => $this->get_offer(),
-            // 'sizes' => $this->get_size(),
+            'new_price' => $this->get_new_price(),
             'colors' => $this->get_color(),
             'is_wishlist' => $this->is_wishlist_to_user()
         ];
@@ -55,5 +55,13 @@ class ProductResource extends JsonResource
     {
         $OfferProduct =  $this->offer;
         return $OfferProduct->value;
+    }
+    public function get_new_price()
+    {
+          $offer=$this->offer;
+          $valueOffer=$offer->value;
+          $price=$this->price;
+          $oldPrice=$price-$valueOffer*$price;
+        return $oldPrice;
     }
 }
