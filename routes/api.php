@@ -29,25 +29,9 @@ use App\Http\Controllers\Api\UserProfileController;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
-
-// route:auth for user
-Route::post('/forgot-password', [AuthController::class, 'forgot_password']);
-Route::middleware('api')->prefix('auth')-> group(function ($router) {
-    Route::post('/signup', [AuthController::class, 'register']);
-    Route::post('/signin', [AuthController::class, 'login']);
-    Route::post('/signin/social', [AuthController::class, 'loginSocial']);
-    Route::get('/user', [AuthController::class, 'user']);
-    Route::post('/token-refresh', [AuthController::class, 'refresh']);
-    Route::post('/signout', [AuthController::class, 'signout']);
-    Route::post('/change-password', [AuthController::class, 'change_password']);
-});
 
 // route : orders
-Route::middleware('auth:api')->group(function () {
+Route::middleware('auth:sanctum')->group(function () {
     Route::post('order/store',[OrderController::class,'store'])->name('store_order');
     Route::get('order',[OrderController::class,'index'])->name('order');
     Route::post('cart',[CartController::class,'store'])->name('cart');
@@ -55,13 +39,13 @@ Route::middleware('auth:api')->group(function () {
 
 
 // route:profile user
-Route::middleware('auth:api')->group(function () {
+Route::middleware('auth:sanctum')->group(function () {
     Route::post('update',[UserProfileController::class,'update'])->name('update_user');
 });
 
 
 // route:address
-Route::middleware('auth:api')->group(function () {
+Route::middleware('auth:sanctum')->group(function () {
     Route::post('address/store/',[AddressController::class,'store'])->name('store_address');
     Route::post('address/update/{address}',[AddressController::class,'update'])->name('update_address');
 });
@@ -96,15 +80,18 @@ Route::get('state',[StateController::class,'index']);
 
 
 //wishlist
-Route::middleware('auth:api')->group(function () {
+Route::middleware('auth:sanctum')->group(function () {
     Route::get('/fav',[WishListController::class,'index']);
     Route::post('/fav/store',[WishListController::class,'store']);
 });
 
 
 // payment
-Route::middleware('auth:api')->group(function () {
+Route::middleware('auth:sanctum')->group(function () {
     Route::post('/payment',[PaymentContrller::class,'store']);
 });
 
 
+
+Route::post('login', [AuthController::class, 'signin']);
+Route::post('register', [AuthController::class, 'signup']);
