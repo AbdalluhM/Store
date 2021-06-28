@@ -2,12 +2,10 @@
 
 namespace App\Http\Resources;
 
-use App\Models\Size;
 use App\Models\WishList;
 use Illuminate\Http\Resources\Json\JsonResource;
-use PhpParser\ErrorHandler\Collecting;
 
-class ProductResource extends JsonResource
+class ProductDetailsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -22,8 +20,10 @@ class ProductResource extends JsonResource
             'name' => $this->name_product,
             'image' => $this->image,
             'recomend' => $this->recomend,
+            'desc' => $this->description,
             'sell' => $this->sell,
             'price' => $this->price,
+            'size'=>$this->get_size(),
             'offer' => $this->get_offer(),
             'new_price' => $this->get_new_price(),
             'colors' => $this->get_color(),
@@ -69,3 +69,4 @@ class ProductResource extends JsonResource
 
     }
 }
+
