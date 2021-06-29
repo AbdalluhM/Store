@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\Wep\CategoryController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Wep\CategoryController;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,11 @@ Route::post('update/{category}',[CategoryController::class,('update')])->name('u
 Route::post('category/{category}/delete',[CategoryController::class,('destroy')])->name('category_delete');
 
 
-
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function(){ //...
+    });
 
 
