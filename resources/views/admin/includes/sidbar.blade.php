@@ -43,7 +43,7 @@
 											</span>
 											<!--end::Svg Icon-->
 										</span>
-										<span class="menu-title">{{__('')}}</span>
+										<span class="menu-title">{{ trans('sidbar.Dashboard') }}</span>
 									</a>
 								</div>
 								<div class="menu-item">

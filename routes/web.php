@@ -20,9 +20,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('dashboard', function () {
-       return view('dashboard.dashboard');
-});
+
 
 Route::get('category',[CategoryController::class,('index')])->name('index_category');
 Route::get('create',[CategoryController::class,('create')])->name('create_category');
@@ -35,8 +33,16 @@ Route::post('category/{category}/delete',[CategoryController::class,('destroy')]
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
-    ], function(){ //...
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ,'setlocal']
+    ], function(){
+        Route::get('dashboard', function () {
+            return view('dashboard.dashboard');
+     });
     });
 
 
+Route::get('test', function () {
+
+    return view('categories.index2');
+
+});

@@ -32,66 +32,73 @@ use App\Http\Controllers\Api\UserProfileController;
 
 // route : orders
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('order/store',[OrderController::class,'store'])->name('store_order');
-    Route::get('order',[OrderController::class,'index'])->name('order');
-    Route::post('cart',[CartController::class,'store'])->name('cart');
+    Route::post('order/store', [OrderController::class, 'store'])->name('store_order');
+    Route::get('order', [OrderController::class, 'index'])->name('order');
+    Route::post('cart', [CartController::class, 'store'])->name('cart');
 });
 
 
 // route:profile user
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('update',[UserProfileController::class,'update'])->name('update_user');
+    Route::post('update', [UserProfileController::class, 'update'])->name('update_user');
 });
 
 
 // route:address
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('address/store/',[AddressController::class,'store'])->name('store_address');
-    Route::post('address/update/{address}',[AddressController::class,'update'])->name('update_address');
+    Route::post('address/store/', [AddressController::class, 'store'])->name('store_address');
+    Route::post('address/update/{address}', [AddressController::class, 'update'])->name('update_address');
 });
 
 
 
 // route category
 Route::prefix('category')->group(function () {
-    Route::get('/',[CategoryController::class,'index'])->name('all_category');
+    Route::get('/', [CategoryController::class, 'index'])->name('all_category');
 });
-Route::get('supCategory',[SupCategoryController::class,'index'])->name('all_sup_category');
+Route::get('supCategory', [SupCategoryController::class, 'index'])->name('all_sup_category');
 
 
 // route : product
-Route::get('/product',[ProductController::class,'index']);
-Route::get('/product/detail',[ProductController::class,'productDetails']);
+Route::get('/product', [ProductController::class, 'index']);
+Route::get('/product/detail', [ProductController::class, 'productDetails']);
 
 
 // route : home page
 Route::prefix('home')->group(function () {
-    Route::get('/slider',[HomeController::class,'sliders']);
-    Route::get('/offer',[HomeController::class,'offers']);
-    Route::get('/popular',[HomeController::class,'populars']);
-    Route::get('/newProduct',[HomeController::class,'newProduct']);
-    Route::get('/recommend',[HomeController::class,'recommend']);
+    Route::get('/slider', [HomeController::class, 'sliders']);
+    Route::get('/offer', [HomeController::class, 'offers']);
+    Route::get('/popular', [HomeController::class, 'populars']);
+    Route::get('/newProduct', [HomeController::class, 'newProduct']);
+    Route::get('/recommend', [HomeController::class, 'recommend']);
 });
 
 
 // route : city and state
-Route::get('city',[CityController::class,'index']);
-Route::get('state',[StateController::class,'index']);
+Route::get('city', [CityController::class, 'index']);
+Route::get('state', [StateController::class, 'index']);
 
 
 //wishlist
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/fav',[WishListController::class,'index']);
-    Route::post('/fav/store',[WishListController::class,'store']);
+    Route::get('/fav', [WishListController::class, 'index']);
+    Route::post('/fav/store', [WishListController::class, 'store']);
 });
 
 
 // payment
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/payment',[PaymentContrller::class,'store']);
+    Route::post('/payment', [PaymentContrller::class, 'store']);
 });
 
 
 
+
+// auth
 Route::post('auth/signin', [AuthController::class, 'signin']);
 Route::post('auth/signup', [AuthController::class, 'signup']);
+Route::post('auth/signin/social', [AuthController::class, 'loginSocial']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('auth/signout', [AuthController::class, 'signout']);
+    Route::post('auth/change-password', [AuthController::class, 'change_password']);
+});
