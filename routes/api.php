@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\PaymentContrller;
 use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\SliderController;
 use App\Http\Controllers\Api\WishListController;
 use App\Http\Controllers\Api\SupCategoryController;
 use App\Http\Controllers\Api\UserProfileController;
@@ -56,6 +57,7 @@ Route::middleware('auth:sanctum')->group(function () {
 // route category
 Route::prefix('category')->group(function () {
     Route::get('/', [CategoryController::class, 'index'])->name('all_category');
+    Route::get('/slider', [SliderController::class, 'index'])->name('slider');
 });
 Route::get('supCategory', [SupCategoryController::class, 'index'])->name('all_sup_category');
 
