@@ -39,8 +39,8 @@ class HomeController extends Controller
     public function populars()
     {
       try {
-        $products = Product::where('sell',1)->orderBy('id','DESC')->get();
-        return $this->returnData('popular_product',ProductResource::collection($products) , "");
+        $products = Product::orderBy('sell_date','DESC')->get();
+        return $this->returnData('popular_product',$products , "");
       } catch (\Throwable $th) {
           return $this->returnError(500,$th->getMessage());
       }

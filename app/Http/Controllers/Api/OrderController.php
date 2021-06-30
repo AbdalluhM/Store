@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\OrderRequest;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -68,9 +69,9 @@ class OrderController extends Controller
                 ]);
                 $total+=$orderDetails['qty']*$price-$orderDetails['discount'];
                 $product->qty-=$cart->qty;
-                if ($product->sell==0) {
-                    $product->sell=1;
-                }
+                // if ($product->sell==0) {
+                    $product->sell_date=Carbon::now();
+                // }
                 $product->save();
               }
               $order['total_price']=$total;

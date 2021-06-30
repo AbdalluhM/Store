@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
             $table->string('image');
             $table->integer('offer_id');
             $table->enum('recomend',['1','0']);
-            $table->enum('sell',['1','0']);
+            $table->dateTime('sell_date');
             $table->timestamps();
         });
     }

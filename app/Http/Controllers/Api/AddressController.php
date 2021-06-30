@@ -15,6 +15,21 @@ class addressController extends Controller
 {
     use GeneralTrait ;
 
+    public function index(Request $request){
+        $req = Validator::make($request->all(), [
+            'address_id' => 'required',
+        ]);
+        if ($req->fails()) {
+            return $this->returnError(422,$req->errors());
+        }
+        try {
+            $address=address::where('id',$request->address_id)->first();
+            return $this->returnData('address',$address,"done");
+        } catch (\Throwable $th) {
+            return $this->returnError(400,$th->getMessage());
+        }
+    }
+
     public function store(AddressRequest $request){
         try {
             $user=Auth::user();
@@ -27,7 +42,7 @@ class addressController extends Controller
 
 
        }
-       public function update(AddressRequest $request,address $address){
+       public function update(Request $request,address $address){
         try {
 
             $address->update($request->all());

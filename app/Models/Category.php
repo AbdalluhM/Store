@@ -9,4 +9,10 @@ class Category extends Model
 {
     use HasFactory;
     protected $fillable=['category_name','category_image'];
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
+    public function sliders(){
+        return $this->hasMany(Slider::class);
+    }
 }
