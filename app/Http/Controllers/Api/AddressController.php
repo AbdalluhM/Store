@@ -17,7 +17,7 @@ class addressController extends Controller
 
     public function index(Request $request){
         $req = Validator::make($request->all(), [
-            'address_id' => 'required',
+            'address_id' => 'required|exists:address,id',
         ]);
         if ($req->fails()) {
             return $this->returnError(422,$req->errors());

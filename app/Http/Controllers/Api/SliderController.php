@@ -14,7 +14,7 @@ class SliderController extends Controller
 use GeneralTrait;
 public function index(Request $request){
         $req = Validator::make($request->all(), [
-            'category_id' => 'required',
+            'category_id' => 'required|exists:categories,id',
         ]);
         if ($req->fails()) {
             return $this->returnError(422,$req->errors());
