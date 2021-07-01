@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CartRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CartResource;
+use App\Http\Resources\ProductCartResource;
+use App\Http\Resources\ProductResource;
 use App\Traits\GeneralTrait;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,23 +23,23 @@ class CartController extends Controller
         if ( $carts->count() !== 0) {
 
                 $total=0;
-                $discount=0;
-                $price=0;
-                $product=0;
+                // $discount=0;
+                // $price=0;
               foreach ($carts as $cart) {
 
                   $product=Product::where('id',$cart->product_id)->first();
-                  $data['price']=$product->price;
+                  $data['image']=$product->image;
+                  $data['old_price']=$product->price;
                   $data['offer']=$product->offer->value;
                   $data['qty']=$cart->qty;
-                  $data['discount']=$product['price']*$data['offer']*$data['qty'];
-                  $total+=$data['qty']*$data['price']-$data['discount'];
-                  $discount+=$data['discount'];
-                  $price+=$data['price'];
-                  $product+=$product;
+                  $data['discount']=$data['old_price']*$data['offer']*$data['qty'];
+                  $total+=$data['qty']*$data['old_price']-$data['discount'];
+                //   $discount+=$data['discount'];
+                //   $price+=$data['price'];
+                //   $product=ProductCartResource::collection($product);
               }
 
-              return ['new_price'=>$total,"discount"=>$discount,'old_price'=>$price,'product'=>$product];
+              return ['new_price'=>$total,'data'=>$data];
             }else{
                 return "not yet";
             }

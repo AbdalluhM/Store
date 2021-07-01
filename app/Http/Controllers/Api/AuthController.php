@@ -39,7 +39,7 @@ class AuthController extends Controller
 
             return $this->returnData("access_token",$success,'User Signed in');
         } else {
-            return $this->sendError('Unauthorised.', ['error' => 'Unauthorised']);
+            // return $this->sendError('Unauthorised.', ['error' => 'Unauthorised']);
             return $this->returnError(400,['error'=>'Unauthorised']);
         }
     }
