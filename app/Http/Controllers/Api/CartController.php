@@ -34,9 +34,10 @@ class CartController extends Controller
                   $total+=$data['qty']*$data['price']-$data['discount'];
                   $discount+=$data['discount'];
                   $price+=$data['price'];
+                  $product+=$product;
               }
 
-              return ['new_price'=>$total,"discount"=>$discount,'old_price'=>$price];
+              return ['new_price'=>$total,"discount"=>$discount,'old_price'=>$price,'product'=>$product];
             }else{
                 return "not yet";
             }
@@ -49,7 +50,7 @@ class CartController extends Controller
         //    dd($totalPrice);
         $user = Auth::user();
         try {
-            if ($product->qty > $request->qty) {
+            if ($product->qty >= $request->qty) {
                 cart::create(array_merge($request->all(), ['user_id' => $user->id, 'total_price' => $totalPrice]));
                 return $this->returnSuccessMessage('cart saved successfully', 200);
             }
