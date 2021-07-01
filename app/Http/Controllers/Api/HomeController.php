@@ -57,7 +57,7 @@ class HomeController extends Controller
 
     public function recommend(){
         try {
-            $products = Product::where('recomend',1)->first();
+            $products = Product::where('recomend',1)->get();
             // dd($products);
      return $this->returnData('recomended_product', $products, "");
     } catch (\Throwable $th) {
