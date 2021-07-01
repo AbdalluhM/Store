@@ -35,7 +35,7 @@ class addressController extends Controller
             $user=Auth::user();
             $user_id=$user->id;
             address::create(array_merge($request->all(),['user_id'=>$user_id]));
-            return response()->json($this->returnSuccessMessage("address saved successfully",200));
+            return $this->returnSuccessMessage("address saved successfully",200);
         } catch (\Throwable $th) {
             return $this->returnError(500,$th->getMessage()) ;
         }

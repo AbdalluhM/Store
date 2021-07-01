@@ -36,8 +36,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('order/store', [OrderController::class, 'store'])->name('store_order');
     Route::get('order', [OrderController::class, 'index'])->name('order');
     Route::post('cart', [CartController::class, 'store'])->name('cart');
+    Route::get('cart/index', [CartController::class, 'index'])->name('cart');
 });
-
 
 // route:profile user
 Route::middleware('auth:sanctum')->group(function () {
