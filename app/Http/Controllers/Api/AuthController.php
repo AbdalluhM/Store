@@ -10,10 +10,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Controllers\API\BaseController;
+use App\Http\Controllers\Controller;
+use App\Traits\GeneralTrait;
 
-class AuthController extends BaseController
+class AuthController extends Controller
 {
+    use GeneralTrait;
     // login user
     public function signin(Request $request)
     {
@@ -22,22 +24,23 @@ class AuthController extends BaseController
             'password' => 'required|string|min:5',
         ]);
         if ($req->fails()) {
-            return $this->sendError("validation error", ["errors" => $req->errors()]);
+            return $this->returnError(422,$req->errors());
         }
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $authUser = Auth::user();
             $success['token'] =  $authUser->createToken('MyAuthApp')->plainTextToken;
             $success['name'] =  $authUser->name;
 
-            return $this->sendResponse($success, 'User signed in');
+            return $this->returnData("access_token",$success,'User Signed in');
         } elseif (Auth::attempt(['phone' => $request->email, 'password' => $request->password])) {
             $authUser = Auth::user();
             $success['token'] =  $authUser->createToken('MyAuthApp')->plainTextToken;
             $success['name'] =  $authUser->name;
 
-            return $this->sendResponse($success, 'User signed in');
+            return $this->returnData("access_token",$success,'User Signed in');
         } else {
             return $this->sendError('Unauthorised.', ['error' => 'Unauthorised']);
+            return $this->returnError(400,['error'=>'Unauthorised']);
         }
     }
 
@@ -55,7 +58,7 @@ class AuthController extends BaseController
         ]);
 
         if ($validator->fails()) {
-            return $this->sendError('Error validation', $validator->errors());
+            return $this->returnError(422,$validator->errors());
         }
 
         if (request()->hasFile('image')) {
@@ -73,7 +76,8 @@ class AuthController extends BaseController
         $success['token'] =  $user->createToken('MyAuthApp')->plainTextToken;
         $success['name'] =  $user->name;
 
-        return $this->sendResponse($success, 'User created successfully.');
+        return $this->returnData("access_token",$success,'User created successfully.');
+
     }
 
 
@@ -105,9 +109,11 @@ class AuthController extends BaseController
             }
             $success['token'] =  $user->createToken('MyAuthApp')->plainTextToken;
             $success['name'] =  $user->name;
-            return $this->sendResponse($success, 'User signed in');
+            return $this->returnData("access_token",$success,'User Signed in');
+
         } catch (\Throwable $th) {
-            return $this->sendError("Server Error", $th->getMessage());
+            return $this->returnError(400,['Server Error'=>$th->getMessage()]);
+
         }
     }
 
