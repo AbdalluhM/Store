@@ -23,7 +23,7 @@ class CartController extends Controller
                 $total=0;
                 $discount=0;
                 $price=0;
-
+                $product=0;
               foreach ($carts as $cart) {
 
                   $product=Product::where('id',$cart->product_id)->first();
