@@ -14,6 +14,10 @@ return [
     */
 
     'Dashboard' => 'Dashboard',
+    'Categories'=>'Categories',
+    'Pages'=>'Pages',
+    'Main-Categories'=>'Main-Categories',
+    'Sup-Categories'=>'Sup-Categories',
 
 
 ];

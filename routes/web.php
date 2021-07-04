@@ -23,6 +23,7 @@ Route::get('/', function () {
 
 
 Route::get('category',[CategoryController::class,('index')])->name('index_category');
+Route::get('sup/category',[CategoryController::class,('sub_category')])->name('index_sub_category');
 Route::get('create',[CategoryController::class,('create')])->name('create_category');
 Route::post('store',[CategoryController::class,('store')])->name('store_category');
 Route::get('category/{category}/edit',[CategoryController::class,('edit')])->name('edit_category');

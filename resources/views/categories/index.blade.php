@@ -37,11 +37,11 @@
         <!--begin::Body-->
         <div class="card-body py-3">
             <!--begin::Table container-->
-            <div class="table-responsive">
+            <div class="table-responsive d-flex">
                 <!--begin::Table-->
-                <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+                <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4 ">
                     <!--begin::Table head-->
-                    <thead>
+                    <thead >
                         <tr class="fw-bolder text-muted">
                             <th class="w-25px">
                                 <div class="form-check form-check-sm form-check-custom form-check-solid">
@@ -52,7 +52,7 @@
                             <th class="min-w-150px">Category</th>
                             {{-- <th class="min-w-140px">Parent</th> --}}
                             <th class="min-w-120px">Description</th>
-                            <th class="min-w-100px text-end">Actions</th>
+                            <th class="min-w-80px ">Actions</th>
                         </tr>
                     </thead>
                     <!--end::Table head-->
@@ -93,8 +93,8 @@
                                     </div>
                                 </div>
                             </td> --}}
-                            <td class="text-end">
-                                <a href="{{route('edit_category',$category->id)}}"
+                            <td class="d-flex">
+                                <a href="{{route('edit_category',$category->id)}} "
                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                     <!--begin::Svg Icon | path: icons/duotone/Communication/Write.svg-->
                                     <span class="svg-icon svg-icon-3">
@@ -111,8 +111,8 @@
                                     </span>
                                     <!--end::Svg Icon-->
                                 </a>
-                                {{-- <form action="{{route('category_delete',$category->id)}}" method="post">
-                                    @csrf --}}
+                                <form action="{{route('category_delete',$category->id)}}" method="post" >
+                                    @csrf
                                     <button href="#" type="submit" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
                                         <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
                                         <span class="svg-icon svg-icon-3">
@@ -132,7 +132,7 @@
                                         </span>
                                         <!--end::Svg Icon-->
                                     </button>
-                                {{-- </form> --}}
+                                </form>
                             </td>
                         </tr>
                         @endforeach

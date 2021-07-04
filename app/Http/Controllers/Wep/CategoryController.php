@@ -53,4 +53,9 @@ class CategoryController extends Controller
         $category->delete();
         return redirect(route('index_category'));
         }
+
+    public function sub_category(){
+        $supCategory=Category::where('parent_id','!=','null')->get();
+        return view('categories.index2')->with('supCategory',$supCategory);
+    }
 }

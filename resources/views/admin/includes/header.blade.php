@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html direction="{{(app()->getLocale() == 'ar')?'rtl':'ltr'}}"  dir="{{(app()->getLocale() == 'ar')?'rtl':'ltr'}}" style="direction: {{(app()->getLocale() == 'ar')?'rtl':'ltr'}}" >
     <head><base href="">
         <meta charset="utf-8" />
         <title>Metronic Bootstrap 5 Theme | Keenthemes</title>
@@ -12,9 +12,19 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
         <!--end::Fonts-->
         <!--begin::Global Stylesheets Bundle(used by all pages)-->
-        <link href="{{asset('assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{asset('assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
-        
+        @if (app()->getLocale() == 'ar')
+            <link href="{{asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />
+            <link href="{{asset('assets/plugins/global/plugins.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />
+            <link href="{{asset('assets/plugins/custom/prismjs/prismjs.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />
+            <link href="{{asset('assets/css/themes/layout/header/base/light.rtl.css')}}" rel="stylesheet" type="text/css" />
+            <link href="{{asset('assets/css/themes/layout/header/menu/light.rtl.css')}}" rel="stylesheet" type="text/css" />
+            <link href="{{asset('assets/css/themes/layout/brand/dark.rtl.css')}}" rel="stylesheet" type="text/css" />
+            <link href="{{asset('assets/css/style.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />
+            <link href="{{asset('assets/css/themes/layout/aside/dark.rtl.css')}}" rel="stylesheet" type="text/css" />
+        @else
+            <link href="{{asset('assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
+            <link href="{{asset('assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
+        @endif
         <!--end::Global Stylesheets Bundle-->
     </head>
     <!--end::Head-->

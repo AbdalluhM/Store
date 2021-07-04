@@ -11,7 +11,7 @@ class CityController extends Controller
 {
     use GeneralTrait;
     public function index(){
-        
-        return $this->returnData('cites',city::all(),'done');
+
+        return $this->returnData('cities',city::all(),'done');
     }
 }

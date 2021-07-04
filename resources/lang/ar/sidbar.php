@@ -15,5 +15,9 @@ return [
 
 
     'Dashboard' => 'لوحة التحكم',
+    'Categories'=>'الأصناف',
+    'Pages'=>'جميع الصفحات',
+    'Main-Categories'=>'الأصناف الرئيسية',
+    'Sup-Categories'=>'الأصناف الفرعية',
 
 ];

@@ -12,6 +12,6 @@ class StateController extends Controller
     use GeneralTrait;
     public function index(){
 
-        return $this->returnData('cites',state::all(),'done');
+        return $this->returnData('states',state::all(),'done');
     }
 }
