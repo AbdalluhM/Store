@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Wep\CategoryController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -41,9 +42,18 @@ Route::group(
      });
     });
 
-
+Route::get('login',[LoginController::class,('showAdminLoginForm')] )->name('login');
+Route::post('home',[LoginController::class,('Login')] )->name('admin_login');
 Route::get('test', function () {
 
-    return view('categories.index2');
+    return view('dashboard.dashboard');
 
 });
+Route::middleware(['auth:admin'])->group(function () {
+
+
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

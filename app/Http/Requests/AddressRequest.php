@@ -31,7 +31,7 @@ class AddressRequest extends FormRequest
             'landmark' => 'required|string',
             'city_id' => 'required|integer',
             'state_id' => 'required|integer',
-            'type_house' => 'required|in:work/office,home ',
+            'type_house' => 'required|in:home,work/office',
             'order_owner' => 'required',
             'mobile' => 'required',
         ];
