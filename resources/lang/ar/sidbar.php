@@ -20,6 +20,7 @@ return [
     'Main-Categories'=>'الأصناف الرئيسية',
     'Sup-Categories'=>'الأصناف الفرعية',
     'products'=>'المنتجات',
-    'All-products'=>'جميع المنتجات'
+    'All-PRODUCTS'=>'جميع المنتجات',
+    
 
 ];

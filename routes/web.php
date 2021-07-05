@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Wep\CategoryController;
+use App\Http\Controllers\wep\ProductController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -19,6 +20,13 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+// route products
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('products', ProductController::class);
 });
 
 // route category
