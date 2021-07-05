@@ -18,6 +18,7 @@ return [
     'Pages'=>'Pages',
     'Main-Categories'=>'Main-Categories',
     'Sup-Categories'=>'Sup-Categories',
-
+    'products'=>'Products',
+    'All-products'=>'All-products'
 
 ];
