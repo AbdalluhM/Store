@@ -6,7 +6,7 @@
         data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
         <!--begin::Card title-->
         <div class="card-title m-0">
-            <h3 class="fw-bolder m-0">Update Category</h3>
+            <h3 class="fw-bolder m-0">Add Product</h3>
         </div>
         <!--end::Card title-->
     </div>
@@ -14,7 +14,7 @@
     <!--begin::Content-->
     <div id="kt_account_profile_details" class="collapse show">
         <!--begin::Form-->
-        <form action="{{route('update_category',$category->id)}}" enctype="multipart/form-data" method="post">
+        <form action="{{route('products.update')}}" enctype="multipart/form-data" method="post">
             @csrf
             <!--begin::Card body-->
             <div class="card-body border-top p-9">
@@ -22,7 +22,7 @@
                 <div class="row mb-6">
                     <!--begin::Label-->
                     <label class="col-lg-4 col-form-label fw-bold fs-6">
-                        <span class="required">Image Category</span>
+                        <span class="required">Image product</span>
                     </label>
                     <!--end::Label-->
                     <!--begin::Col-->
@@ -42,7 +42,7 @@
                                 data-bs-original-title="Change avatar">
                                 <i class="bi bi-pencil-fill fs-7"></i>
                                 <!--begin::Inputs-->
-                                <input type="file" name="category_image" accept=".png, .jpg, .jpeg">
+                                <input type="file" name="image" accept=".png, .jpg, .jpeg">
                                 <input type="hidden" name="avatar_remove">
                                 <!--end::Inputs-->
                             </label>
@@ -74,13 +74,27 @@
                 <div class="row mb-6">
                     <!--begin::Input group-->
                     <div class="row mb-6">
+                        <!--begin::Input-->
+                        <select name="category_id" data-control="select2" data-placeholder="Select a Main Category"
+                            class="form-select form-select-solid form-select-lg select2-hidden-accessible" tabindex="-1"
+                            aria-hidden="true">
+                            <option value="">Select a Main Category</option>
+                            @foreach ($categories as $category )
+                            <option data-kt-flag="flags/indonesia.svg" value="{{$category->id}}">
+                                {{$category->category_name}}</option>
+                            @endforeach
+                        </select>
+                        <!--end::Input-->
+                    </div>
+                    <!--end::Input group-->
+                    <div class="row mb-6">
                         <!--begin::Label-->
-                        <label class="col-lg-4 col-form-label required fw-bold fs-6">Category</label>
+                        <label class="col-lg-4 col-form-label required fw-bold fs-6">Product</label>
                         <!--end::Label-->
                         <!--begin::Col-->
-                        <div class="col-lg-8 fv-row fv-plugins-icon-container">
-                            <input type="text" name="category_name" value="{{$category->category_name}}"
-                                class="form-control form-control-lg form-control-solid" placeholder="Category name">
+                        <div class="col-lg-12 fv-row fv-plugins-icon-container">
+                            <input type="text" name="name_product"
+                                class="form-control form-control-lg form-control-solid" placeholder="product name">
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <!--end::Col-->
@@ -88,57 +102,91 @@
                     <!--end::Input group-->
                     <!--begin::Input group-->
                     <div class="row mb-6">
-                        <!--begin::Label-->
-                        <label class="col-lg-4 col-form-label fw-bold fs-6">
-                            Description
-                        </label>
-                        <!--end::Label-->
                         <!--begin::Col-->
-                        <div class="col-lg-8 fv-row fv-plugins-icon-container">
-                            <input type="tel" name="description" class="form-control form-control-lg form-control-solid"
-                                placeholder="Description "  value="{{$category->description}}">
-                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                        <div class="col-md-6 fv-row fv-plugins-icon-container">
+                            <!--begin::Label-->
+                            <label class="required fs-5 fw-bold mb-2">Quantity</label>
+                            <!--end::Label-->
+                            <!--begin::Input-->
+                            <input type="text" class="form-control form-control-solid" placeholder="product quantity"
+                                name="qty">
+                            <!--end::Input-->
+                            {{-- <div class="fv-plugins-message-container invalid-feedback"></div> --}}
                         </div>
                         <!--end::Col-->
-                    </div>
-                    <div class="row mb-6">
-                        {{-- <!--begin::Label-->
-                        <label class="col-lg-4 col-form-label fw-bold fs-6">
-                            <span class="required">Parent Id</span>
-                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title=""
-                                data-bs-original-title="parent id number" aria-label="parent id number"></i>
-                        </label>
-                        <!--end::Label--> --}}
-                        {{-- <!--begin::Col-->
-                        <div class="col-lg-8 fv-row fv-plugins-icon-container">
-                            <input type="tel" name="desc" class="form-control form-control-lg form-control-solid"
-                                placeholder="Parent id ">
+                        {{-- </div> --}}
+                        {{-- <div class="row mb-6"> --}}
+                        <!--begin::Col-->
+                        <div class="col-md-6 fv-row fv-plugins-icon-container">
+                            <!--begin::Label-->
+                            <label class="required fs-5 fw-bold mb-2">Price</label>
+                            <!--end::Label-->
+                            <!--begin::Input-->
+                            <input type="text" class="form-control form-control-solid" placeholder="product price"
+                                name="price">
+                            <!--end::Input-->
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
-                        <!--end::Col--> --}}
-                        <!--begin::Input-->
-                        <select name="parent_id" aria-label="Select a Main Category" data-control="select2"
-                            data-placeholder="Select a Main Category"
-                            class="form-select form-select-solid form-select-lg select2-hidden-accessible"
-                            data-select2-id="select2-data-13-i3r9" tabindex="-1" aria-hidden="true">
-                            <option value="" data-select2-id="select2-data-15-ojrf">Select a Main Category</option>
-                            @foreach ($supCategories as $supcategory )
-                            <option data-kt-flag="flags/indonesia.svg" value="{{$supcategory->id}}">{{$supcategory->category_name}}</option>
+                    </div>
+                    <!--end::Col-->
+                    {{-- begin offer,size --}}
+                    <div class="col-md-6 fv-row">
+                        <label class="required fs-6 fw-bold mb-2">Sizes</label>
+                        <select name="sizes[]" data-control="select2" data-placeholder="Select Size"
+                            class="form-select form-select-solid form-select-lg select2-hidden-accessible" tabindex="-1"
+                            aria-hidden="true" multiple>
+                            <option value="">Select a Size</option>
+                            @foreach ($sizes as $size )
+                            <option data-kt-flag="flags/indonesia.svg" value="{{$size->id}}">
+                                {{$size->size}}</option>
                             @endforeach
                         </select>
-                        <!--end::Input-->
                     </div>
-                    <!--end::Input group-->
+
+                    {{-- <div class="col-md-6 fv-row">
+                        <label class="required fs-6 fw-bold mb-2">Colors</label>
+                        <select name="parent_id" data-control="select2"
+                            data-placeholder="Select Color"
+                            class="form-select form-select-solid form-select-lg select2-hidden-accessible" tabindex="-1"
+                            aria-hidden="true">
+                            <option value="" >Select a Color</option>
+                            @foreach ($colors as $color )
+                            <option data-kt-flag="flags/indonesia.svg" value="{{$color->id}}">
+                    {{$color->color}}</option>
+                    @endforeach
+                    </select>
+                </div> --}}
+                <div class="col-md-6 fv-row">
+                    <label class="required fs-6 fw-bold mb-2">Offer</label>
+                    <select name="offer_id" data-control="select2" data-placeholder="Select Offer"
+                        class="form-select form-select-solid form-select-lg select2-hidden-accessible" tabindex="-1"
+                        aria-hidden="true">
+                        <option value="">Select Offer </option>
+                        @foreach ($offers as $offer )
+                        <option data-kt-flag="flags/indonesia.svg" value="{{$offer->id}}">
+                            {{$offer->value}}</option>
+                        @endforeach
+                    </select>
                 </div>
-                <!--end::Card body-->
-                <!--begin::Actions-->
-                <div class="card-footer d-flex justify-content-end py-6 px-9">
-                    <button type="submit" class="btn btn-primary">Save
-                        Category</button>
-                </div>
-                <!--end::Actions-->
-                {{-- <input type="hidden"> --}}
-                <div></div>
+                {{-- </div> --}}
+            </div>
+            {{-- end offer,size --}}
+            {{-- begin desc --}}
+            <div class="d-flex flex-column mb-12">
+                <label class="fs-6 fw-bold mb-2">Product Details</label>
+                <textarea class="form-control form-control-solid" rows="3" name="description"
+                    placeholder="Type Target Details"></textarea>
+            </div>
+            {{-- end desc --}}
+            <!--end::Card body-->
+            <!--begin::Actions-->
+            <div class="card-footer d-flex justify-content-end py-6 px-9">
+                <button type="submit" class="btn btn-primary">Update
+                    Product</button>
+            </div>
+            <!--end::Actions-->
+            {{-- <input type="hidden"> --}}
+            <div></div>
         </form>
         <!--end::Form-->
     </div>

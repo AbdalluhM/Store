@@ -42,7 +42,7 @@
                                 data-bs-original-title="Change avatar">
                                 <i class="bi bi-pencil-fill fs-7"></i>
                                 <!--begin::Inputs-->
-                                <input type="file" name="product_image" accept=".png, .jpg, .jpeg">
+                                <input type="file" name="image" accept=".png, .jpg, .jpeg">
                                 <input type="hidden" name="avatar_remove">
                                 <!--end::Inputs-->
                             </label>
@@ -75,7 +75,7 @@
                     <!--begin::Input group-->
                     <div class="row mb-6">
                         <!--begin::Input-->
-                        <select name="parent_id" data-control="select2" data-placeholder="Select a Main Category"
+                        <select name="category_id" data-control="select2" data-placeholder="Select a Main Category"
                             class="form-select form-select-solid form-select-lg select2-hidden-accessible" tabindex="-1"
                             aria-hidden="true">
                             <option value="">Select a Main Category</option>
@@ -93,7 +93,7 @@
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-12 fv-row fv-plugins-icon-container">
-                            <input type="text" name="product_name"
+                            <input type="text" name="name_product"
                                 class="form-control form-control-lg form-control-solid" placeholder="product name">
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
@@ -111,7 +111,7 @@
                             <input type="text" class="form-control form-control-solid" placeholder="product quantity"
                                 name="qty">
                             <!--end::Input-->
-                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                            {{-- <div class="fv-plugins-message-container invalid-feedback"></div> --}}
                         </div>
                         <!--end::Col-->
                         {{-- </div> --}}
@@ -132,9 +132,9 @@
                     {{-- begin offer,size --}}
                     <div class="col-md-6 fv-row">
                         <label class="required fs-6 fw-bold mb-2">Sizes</label>
-                        <select name="size" data-control="select2" data-placeholder="Select Size"
+                        <select name="sizes[]" data-control="select2" data-placeholder="Select Size"
                             class="form-select form-select-solid form-select-lg select2-hidden-accessible" tabindex="-1"
-                            aria-hidden="true">
+                            aria-hidden="true" multiple>
                             <option value="">Select a Size</option>
                             @foreach ($sizes as $size )
                             <option data-kt-flag="flags/indonesia.svg" value="{{$size->id}}">
@@ -142,6 +142,7 @@
                             @endforeach
                         </select>
                     </div>
+
                     {{-- <div class="col-md-6 fv-row">
                         <label class="required fs-6 fw-bold mb-2">Colors</label>
                         <select name="parent_id" data-control="select2"
@@ -157,7 +158,7 @@
                 </div> --}}
                 <div class="col-md-6 fv-row">
                     <label class="required fs-6 fw-bold mb-2">Offer</label>
-                    <select name="offer" data-control="select2" data-placeholder="Select Offer"
+                    <select name="offer_id" data-control="select2" data-placeholder="Select Offer"
                         class="form-select form-select-solid form-select-lg select2-hidden-accessible" tabindex="-1"
                         aria-hidden="true">
                         <option value="">Select Offer </option>
@@ -181,7 +182,7 @@
             <!--begin::Actions-->
             <div class="card-footer d-flex justify-content-end py-6 px-9">
                 <button type="submit" class="btn btn-primary">Save
-                    Category</button>
+                    Product</button>
             </div>
             <!--end::Actions-->
             {{-- <input type="hidden"> --}}

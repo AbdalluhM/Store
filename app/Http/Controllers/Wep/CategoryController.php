@@ -23,11 +23,12 @@ class CategoryController extends Controller
     }
 
     public function store(CategoryRequest $request){
-        if (request()->has('parent_id')) {
-            # code...
-        }
-
-        $image=$request->category_image->store('images/categories');
+        // if (request()->has('parent_id')) {
+        //     # code...
+        // }
+        $image=time().'_'.$request->file('category_image')->hashName();
+        // $request->category_image->store('public/images/categories',image);
+        $request->file('category_image')->storeAs('public/images/categories/',$image);
         Category::create(array_merge($request->all(),['category_image'=>$image]));
         return redirect(route('index_category'));
 
@@ -40,7 +41,7 @@ class CategoryController extends Controller
     }
     public function update(CategoryRequest $request,Category $category){
         if (request()->hasFile('image')) {
-            $image=$request->category_image->store('images/categories');
+            $image=$request->category_image->store('public/images/categories','public');
             $category->update(array_merge($request->all(),['category_image'=>$image]));
         }
         else{

@@ -25,12 +25,12 @@ Route::get('/', function () {
 
 // route products
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth:admin'])->group(function () {
     Route::resource('products', ProductController::class);
 });
 
 // route category
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth:admin'])->group(function () {
     Route::get('category', [CategoryController::class, ('index')])->name('index_category');
     Route::get('sup/category', [CategoryController::class, ('sub_category')])->name('index_sub_category');
     Route::get('create', [CategoryController::class, ('create')])->name('create_category');
@@ -69,4 +69,9 @@ Route::group(
 
 // route auth
 
-Auth::routes(['register' => false]);
+Auth::routes([
+    'register' => false,
+    'login'=>false,
+]);
+Route::get('login/admin', [LoginController::class, ('showLoginForm')])->name('login');
+Route::post('login/admin', [LoginController::class, ('loginAdmin')])->name('login.admin');

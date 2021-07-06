@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-    protected $fillable=['category_name','category_image'];
+    protected $fillable=['category_name','category_image','description'];
+
+    protected $appends=['category_image_path'];
     public function parent(){
         return $this->hasMany(Category::class,'parent_id');
     }
@@ -20,5 +22,10 @@ class Category extends Model
     }
     public function sliders(){
         return $this->hasMany(Slider::class);
+    }
+
+    public function getCategoryImagePathAttribute()
+    {
+        return asset('storage/images/categories/'.($this->category_image));
     }
 }

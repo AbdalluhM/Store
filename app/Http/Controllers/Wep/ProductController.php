@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\wep;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
 use App\Models\Category;
 use App\Models\Color;
 use App\Models\offer;
@@ -35,12 +36,9 @@ class ProductController extends Controller
         $colors=Color::all();
         $offers=offer::all();
         return view('Products.create')->with([
-            
             'categories'=>$categories,
-            'colors'=>$colors,
             'offers'=>$offers,
             'sizes'=>$sizes
-
         ]);
     }
 
@@ -50,9 +48,15 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request )
     {
-        //
+
+       $image=time().'_'.$request->file('image')->hashName();
+       $request->file('image')->storeAs('public/images/products/',$image);
+       $product= Product::create(array_merge($request->all(),['image'=>$image]));
+       $product->sizes()->attach($request->sizes);
+       return redirect()->back();
+
     }
 
     /**
@@ -72,9 +76,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+         return view('Products.update')->with('product',$product);
     }
 
     /**

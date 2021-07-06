@@ -69,7 +69,7 @@
                             <td>
                                 <div class="d-flex align-items-center">
                                     <div class="symbol symbol-45px me-5">
-                                        <img src="assets/media/avatars/150-11.jpg" alt="" />
+                                        <img src="{{$product->product_image_path}}" alt="" />
                                     </div>
                                     <div class="d-flex justify-content-start flex-column">
                                         {{-- <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">Ana Simmons</a>
