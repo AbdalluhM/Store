@@ -18,6 +18,7 @@ class CreateColorsTable extends Migration
             $table->integer('product_id');
             $table->string('color');
             $table->string('image');
+            $table->string('desc')->nullable();
         });
     }
 

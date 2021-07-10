@@ -4,7 +4,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Wep\CategoryController;
+use App\Http\Controllers\wep\ColorController;
+use App\Http\Controllers\wep\OfferController;
 use App\Http\Controllers\wep\ProductController;
+use App\Http\Controllers\wep\SizeController;
+use App\Http\Controllers\wep\SliderController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -28,6 +32,36 @@ Route::get('/', function () {
 Route::middleware(['auth:admin'])->group(function () {
     Route::resource('products', ProductController::class);
 });
+
+// route colors
+
+Route::middleware(['auth:admin'])->group(function () {
+    Route::resource('colors', ColorController::class);
+});
+
+
+// route offers
+
+Route::middleware(['auth:admin'])->group(function () {
+    Route::resource('offers', OfferController::class);
+});
+
+
+// route sizes
+
+Route::middleware(['auth:admin'])->group(function () {
+    Route::resource('sizes', SizeController::class);
+});
+
+
+
+// route sliders
+
+Route::middleware(['auth:admin'])->group(function () {
+    Route::resource('sliders', SliderController::class);
+});
+
+
 
 // route category
 Route::middleware(['auth:admin'])->group(function () {

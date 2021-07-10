@@ -14,6 +14,7 @@ use App\Http\Resources\ProductResource;
 
 class HomeController extends Controller
 {
+    const PER_PAGE = 10;
     use GeneralTrait;
     public function sliders()
     {
@@ -28,7 +29,7 @@ class HomeController extends Controller
 
     public function offers()
     {
-        $offers = offer::all();
+        $offers = offer::paginate(self::PER_PAGE);
         try {
             return $this->returnData('offers', OfferResource::collection($offers), "");
         } catch (\Throwable $th) {
@@ -39,7 +40,7 @@ class HomeController extends Controller
     public function populars()
     {
       try {
-        $products = Product::orderBy('sell_date','DESC')->get();
+        $products = Product::orderBy('sell_date','DESC')->paginate(self::PER_PAGE);
         return $this->returnData('popular_product',$products , "");
       } catch (\Throwable $th) {
           return $this->returnError(500,$th->getMessage());
@@ -47,7 +48,7 @@ class HomeController extends Controller
     }
     public function newProduct(){
        try {
-        $products = Product::orderBy('id','DESC')->get();
+        $products = Product::orderBy('id','DESC')->paginate(self::PER_PAGE);
         return $this->returnData('new_products',$products, "");
        } catch (\Throwable $th) {
           return $this->returnError(500,$th->getMessage());
@@ -57,7 +58,7 @@ class HomeController extends Controller
 
     public function recommend(){
         try {
-            $products = Product::where('recomend',1)->get();
+            $products = Product::where('recomend',1)->paginate(self::PER_PAGE);
             // dd($products);
      return $this->returnData('recomended_product', $products, "");
     } catch (\Throwable $th) {

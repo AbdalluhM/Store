@@ -14,8 +14,9 @@
     <!--begin::Content-->
     <div id="kt_account_profile_details" class="collapse show">
         <!--begin::Form-->
-        <form action="{{route('products.update')}}" enctype="multipart/form-data" method="post">
+        <form action="{{route('products.update',$product->id)}}" enctype="multipart/form-data" method="post">
             @csrf
+            @method('put')
             <!--begin::Card body-->
             <div class="card-body border-top p-9">
                 <!--begin::Input group-->
@@ -42,8 +43,10 @@
                                 data-bs-original-title="Change avatar">
                                 <i class="bi bi-pencil-fill fs-7"></i>
                                 <!--begin::Inputs-->
-                                <input type="file" name="image" accept=".png, .jpg, .jpeg">
-                                <input type="hidden" name="avatar_remove">
+                                <input type="file" name="image" accept=".png, .jpg, .jpeg" >
+                                <input type="hidden" name="avatar_remove" value="{{$product->image}}">
+                                {{-- <img src="{{$product->product_image_path}}" alt="" /> --}}
+
                                 <!--end::Inputs-->
                             </label>
                             <!--end::Label-->
@@ -78,7 +81,7 @@
                         <select name="category_id" data-control="select2" data-placeholder="Select a Main Category"
                             class="form-select form-select-solid form-select-lg select2-hidden-accessible" tabindex="-1"
                             aria-hidden="true">
-                            <option value="">Select a Main Category</option>
+                            <option value="{{$product->category->id}}">{{$product->category->category_name}}</option>
                             @foreach ($categories as $category )
                             <option data-kt-flag="flags/indonesia.svg" value="{{$category->id}}">
                                 {{$category->category_name}}</option>
@@ -93,7 +96,7 @@
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-12 fv-row fv-plugins-icon-container">
-                            <input type="text" name="name_product"
+                            <input type="text" name="name_product" value="{{$product->name_product}}"
                                 class="form-control form-control-lg form-control-solid" placeholder="product name">
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
@@ -109,7 +112,7 @@
                             <!--end::Label-->
                             <!--begin::Input-->
                             <input type="text" class="form-control form-control-solid" placeholder="product quantity"
-                                name="qty">
+                                name="qty" value="{{$product->qty}}">
                             <!--end::Input-->
                             {{-- <div class="fv-plugins-message-container invalid-feedback"></div> --}}
                         </div>
@@ -123,7 +126,8 @@
                             <!--end::Label-->
                             <!--begin::Input-->
                             <input type="text" class="form-control form-control-solid" placeholder="product price"
-                                name="price">
+                                name="price"value="{{$product->price}}" >
+
                             <!--end::Input-->
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
@@ -175,7 +179,7 @@
             <div class="d-flex flex-column mb-12">
                 <label class="fs-6 fw-bold mb-2">Product Details</label>
                 <textarea class="form-control form-control-solid" rows="3" name="description"
-                    placeholder="Type Target Details"></textarea>
+                    placeholder="Type Target Details">{{$product->description}}</textarea>
             </div>
             {{-- end desc --}}
             <!--end::Card body-->

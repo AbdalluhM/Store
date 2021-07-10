@@ -18,7 +18,7 @@ class ProductController extends Controller
     public function index(Request $request){
         try {
             $validator=Validator::make($request->all(),[
-                'supcategory_id'=>'required|exists:categories,id',
+                'supcategory_id'=>'required|exists:categories,parent_id',
             ]);
             if ($validator->fails()) {
                 return $this->returnError('400',$validator->errors());

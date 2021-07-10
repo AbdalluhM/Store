@@ -19,6 +19,14 @@ return [
     'Main-Categories'=>'Main-Categories',
     'Sup-Categories'=>'Sup-Categories',
     'products'=>'Products',
-    'All-PRODUCTS'=>'All-products'
+    'All-PRODUCTS'=>'All-products',
+    'colors'=>'Colors Products',
+    'All-Colors'=>'Colors',
+    'offers'=>'Offers Products',
+    'All-Offers'=>'Offers',
+    'sizes'=>'Sizes Products',
+    'All-Sizes'=>'Sizes',
+    'sliders'=>'Sliders',
+    'All-Sliders'=>'All-Sliders',
 
 ];

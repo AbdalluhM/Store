@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class offer extends Model
 {
     use HasFactory;
+    protected $fillable = ['name', 'value', 'type'];
     public function products(){
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class,'offer_id');
     }
 }

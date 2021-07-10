@@ -21,6 +21,15 @@ return [
     'Sup-Categories'=>'الأصناف الفرعية',
     'products'=>'المنتجات',
     'All-PRODUCTS'=>'جميع المنتجات',
-    
+    'colors'=>'الوان المنتجات',
+    'All-Colors'=>'الالوان  ',
+    'offers'=>'عروض المنتجات',
+    'All-Offers'=>'العروض  ',
+    'sizes'=>'مقاس المنتجات',
+    'All-Sizes'=>'المقاسات  ',
+    'sliders'=>'الاعلانات ',
+    'All-Sliders'=>'كل الاعلانات  ',
+
+
 
 ];

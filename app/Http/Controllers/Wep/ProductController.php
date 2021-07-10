@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\wep;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\ProductRequest;
-use App\Models\Category;
+use App\Models\Size;
 use App\Models\Color;
 use App\Models\offer;
 use App\Models\Product;
-use App\Models\Size;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Validator;
 
 class ProductController extends Controller
 {
@@ -20,8 +22,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products=Product::all();
-        return view('Products.index')->with('products',$products);
+        $products = Product::all();
+        return view('Products.index')->with('products', $products);
     }
 
     /**
@@ -31,14 +33,13 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories=Category::where('parent_id','!=','null')->get();
-        $sizes=Size::all();
-        $colors=Color::all();
-        $offers=offer::all();
+        $categories = Category::where('parent_id', '!=', 'null')->get();
+        $sizes = Size::all();
+        $offers = offer::all();
         return view('Products.create')->with([
-            'categories'=>$categories,
-            'offers'=>$offers,
-            'sizes'=>$sizes
+            'categories' => $categories,
+            'offers' => $offers,
+            'sizes' => $sizes
         ]);
     }
 
@@ -48,15 +49,17 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request )
+    public function store(ProductRequest $request)
     {
 
-       $image=time().'_'.$request->file('image')->hashName();
-       $request->file('image')->storeAs('public/images/products/',$image);
-       $product= Product::create(array_merge($request->all(),['image'=>$image]));
-       $product->sizes()->attach($request->sizes);
-       return redirect()->back();
-
+        $image = time() . '_' . $request->file('image')->hashName();
+        $request->file('image')->storeAs('public/images/products/', $image);
+        $product = Product::create(array_merge($request->all(), ['image' => $image]));
+        if ($request->sizes) {
+            $product->sizes()->attach($request->sizes);
+        }
+        session()->flash('success','Product Created Successfully');
+        return redirect()->back();
     }
 
     /**
@@ -78,7 +81,15 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-         return view('Products.update')->with('product',$product);
+        $categories = Category::where('parent_id', '!=', 'null')->get();
+        $sizes = Size::all();
+        $offers = offer::all();
+        return view('Products.update')->with([
+            'product' => $product,
+            'categories' => $categories,
+            'offers' => $offers,
+            'sizes' => $sizes
+        ]);
     }
 
     /**
@@ -88,9 +99,16 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, Product $product)
     {
-        //
+        if (request()->hasFile('image')) {
+            Storage::disk('public')->delete('/images/products/' . $product->image);
+            $image = time() . '_' . $request->file('image')->hashName();
+            $request->file('image')->storeAs('public/images/products/', $image);
+            $product->update(array_merge($request->all(), ['image' => $image]));
+        }
+        session()->flash('success','Product Updated Successfully');
+        return redirect()->route('products.index');
     }
 
     /**
@@ -99,8 +117,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        Storage::disk('public')->delete('/images/products/' . $product->image);
+        $product->delete();
+        return redirect()->back();
     }
 }

@@ -49,10 +49,11 @@
                                         data-kt-check-target=".widget-9-check" />
                                 </div>
                             </th>
-                            <th class="min-w-140px">product</th>
-                            <th class="min-w-130px">product</th>
-                            <th class="min-w-120px">price</th>
-                            <th class="min-w-120px">qty</th>
+                            <th class="min-w-130px">Product</th>
+                            <th class="min-w-140px">Category</th>
+                            <th class="min-w-120px">Price</th>
+                            <th class="min-w-120px">Qty</th>
+                            <th class="min-w-120px">Description</th>
                             <th class="min-w-80px ">Actions</th>
                         </tr>
                     </thead>
@@ -81,8 +82,23 @@
                             </td>
                             <td>
                                 <p class="text-dark fw-bolder text-hover-primary d-block fs-6">
+                                    {{$product->category()->first()->category_name}}</p>
+                                <span class="text-muted fw-bold text-muted d-block fs-7">Web, UI/UX Design</span>
+                            </td>
+                            <td>
+                                <p class="text-dark fw-bolder text-hover-primary d-block fs-6">
+                                    {{$product->price}}</p>
+                                <span class="text-muted fw-bold text-muted d-block fs-7">Web, UI/UX Design</span>
+                            </td>
+                            <td>
+                                <p class="text-dark fw-bolder text-hover-primary d-block fs-6">
+                                    {{$product->qty}}</p>
+                                <span class="text-muted fw-bold text-muted d-block fs-7">Web, UI/UX Design</span>
+                            </td>
+                            <td>
+                                <p class="text-dark fw-bolder text-hover-primary d-block fs-6">
                                     {{$product->description}}</p>
-                                {{-- <span class="text-muted fw-bold text-muted d-block fs-7">Web, UI/UX Design</span> --}}
+                                <span class="text-muted fw-bold text-muted d-block fs-7">Web, UI/UX Design</span>
                             </td>
                             {{-- <td class="text-end">
                                 <div class="d-flex flex-column w-100 me-2">
@@ -114,6 +130,7 @@
                                 </a>
                                 <form action="{{route('products.destroy',$product->id)}}" method="post" >
                                     @csrf
+                                    @method('delete')
                                     <button href="#" type="submit" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
                                         <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
                                         <span class="svg-icon svg-icon-3">

@@ -32,7 +32,7 @@
 							<!--begin::Menu-->
 							<div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500" id="#kt_aside_menu" data-kt-menu="true">
 								<div class="menu-item">
-									<a class="menu-link active" href="#">
+									<a class="menu-link active" href="{{route('home')}}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotone/Design/PenAndRuller.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -111,6 +111,94 @@
 															<span class="bullet bullet-dot"></span>
 														</span>
 														<span class="menu-title">{{__('sidbar.All-PRODUCTS')}}</span>
+													</a>
+												</div>
+
+											</div>
+										</div>
+									</div>
+                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+										<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+											<span class="menu-link">
+												<span class="menu-bullet">
+													<span class="bullet bullet-dot"></span>
+												</span>
+												<span class="menu-title">{{__('sidbar.colors')}}</span>
+												<span class="menu-arrow"></span>
+											</span>
+											<div class="menu-sub menu-sub-accordion menu-active-bg">
+												<div class="menu-item">
+													<a class="menu-link" href="{{route('colors.index')}}">
+														<span class="menu-bullet">
+															<span class="bullet bullet-dot"></span>
+														</span>
+														<span class="menu-title">{{__('sidbar.All-Colors')}}</span>
+													</a>
+												</div>
+
+											</div>
+										</div>
+									</div>
+                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+										<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+											<span class="menu-link">
+												<span class="menu-bullet">
+													<span class="bullet bullet-dot"></span>
+												</span>
+												<span class="menu-title">{{__('sidbar.offers')}}</span>
+												<span class="menu-arrow"></span>
+											</span>
+											<div class="menu-sub menu-sub-accordion menu-active-bg">
+												<div class="menu-item">
+													<a class="menu-link" href="{{route('offers.index')}}">
+														<span class="menu-bullet">
+															<span class="bullet bullet-dot"></span>
+														</span>
+														<span class="menu-title">{{__('sidbar.All-Offers')}}</span>
+													</a>
+												</div>
+
+											</div>
+										</div>
+									</div>
+                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+										<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+											<span class="menu-link">
+												<span class="menu-bullet">
+													<span class="bullet bullet-dot"></span>
+												</span>
+												<span class="menu-title">{{__('sidbar.sizes')}}</span>
+												<span class="menu-arrow"></span>
+											</span>
+											<div class="menu-sub menu-sub-accordion menu-active-bg">
+												<div class="menu-item">
+													<a class="menu-link" href="{{route('sizes.index')}}">
+														<span class="menu-bullet">
+															<span class="bullet bullet-dot"></span>
+														</span>
+														<span class="menu-title">{{__('sidbar.All-Sizes')}}</span>
+													</a>
+												</div>
+
+											</div>
+										</div>
+									</div>
+                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+										<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+											<span class="menu-link">
+												<span class="menu-bullet">
+													<span class="bullet bullet-dot"></span>
+												</span>
+												<span class="menu-title">{{__('sidbar.sliders')}}</span>
+												<span class="menu-arrow"></span>
+											</span>
+											<div class="menu-sub menu-sub-accordion menu-active-bg">
+												<div class="menu-item">
+													<a class="menu-link" href="{{route('sliders.index')}}">
+														<span class="menu-bullet">
+															<span class="bullet bullet-dot"></span>
+														</span>
+														<span class="menu-title">{{__('sidbar.All-Sliders')}}</span>
 													</a>
 												</div>
 

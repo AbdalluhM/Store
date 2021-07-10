@@ -6,7 +6,7 @@
         data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
         <!--begin::Card title-->
         <div class="card-title m-0">
-            <h3 class="fw-bolder m-0">Add Category</h3>
+            <h3 class="fw-bolder m-0">Add Slider</h3>
         </div>
         <!--end::Card title-->
     </div>
@@ -14,7 +14,7 @@
     <!--begin::Content-->
     <div id="kt_account_profile_details" class="collapse show">
         <!--begin::Form-->
-        <form action="{{route('store_category')}}" enctype="multipart/form-data" method="post">
+        <form action="{{route('sliders.store')}}" enctype="multipart/form-data" method="post">
             @csrf
             <!--begin::Card body-->
             <div class="card-body border-top p-9">
@@ -22,7 +22,7 @@
                 <div class="row mb-6">
                     <!--begin::Label-->
                     <label class="col-lg-4 col-form-label fw-bold fs-6">
-                        <span class="required">Image Category</span>
+                        <span class="required">Image Slider</span>
                     </label>
                     <!--end::Label-->
                     <!--begin::Col-->
@@ -42,9 +42,13 @@
                                 data-bs-original-title="Change avatar">
                                 <i class="bi bi-pencil-fill fs-7"></i>
                                 <!--begin::Inputs-->
-                                <input type="file" name="category_image" accept=".png, .jpg, .jpeg">
+                                <input type="file" name="image" accept=".png, .jpg, .jpeg"
+                                    class="@error('image') is-invalid @enderror">
                                 <input type="hidden" name="avatar_remove">
                                 <!--end::Inputs-->
+                                @error('image')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </label>
                             <!--end::Label-->
                             <!--begin::Cancel-->
@@ -71,55 +75,47 @@
                 </div>
                 <!--end::Input group-->
                 <!--begin::Input group-->
+                <br>
+                <br>
+                <br>
                 <div class="row mb-6">
                     <!--begin::Input group-->
                     <div class="row mb-6">
-                        <!--begin::Label-->
-                        <label class="col-lg-4 col-form-label required fw-bold fs-6">Category</label>
-                        <!--end::Label-->
-                        <!--begin::Col-->
-                        <div class="col-lg-8 fv-row fv-plugins-icon-container">
-                            <input type="text" name="category_name"
-                                class="form-control form-control-lg form-control-solid" placeholder="Category name">
-                            <div class="fv-plugins-message-container invalid-feedback"></div>
-                        </div>
-                        <!--end::Col-->
-                    </div>
-                    <!--end::Input group-->
-                    <!--begin::Input group-->
-                    <div class="row mb-6">
-                        <!--begin::Label-->
-                        <label class="col-lg-4 col-form-label fw-bold fs-6">
-                            Description
-                        </label>
-                        <!--end::Label-->
-                        <!--begin::Col-->
-                        <div class="col-lg-8 fv-row fv-plugins-icon-container">
-                            <input type="tel" name="description" class="form-control form-control-lg form-control-solid"
-                                placeholder="Description ">
-                            <div class="fv-plugins-message-container invalid-feedback"></div>
-                        </div>
-                        <!--end::Col-->
-                    </div>
-                    <div class="row mb-6">
-                        <select name="parent_id" aria-label="Select a Main Category" data-control="select2"
-                            data-placeholder="Select a Main Category"
-                            class="form-select form-select-solid form-select-lg select2-hidden-accessible"
+                        <select name="category_id" aria-label="Select a Main Category" data-control="select2"
+                            data-placeholder="Select category"
+                            class="form-select form-select-solid form-select-lg select2-hidden-accessible @error('image') is-invalid @enderror"
                             data-select2-id="select2-data-13-i3r9" tabindex="-1" aria-hidden="true">
                             <option value="" data-select2-id="select2-data-15-ojrf">Select a Main Category</option>
                             @foreach ($categories as $category )
-                            <option data-kt-flag="flags/indonesia.svg" value="{{$category->id}}">{{$category->category_name}}</option>
+                            <option data-kt-flag="flags/indonesia.svg" value="{{$category->id}}">
+                                {{$category->category_name}}</option>
                             @endforeach
                         </select>
+                        @error('category_id')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        <br>
+                        <br>
                         <!--end::Input-->
                     </div>
                     <!--end::Input group-->
+                    {{-- begin desc --}}
+                    <div class="row mb-6">
+                        <div class="d-flex flex-column mb-12">
+                            <label class="fs-6 fw-bold mb-2">Slider Details</label>
+                            <textarea class="form-control form-control-solid" rows="3" name="description"
+                                placeholder="Type Slider Details"></textarea>
+                        </div>
+                    </div>
+                    {{-- end desc --}}
+
+
                 </div>
                 <!--end::Card body-->
                 <!--begin::Actions-->
                 <div class="card-footer d-flex justify-content-end py-6 px-9">
                     <button type="submit" class="btn btn-primary">Save
-                        Category</button>
+                        Slider</button>
                 </div>
                 <!--end::Actions-->
                 {{-- <input type="hidden"> --}}

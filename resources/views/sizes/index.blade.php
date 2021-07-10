@@ -6,12 +6,12 @@
         <!--begin::Header-->
         <div class="card-header border-0 pt-5">
             <h3 class="card-title align-items-start flex-column">
-                <span class="card-label fw-bolder fs-3 mb-1">Categories</span>
-                <span class="text-muted mt-1 fw-bold fs-7">sup categories</span>
+                <span class="card-label fw-bolder fs-3 mb-1">Sizes</span>
+                <span class="text-muted mt-1 fw-bold fs-7">about size product</span>
             </h3>
             <div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover"
-                title="Click to add category">
-                <a href="{{route('create_category')}}" class="btn btn-sm btn-light-primary">
+                title="Click to add size Product">
+                <a href="{{route('sizes.create')}}" class="btn btn-sm btn-light-primary">
                     <!--begin::Svg Icon | path: icons/duotone/Communication/Add-user.svg-->
                     <span class="svg-icon svg-icon-1 rotate-180">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
@@ -30,7 +30,7 @@
                         </svg>
                     </span>
 
-                    <!--end::Svg Icon-->New Category</a>
+                    <!--end::Svg Icon-->New Size</a>
             </div>
         </div>
         <!--end::Header-->
@@ -49,16 +49,14 @@
                                         data-kt-check-target=".widget-9-check" />
                                 </div>
                             </th>
-                            <th class="min-w-150px">Category</th>
-                            {{-- <th class="min-w-140px">Parent</th> --}}
-                            <th class="min-w-120px">Description</th>
-                            <th class="min-w-80px ">Actions</th>
+                            <th class="min-w-200px">size</th>
+                            <th class="min-w-120px ">Actions</th>
                         </tr>
                     </thead>
                     <!--end::Table head-->
                     <!--begin::Table body-->
                     <tbody>
-                        @foreach ($supCategory as $supCategory)
+                        @foreach ($sizes as $size)
                         <tr>
                             <td>
                                 <div class="form-check form-check-sm form-check-custom form-check-solid">
@@ -68,34 +66,19 @@
                             <td>
                                 <div class="d-flex align-items-center">
                                     <div class="symbol symbol-45px me-5">
-                                        <img src="{{ $supCategory->category_image_path}}" alt="" />
+                                        <img src="{{ $size->product_image_path}}" alt="" />
                                     </div>
                                     <div class="d-flex justify-content-start flex-column">
                                         {{-- <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">Ana Simmons</a>
                                         <span class="text-muted fw-bold text-muted d-block fs-7">HTML, JS, ReactJS</span> --}}
                                         <span
-                                            class="text-dark fw-bolder text-hover-primary fs-6">{{$supCategory->category_name}}</span>
+                                            class="text-dark fw-bolder text-hover-primary fs-6">{{$size->size}}</span>
                                     </div>
                                 </div>
                             </td>
-                            <td>
-                                <p class="text-dark fw-bolder text-hover-primary d-block fs-6">
-                                    {{$supCategory->description}}</p>
-                                {{-- <span class="text-muted fw-bold text-muted d-block fs-7">Web, UI/UX Design</span> --}}
-                            </td>
-                            {{-- <td class="text-end">
-                                <div class="d-flex flex-column w-100 me-2">
-                                    <div class="d-flex flex-stack mb-2">
-                                        <span class="text-muted me-2 fs-7 fw-bold">50%</span>
-                                    </div>
-                                    <div class="progress h-6px w-100">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </td> --}}
                             <td class="d-flex">
-                                <a href="{{route('edit_category',$supCategory->id)}} "
-                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                <a href="{{route('sizes.edit',$size->id)}} "
+                                    class="btn btn-icon btn-bg-light btn-active-size-primary btn-sm me-1">
                                     <!--begin::Svg Icon | path: icons/duotone/Communication/Write.svg-->
                                     <span class="svg-icon svg-icon-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
@@ -111,9 +94,10 @@
                                     </span>
                                     <!--end::Svg Icon-->
                                 </a>
-                                <form action="{{route('category_delete',$supCategory->id)}}" method="post" >
+                                <form action="{{route('sizes.destroy',$size->id)}}" method="post" >
                                     @csrf
-                                    <button href="#" type="submit" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                    @method('delete')
+                                    <button href="#" type="submit" class="btn btn-icon btn-bg-light btn-active-size-primary btn-sm">
                                         <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
                                         <span class="svg-icon svg-icon-3">
                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -149,4 +133,3 @@
     <!--end::Tables Widget 9-->
 </div>
 @endsection
-
