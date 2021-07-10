@@ -18,7 +18,7 @@ class OfferResource extends JsonResource
             'id'=>$this->id,
             'value'=>$this->value,
             // one colum in relation
-            'images'=>$this->products->pluck('image'),
+            'images'=>$this->products->pluck('product_image_path'),
         ];
     }
 
