@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\OfferResource;
+use App\Http\Resources\ProductDetailsResource;
 use App\Http\Resources\ProductResource;
 
 class HomeController extends Controller
@@ -41,7 +42,7 @@ class HomeController extends Controller
     {
       try {
         $products = Product::orderBy('sell_date','DESC')->paginate(self::PER_PAGE);
-        return $this->returnData('popular_product',$products , "");
+        return $this->returnData('popular_product',ProductDetailsResource::make($products) , "");
       } catch (\Throwable $th) {
           return $this->returnError(500,$th->getMessage());
       }
@@ -49,7 +50,7 @@ class HomeController extends Controller
     public function newProduct(){
        try {
         $products = Product::orderBy('id','DESC')->paginate(self::PER_PAGE);
-        return $this->returnData('new_products',$products, "");
+        return $this->returnData('new_products',ProductDetailsResource::make($products), "");
        } catch (\Throwable $th) {
           return $this->returnError(500,$th->getMessage());
        }
@@ -60,7 +61,7 @@ class HomeController extends Controller
         try {
             $products = Product::where('recomend',1)->paginate(self::PER_PAGE);
             // dd($products);
-     return $this->returnData('recomended_product', $products, "");
+     return $this->returnData('recomended_product',ProductDetailsResource::make($products), "");
     } catch (\Throwable $th) {
         return $this->returnError(500,$th->getMessage());
     }
