@@ -40,7 +40,7 @@ class ProductController extends Controller
                 return $this->returnError('400',$validator->errors());
             }
             $product =Product::where('id',$request->product_id)->get();
-            return $this->returnData('products',ProductDetailsResource::collection($product),"");
+            return $this->returnData('product',ProductDetailsResource::collection($product),"");
         } catch (\Throwable $th) {
               return $this->returnError(500,$th->getMessage());;
         }

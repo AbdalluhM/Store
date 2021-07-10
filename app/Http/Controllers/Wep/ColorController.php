@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\wep;
+namespace App\Http\Controllers\Wep;
 
 use App\Models\Color;
 use App\Models\Product;
