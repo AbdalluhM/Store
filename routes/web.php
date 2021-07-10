@@ -2,12 +2,12 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\wep\SizeController;
-use App\Http\Controllers\wep\ColorController;
-use App\Http\Controllers\wep\OfferController;
+use App\Http\Controllers\Wep\SizeController;
+use App\Http\Controllers\Wep\ColorController;
+use App\Http\Controllers\Wep\OfferController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\wep\SliderController;
-use App\Http\Controllers\wep\ProductController;
+use App\Http\Controllers\Wep\SliderController;
+use App\Http\Controllers\Wep\ProductController;
 use App\Http\Controllers\Wep\CategoryController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
