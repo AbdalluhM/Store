@@ -18,6 +18,7 @@ class ColorResource extends JsonResource
             'id'=>$this->id,
             'color'=>$this->color,
             'image'=>$this->image,
+            'image_path'=>$this->product_image_path,
         ];
     }
 

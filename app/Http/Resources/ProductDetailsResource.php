@@ -19,6 +19,7 @@ class ProductDetailsResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name_product,
             'image' => $this->image,
+            'image_path'=>$this->product_image_path,
             'recomend' => $this->recomend,
             'desc' => $this->description,
             'sell' => $this->sell,
@@ -27,7 +28,7 @@ class ProductDetailsResource extends JsonResource
             'offer' => $this->get_offer(),
             'new_price' => $this->get_new_price(),
             'colors' => $this->get_color(),
-            'is_wishlist' => $this->is_wishlist_to_user()
+            'is_wishlist' => $this->is_wishlist_to_user(),
         ];
     }
     public function is_wishlist_to_user()
@@ -43,21 +44,31 @@ class ProductDetailsResource extends JsonResource
     }
     public function get_size()
     {
-        $sizeProduct = $this->sizes;
+        if ($this->sizes) {
+            $sizeProduct = $this->sizes;
         return SizeResource::collection($sizeProduct);
+        }
+        return "null" ;
     }
     public function get_color()
     {
-        $colorProduct = $this->colors;
+        if ($this->colors) {
+            $colorProduct = $this->colors;
         return ColorResource::collection($colorProduct);
+        }
+        return "null";
     }
     public function get_offer()
     {
-        $OfferProduct =  $this->offer;
-        return $OfferProduct->value;
+        if ($this->offer) {
+            $OfferProduct =  $this->offer;
+            return $OfferProduct->value;
+        }
+        return "null";
     }
     public function get_new_price()
-    {if ($this->offer) {
+    {
+        if ($this->offer) {
         $offer=$this->offer;
           $valueOffer=$offer->value;
           $price=$this->price;

@@ -43,6 +43,7 @@ class OrderController extends Controller
         // // }
         // $totalPrice=cart::sum('total_price');
         // dd($user);
+        // db transaction
         $carts=cart::where('user_id',$user->id)->get();
         if ( $carts->count() !== 0) {
             try {

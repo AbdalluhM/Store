@@ -20,29 +20,31 @@ class CartController extends Controller
     {
         $user = Auth::user();
         $carts = cart::where('user_id', $user->id)->get();
-        if ( $carts->count() !== 0) {
+        $cart=CartResource::collection($carts);
+        return $this->returnData('carts', $cart,"done");
+        // if ( $carts->count() !== 0) {
 
-                $total=0;
+                // $total=0;
                 // $discount=0;
                 // $price=0;
-              foreach ($carts as $cart) {
+            //   foreach ($carts as $cart) {
 
-                  $product=Product::where('id',$cart->product_id)->first();
-                  $data['image']=$product->image;
-                  $data['old_price']=$product->price;
-                  $data['offer']=$product->offer->value;
-                  $data['qty']=$cart->qty;
-                  $data['discount']=$data['old_price']*$data['offer']*$data['qty'];
-                  $total+=$data['qty']*$data['old_price']-$data['discount'];
-                //   $discount+=$data['discount'];
-                //   $price+=$data['price'];
-                //   $product=ProductCartResource::collection($product);
-              }
+            //       $product=Product::where('id',$cart->product_id)->first();
+            //       $data['image']=$product->image;
+            //       $data['old_price']=$product->price;
+            //       $data['offer']=$product->offer->value;
+            //       $data['qty']=$cart->qty;
+            //       $data['discount']=$data['old_price']*$data['offer']*$data['qty'];
+            //       $total+=$data['qty']*$data['old_price']-$data['discount'];
+            //     //   $discount+=$data['discount'];
+            //     //   $price+=$data['price'];
+            //     //   $product=ProductCartResource::collection($product);
+            //   }
 
-              return ['new_price'=>$total,'data'=>$data];
-            }else{
-                return "not yet";
-            }
+            //   return ['new_price'=>$total,'data'=>$data];
+            // }else{
+            //     return "not yet";
+            // }
 
     }
     public function store(CartRequest $request)

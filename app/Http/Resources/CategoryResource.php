@@ -18,7 +18,8 @@ class CategoryResource extends JsonResource
             'id'=> $this->id,
             'category'=>$this->category_name,
             'description'=>$this->description ,
-            'picture'=>$this->category_image,
+            'image'=>$this->category_image,
+            'image_path'=>$this->category_image_path,
         ];
     }
 }

@@ -23,7 +23,6 @@ class CartResource extends JsonResource
         ];
     }
     public function product(){
-        $product= ProductCartResource::collection($this->product);
-        return $product;
+        return ProductDetailsResource::make($this->product);
     }
 }

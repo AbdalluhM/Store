@@ -18,13 +18,13 @@ class ProductController extends Controller
     public function index(Request $request){
         try {
             $validator=Validator::make($request->all(),[
-                'supcategory_id'=>'required|exists:categories,parent_id',
+                'supcategory_id'=>'required|exists:categories,id',
             ]);
             if ($validator->fails()) {
                 return $this->returnError('400',$validator->errors());
             }
             $product =Product::where('category_id',$request->supcategory_id) ->get();
-            return $this->returnData('products',ProductResource::collection($product),"");
+            return $this->returnData('products',ProductDetailsResource::collection($product),"");
         } catch (\Throwable $th) {
               return $this->returnError(500,$th->getMessage());;
         }
