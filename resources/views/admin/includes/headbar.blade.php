@@ -28,7 +28,7 @@
             <!--begin::Mobile logo-->
             <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
                 <a href="index.html" class="d-lg-none">
-                    <img alt="Logo" src="assets/media/logos/logo-3.svg" class="h-30px" />
+                    <img alt="Logo" src="{{asset('assets/media/logos/logo-3.svg')}}" class="h-30px" />
                 </a>
             </div>
             <!--end::Mobile logo-->
@@ -47,31 +47,9 @@
                         <div class="menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-700 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold my-5 my-lg-0 align-items-stretch"
                             id="#kt_header_menu" data-kt-menu="true">
                             <div class="menu-item me-lg-1">
-                                <a class="menu-link active py-3" href="index.html">
+                                <a class="menu-link active py-3" href="{{route('home')}}">
                                     <span class="menu-title">Dashboard</span>
                                 </a>
-                            </div>
-                            <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
-                                class="menu-item menu-lg-down-accordion me-lg-1">
-                                <span class="menu-link py-3">
-                                    <span class="menu-title">Language</span>
-                                    <span class="menu-arrow d-lg-none"></span>
-                                </span>
-                                <div
-                                    class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
-                                    <div data-kt-menu-trigger="{default:'click', lg: 'hover'}"
-                                        data-kt-menu-placement="right-start" class="menu-item menu-lg-down-accordion">
-                                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode =>
-                                        $properties)
-                                        <div class="menu-item">
-                                            <a class="menu-link py-3" rel="alternate" hreflang="{{ $localeCode }}"
-                                                href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                                {{ $properties['native'] }}
-                                            </a>
-                                        </div>
-                                        @endforeach
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <!--end::Menu-->
@@ -90,7 +68,7 @@
                             <div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
                                 data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end"
                                 data-kt-menu-flip="bottom">
-                                <img src="assets/media/avatars/150-2.jpg" alt="metronic" />
+                                <img src="{{asset('assets/media/avatars/150-2.jpg')}}" alt="metronic" />
                             </div>
                             <!--begin::Menu-->
                             <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold py-4 fs-6 w-275px"
@@ -178,18 +156,27 @@
                                             <span
                                                 class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">English
                                                 <img class="w-15px h-15px rounded-1 ms-2"
-                                                    src="assets/media/flags/united-states.svg"
+                                                    src="{{asset('assets/media/flags/united-states.svg')}}"
                                                     alt="metronic" /></span></span>
                                     </a>
                                     <!--begin::Menu sub-->
                                     <div class="menu-sub menu-sub-dropdown w-175px py-4">
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="account/settings.html" class="menu-link d-flex px-5 active">
+                                            <a href="{{ LaravelLocalization::getLocalizedURL('en') }}" class="menu-link d-flex px-5 active">
                                                 <span class="symbol symbol-20px me-4">
-                                                    <img class="rounded-1" src="assets/media/flags/united-states.svg"
+                                                    <img class="rounded-1" src="{{asset('assets/media/flags/united-states.svg')}}"
                                                         alt="metronic" />
                                                 </span>English</a>
+                                        </div>
+                                        <!--end::Menu item-->
+                                         <!--begin::Menu item-->
+                                         <div class="menu-item px-3">
+                                            <a href="{{ LaravelLocalization::getLocalizedURL('ar') }}" class="menu-link d-flex px-5 active">
+                                                <span class="symbol symbol-20px me-4">
+                                                    <img class="rounded-1" src="{{asset('assets/media/flags/egypt.svg')}}"
+                                                        alt="metronic" />
+                                                </span>Arabic</a>
                                         </div>
                                         <!--end::Menu item-->
                                     </div>
