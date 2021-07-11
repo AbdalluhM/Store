@@ -29,8 +29,11 @@ class HomeController extends Controller
 
     public function offers()
     {
-        $offers = offer::paginate(self::PER_PAGE);
+        $offers = Product::whereHas('offer')->paginate(self::PER_PAGE);
         try {
+            if ($offers->count()==0) {
+                return $this->returnError(400,'noting product have offer');
+            }
             return $this->returnData('offers', OfferResource::collection($offers), "");
         } catch (\Throwable $th) {
             return $this->returnError(500,$th->getMessage());
