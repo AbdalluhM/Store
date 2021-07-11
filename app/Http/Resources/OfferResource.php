@@ -16,6 +16,8 @@ class OfferResource extends JsonResource
     {
         return [
             'offer'=>$this->get_offer(),
+            'id'=>$this->offer->id,
+            'value'=>$this->offer->value,
             'image'=>$this->product_image_path,
             'product_id'=>$this->id
             // one colum in relation
