@@ -21,10 +21,14 @@ class ProductController extends Controller
                 'supcategory_id'=>'required|exists:categories,id',
             ]);
             if ($validator->fails()) {
-                return $this->returnError('400',$validator->errors());
+                return $this->returnError(422,$validator->errors());
             }
             $product =Product::where('category_id',$request->supcategory_id) ->get();
-            return $this->returnData('products',ProductDetailsResource::collection($product),"");
+            if ($product->count() != 0) {
+                return $this->returnData('products',ProductDetailsResource::collection($product),"");
+            }else{
+                return $this->returnError(400,"sup category not found");
+            }
         } catch (\Throwable $th) {
               return $this->returnError(500,$th->getMessage());;
         }

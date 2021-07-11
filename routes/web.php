@@ -27,52 +27,119 @@ Route::get('/', function () {
 });
 
 
+
+
 // route products
 
-Route::middleware(['auth:admin'])->group(function () {
-    Route::resource('products', ProductController::class);
-});
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:admin']
+    ],
+    function () {
+
+
+            Route::resource('products', ProductController::class)->middleware('checkcategory');
+
+    }
+);
 
 // route colors
 
-Route::middleware(['auth:admin'])->group(function () {
-    Route::resource('colors', ColorController::class);
-});
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:admin']
+    ],
+    function () {
+
+        Route::resource('colors', ColorController::class);
+
+
+    }
+);
+
+
 
 
 // route offers
 
-Route::middleware(['auth:admin'])->group(function () {
-    Route::resource('offers', OfferController::class);
-});
+
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:admin']
+    ],
+    function () {
+
+        Route::resource('offers', OfferController::class);
+
+
+    }
+);
+
+
 
 
 // route sizes
 
-Route::middleware(['auth:admin'])->group(function () {
-    Route::resource('sizes', SizeController::class);
-});
+
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:admin']
+    ],
+    function () {
+
+        Route::resource('sizes', SizeController::class);
+
+
+    }
+);
+
+
 
 
 
 // route sliders
 
-Route::middleware(['auth:admin'])->group(function () {
-    Route::resource('sliders', SliderController::class);
-});
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:admin']
+    ],
+    function () {
+
+        Route::resource('sliders', SliderController::class);
+
+
+    }
+);
+
+
 
 
 
 // route category
-Route::middleware(['auth:admin'])->group(function () {
-    Route::get('category', [CategoryController::class, ('index')])->name('index_category');
-    Route::get('sup/category', [CategoryController::class, ('sub_category')])->name('index_sub_category');
-    Route::get('create', [CategoryController::class, ('create')])->name('create_category');
-    Route::post('store', [CategoryController::class, ('store')])->name('store_category');
-    Route::get('category/{category}/edit', [CategoryController::class, ('edit')])->name('edit_category');
-    Route::post('update/{category}', [CategoryController::class, ('update')])->name('update_category');
-    Route::post('category/{category}/delete', [CategoryController::class, ('destroy')])->name('category_delete');
-});
+
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:admin']
+    ],
+    function () {
+
+        Route::get('category', [CategoryController::class, ('index')])->name('index_category');
+        Route::get('sup/category', [CategoryController::class, ('sub_category')])->name('index_sub_category')->middleware('checkcategory');
+        Route::get('create', [CategoryController::class, ('create')])->name('create_category');
+        Route::post('store', [CategoryController::class, ('store')])->name('store_category');
+        Route::get('category/{category}/edit', [CategoryController::class, ('edit')])->name('edit_category');
+        Route::post('update/{category}', [CategoryController::class, ('update')])->name('update_category');
+        Route::post('category/{category}/delete', [CategoryController::class, ('destroy')])->name('category_delete');
+
+    }
+);
+
 
 
 
@@ -86,7 +153,7 @@ Route::middleware(['auth:admin'])->group(function () {
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'setlocal']
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
 
