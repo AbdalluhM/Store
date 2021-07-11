@@ -15,7 +15,7 @@ class OfferResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'offer'=>$this->get_offer,
+            'offer'=>$this->get_offer(),
             'image'=>$this->product_image_path,
             'product_id'=>$this->id
             // one colum in relation
@@ -24,12 +24,14 @@ class OfferResource extends JsonResource
     }
     public function get_offer()
     {
-
+        if ($this->offer) {
+            $OfferProduct =  $this->offer;
             return [
-                'id'=>$this->offer->id,
-                'value'=>$this->offe->value,
-             ];
-
+                'id'=>$OfferProduct->id,
+                'value'=>$OfferProduct->value,
+            ];
+        }
+        return "null";
     }
 
 }
