@@ -76,7 +76,7 @@
                                         {{-- <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">Ana Simmons</a>
                                         <span class="text-muted fw-bold text-muted d-block fs-7">HTML, JS, ReactJS</span> --}}
                                         <span
-                                            class="text-dark fw-bolder text-hover-primary fs-6">{{$product->product_name}}</span>
+                                            class="text-dark fw-bolder text-hover-primary fs-6">{{$product->name_product}}</span>
                                     </div>
                                 </div>
                             </td>
