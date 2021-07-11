@@ -24,14 +24,12 @@ class OfferResource extends JsonResource
     }
     public function get_offer()
     {
-        if ($this->offer) {
-            $OfferProduct =  $this->offer;
+
             return [
-                'id'=>$OfferProduct->id,
-                'value'=>$OfferProduct->value,
-            ];
-        }
-        return "null";
+                'id'=>$this->offer->id,
+                'value'=>$this->offe->value,
+             ];
+
     }
 
 }
