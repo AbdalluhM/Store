@@ -18,7 +18,9 @@ class CreatePaymentsTable extends Migration
             $table->enum('type_payment',['cash','online']);
             $table->integer('transaction_id');
             $table->integer('total');
-            $table->integer('user_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                ->references('id')->on('users');
             $table->string('status');
             $table->timestamps();
         });

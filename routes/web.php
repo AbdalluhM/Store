@@ -39,7 +39,7 @@ Route::group(
     function () {
 
 
-            Route::resource('products', ProductController::class)->middleware('checkcategory');
+            Route::resource('products', ProductController::class)->middleware('CheckSupCategory');
 
     }
 );

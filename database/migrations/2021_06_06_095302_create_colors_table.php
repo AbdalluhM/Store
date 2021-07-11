@@ -15,7 +15,10 @@ class CreateColorsTable extends Migration
     {
         Schema::create('colors', function (Blueprint $table) {
             $table->id();
-            $table->integer('product_id');
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')
+                ->references('id')->on('products')
+                ->onDelete('cascade');
             $table->string('color');
             $table->string('image');
             $table->string('desc')->nullable();

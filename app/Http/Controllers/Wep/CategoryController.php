@@ -54,6 +54,8 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         Storage::disk('public')->delete('/images/categories/' . $category->category_image);
+        $sup=Category::where('parent_id',$category->id);
+        $sup->delete();
         $category->delete();
         return redirect(route('index_category'));
     }

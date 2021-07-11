@@ -1,5 +1,10 @@
 @extends('admin.layouts.master')
 @section('content')
+@if (session()->has('error'))
+<div class="alert alert-danger text-center" role="alert">
+    {{session()->get('error')}}
+</div>
+@endif
 <div class="card mb-5 mb-xl-10">
     <!--begin::Card header-->
     <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse"

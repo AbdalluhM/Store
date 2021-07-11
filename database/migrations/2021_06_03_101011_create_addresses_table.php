@@ -15,13 +15,15 @@ class CreateAddressesTable extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                ->references('id')->on('users');
             $table->integer('number_house');
             $table->string('street');
             $table->string('landmark');
             $table->integer('city_id');
             $table->integer('state_id');
-            $table->enum('type_house',['home','work/office']);
+            $table->enum('type_house', ['home', 'work/office']);
             $table->string('order_owner');
             $table->string('mobile');
             $table->timestamps();
