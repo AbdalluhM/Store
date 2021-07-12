@@ -50,7 +50,6 @@ class OrderController extends Controller
                 $order= Order::create([
                     'user_id'=>$user->id,
                     'address_id'=>$request->address_id,
-                    'number_order'=>$request->number_order,
                     'total_price'=>0,
                 ]);
                 // dd($order);

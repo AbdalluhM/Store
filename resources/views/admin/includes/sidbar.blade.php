@@ -51,8 +51,136 @@
 										<span class="menu-section text-muted text-uppercase fs-8 ls-1">Crafted</span>
 									</div>
 								</div>
+
 								<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-									<span class="menu-link">
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                        <span class="menu-link">
+                                            <span class="menu-bullet">
+                                                <i class="fas fa-layer-group"></i>
+                                            </span>
+                                            <span class="menu-title">{{__('sidbar.Categories')}}</span>
+                                            <span class="menu-arrow"></span>
+                                        </span>
+                                        <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                            <div class="menu-item">
+                                                <a class="menu-link" href="{{route('index_category')}}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">{{__('sidbar.Main-Categories')}}</span>
+                                                </a>
+                                            </div>
+                                            <div class="menu-item">
+                                                <a class="menu-link" href="{{route('index_sub_category')}}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">{{__('sidbar.Sup-Categories')}}</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                        <span class="menu-link">
+                                            <span class="menu-bullet">
+                                                <i class="fas fa-cart-plus"></i>
+                                            </span>
+                                            <span class="menu-title">{{__('sidbar.products')}}</span>
+                                            <span class="menu-arrow"></span>
+                                        </span>
+                                        <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                            <div class="menu-item">
+                                                <a class="menu-link" href="{{route('products.index')}}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">{{__('sidbar.All-PRODUCTS')}}</span>
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                        <span class="menu-link">
+                                            <span class="menu-bullet">
+                                                <i class="fas fa-palette"></i>
+                                            </span>
+                                            <span class="menu-title">{{__('sidbar.colors')}}</span>
+                                            <span class="menu-arrow"></span>
+                                        </span>
+                                        <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                            <div class="menu-item">
+                                                <a class="menu-link" href="{{route('colors.index')}}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">{{__('sidbar.All-Colors')}}</span>
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                        <span class="menu-link">
+                                            <span class="menu-bullet">
+                                                <i class="fas fa-euro-sign"></i>
+                                            </span>
+                                            <span class="menu-title">{{__('sidbar.offers')}}</span>
+                                            <span class="menu-arrow"></span>
+                                        </span>
+                                        <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                            <div class="menu-item">
+                                                <a class="menu-link" href="{{route('offers.index')}}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">{{__('sidbar.All-Offers')}}</span>
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                        <span class="menu-link">
+                                            <span class="menu-bullet">
+                                                <i class="fab fa-buffer"></i>
+                                            </span>
+                                            <span class="menu-title">{{__('sidbar.sizes')}}</span>
+                                            <span class="menu-arrow"></span>
+                                        </span>
+                                        <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                            <div class="menu-item">
+                                                <a class="menu-link" href="{{route('sizes.index')}}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">{{__('sidbar.All-Sizes')}}</span>
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                        <span class="menu-link">
+                                            <span class="menu-bullet">
+                                                <i class="fas fa-audio-description"></i>
+                                            </span>
+                                            <span class="menu-title">{{__('sidbar.sliders')}}</span>
+                                            <span class="menu-arrow"></span>
+                                        </span>
+                                        <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                            <div class="menu-item">
+                                                <a class="menu-link" href="{{route('sliders.index')}}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">{{__('sidbar.All-Sliders')}}</span>
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+									{{-- <span class="menu-link">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotone/Code/Compiling.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -65,146 +193,8 @@
 										</span>
 										<span class="menu-title">{{__('sidbar.Pages')}}</span>
 										<span class="menu-arrow"></span>
-									</span>
-									<div class="menu-sub menu-sub-accordion menu-active-bg">
-										<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-											<span class="menu-link">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">{{__('sidbar.Categories')}}</span>
-												<span class="menu-arrow"></span>
-											</span>
-											<div class="menu-sub menu-sub-accordion menu-active-bg">
-												<div class="menu-item">
-													<a class="menu-link" href="{{route('index_category')}}">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-														<span class="menu-title">{{__('sidbar.Main-Categories')}}</span>
-													</a>
-												</div>
-												<div class="menu-item">
-													<a class="menu-link" href="{{route('index_sub_category')}}">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-														<span class="menu-title">{{__('sidbar.Sup-Categories')}}</span>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
-										<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-											<span class="menu-link">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">{{__('sidbar.products')}}</span>
-												<span class="menu-arrow"></span>
-											</span>
-											<div class="menu-sub menu-sub-accordion menu-active-bg">
-												<div class="menu-item">
-													<a class="menu-link" href="{{route('products.index')}}">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-														<span class="menu-title">{{__('sidbar.All-PRODUCTS')}}</span>
-													</a>
-												</div>
+									</span> --}}
 
-											</div>
-										</div>
-									</div>
-                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
-										<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-											<span class="menu-link">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">{{__('sidbar.colors')}}</span>
-												<span class="menu-arrow"></span>
-											</span>
-											<div class="menu-sub menu-sub-accordion menu-active-bg">
-												<div class="menu-item">
-													<a class="menu-link" href="{{route('colors.index')}}">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-														<span class="menu-title">{{__('sidbar.All-Colors')}}</span>
-													</a>
-												</div>
-
-											</div>
-										</div>
-									</div>
-                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
-										<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-											<span class="menu-link">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">{{__('sidbar.offers')}}</span>
-												<span class="menu-arrow"></span>
-											</span>
-											<div class="menu-sub menu-sub-accordion menu-active-bg">
-												<div class="menu-item">
-													<a class="menu-link" href="{{route('offers.index')}}">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-														<span class="menu-title">{{__('sidbar.All-Offers')}}</span>
-													</a>
-												</div>
-
-											</div>
-										</div>
-									</div>
-                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
-										<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-											<span class="menu-link">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">{{__('sidbar.sizes')}}</span>
-												<span class="menu-arrow"></span>
-											</span>
-											<div class="menu-sub menu-sub-accordion menu-active-bg">
-												<div class="menu-item">
-													<a class="menu-link" href="{{route('sizes.index')}}">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-														<span class="menu-title">{{__('sidbar.All-Sizes')}}</span>
-													</a>
-												</div>
-
-											</div>
-										</div>
-									</div>
-                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
-										<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-											<span class="menu-link">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">{{__('sidbar.sliders')}}</span>
-												<span class="menu-arrow"></span>
-											</span>
-											<div class="menu-sub menu-sub-accordion menu-active-bg">
-												<div class="menu-item">
-													<a class="menu-link" href="{{route('sliders.index')}}">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-														<span class="menu-title">{{__('sidbar.All-Sliders')}}</span>
-													</a>
-												</div>
-
-											</div>
-										</div>
-									</div>
 								</div>
 								<div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
 									<span class="menu-link">

@@ -80,8 +80,8 @@
                     <div class="row mb-6">
                         <!--begin::Input-->
                         <select name="category_id" data-control="select2" data-placeholder="Select a Main Category"
-                            class="form-select form-select-solid form-select-lg select2-hidden-accessible @error('category_id') is-invalid @enderror" tabindex="-1"
-                            aria-hidden="true">
+                            class="form-select form-select-solid form-select-lg select2-hidden-accessible @error('category_id') is-invalid @enderror"
+                            tabindex="-1" aria-hidden="true">
                             <option value="">Select a Main Category</option>
                             @foreach ($categories as $category )
                             <option data-kt-flag="flags/indonesia.svg" value="{{$category->id}}">
@@ -101,10 +101,11 @@
                         <!--begin::Col-->
                         <div class="col-lg-12 fv-row fv-plugins-icon-container">
                             <input type="text" name="name_product"
-                                class="form-control form-control-lg form-control-solid @error('name_product') is-invalid @enderror" placeholder="product name" >
-                                @error('name_product')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
+                                class="form-control form-control-lg form-control-solid @error('name_product') is-invalid @enderror"
+                                placeholder="product name">
+                            @error('name_product')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <!--end::Col-->
@@ -118,11 +119,12 @@
                             <label class="required fs-5 fw-bold mb-2">Quantity</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input type="text" class="form-control form-control-solid @error('qty') is-invalid @enderror" placeholder="product quantity"
-                                name="qty">
-                                @error('qty')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
+                            <input type="text"
+                                class="form-control form-control-solid @error('qty') is-invalid @enderror"
+                                placeholder="product quantity" name="qty">
+                            @error('qty')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <!--end::Input-->
                             {{-- <div class="fv-plugins-message-container invalid-feedback"></div> --}}
                         </div>
@@ -135,11 +137,12 @@
                             <label class="required fs-5 fw-bold mb-2">Price</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input type="text" class="form-control form-control-solid @error('price') is-invalid @enderror" placeholder="product price"
-                                name="price">
-                                @error('price')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
+                            <input type="text"
+                                class="form-control form-control-solid @error('price') is-invalid @enderror"
+                                placeholder="product price" name="price">
+                            @error('price')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <!--end::Input-->
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
@@ -181,22 +184,23 @@
                 </div>
                 {{-- end desc --}}
                 <div class="col-md-6 fv-row">
-                <div class="d-flex flex-stack mb-8">
-                    <!--begin::Label-->
-                    <div class="me-5">
-                        <label class="fs-6 fw-bold">Make This Product Recomended</label>
-                        <div class="fs-7 fw-bold text-gray-400">this product will show in  home page as recomend</div>
+                    <div class="d-flex flex-stack mb-8">
+                        <!--begin::Label-->
+                        <div class="me-5">
+                            <label class="fs-6 fw-bold">Make This Product Recomended</label>
+                            <div class="fs-7 fw-bold text-gray-400">this product will show in home page as recomend
+                            </div>
+                        </div>
+                        <!--end::Label-->
+                        <!--begin::Switch-->
+                        <label class="form-check form-switch form-check-custom form-check-solid">
+                            <input type="hidden" name="recomend" value="0" />
+                            <input class="form-check-input" type="checkbox" value="1" checked="checked" name="recomend">
+                            <span class="form-check-label fw-bold text-gray-400">Recomend</span>
+                        </label>
+                        <!--end::Switch-->
                     </div>
-                    <!--end::Label-->
-                    <!--begin::Switch-->
-                    <label class="form-check form-switch form-check-custom form-check-solid">
-                        <input type="hidden" name="recomend" value="0"/>
-                        <input class="form-check-input" type="checkbox" value="1" checked="checked" name="recomend">
-                        <span class="form-check-label fw-bold text-gray-400">Recomend</span>
-                    </label>
-                    <!--end::Switch-->
                 </div>
-            </div>
                 <!--end::Card body-->
                 <!--begin::Actions-->
                 <div class="card-footer d-flex justify-content-end py-6 px-9">

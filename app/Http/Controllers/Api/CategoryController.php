@@ -14,8 +14,6 @@ class CategoryController extends Controller
     public function index(){
          $categories =Category::whereNull('parent_id')->get();
         try {
-            // return CategoryResource::collection($categories);
-            // return  $this->returnData('Categories',$categories,"");
             return $this->returnData('Categories',CategoryResource::collection($categories),"");
         } catch (\Throwable $th) {
             return $this->returnError(500,$th->getMessage());

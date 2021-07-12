@@ -72,8 +72,8 @@ class ProductDetailsResource extends JsonResource
         $offer=$this->offer;
           $valueOffer=$offer->value;
           $price=$this->price;
-          $oldPrice=$price-$valueOffer*$price;
-        return $oldPrice;
+          $newPrice=$price-$valueOffer*$price;
+        return $newPrice;
     }else{
         return $this->price;
     }

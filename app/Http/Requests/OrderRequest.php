@@ -26,7 +26,6 @@ class OrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'number_order'=>'required|integer',
             'address_id'=>'required|integer'
         ];
     }

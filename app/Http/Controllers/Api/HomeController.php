@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\OfferResource;
-use App\Http\Resources\ProductResource;
 
 class HomeController extends Controller
 {

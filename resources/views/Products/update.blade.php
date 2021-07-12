@@ -43,7 +43,7 @@
                                 data-bs-original-title="Change avatar">
                                 <i class="bi bi-pencil-fill fs-7"></i>
                                 <!--begin::Inputs-->
-                                <input type="file" name="image" accept=".png, .jpg, .jpeg" >
+                                <input type="file" name="image" accept=".png, .jpg, .jpeg">
                                 <input type="hidden" name="avatar_remove" value="{{$product->image}}">
                                 {{-- <img src="{{$product->product_image_path}}" alt="" /> --}}
 
@@ -126,7 +126,7 @@
                             <!--end::Label-->
                             <!--begin::Input-->
                             <input type="text" class="form-control form-control-solid" placeholder="product price"
-                                name="price"value="{{$product->price}}" >
+                                name="price" value="{{$product->price}}">
 
                             <!--end::Input-->
                             <div class="fv-plugins-message-container invalid-feedback"></div>
@@ -146,51 +146,55 @@
                             @endforeach
                         </select>
                     </div>
-
-                    {{-- <div class="col-md-6 fv-row">
-                        <label class="required fs-6 fw-bold mb-2">Colors</label>
-                        <select name="parent_id" data-control="select2"
-                            data-placeholder="Select Color"
+                    <div class="col-md-6 fv-row">
+                        <label class="required fs-6 fw-bold mb-2">Offer</label>
+                        <select name="offer_id" data-control="select2" data-placeholder="Select Offer"
                             class="form-select form-select-solid form-select-lg select2-hidden-accessible" tabindex="-1"
                             aria-hidden="true">
-                            <option value="" >Select a Color</option>
-                            @foreach ($colors as $color )
-                            <option data-kt-flag="flags/indonesia.svg" value="{{$color->id}}">
-                    {{$color->color}}</option>
-                    @endforeach
-                    </select>
-                </div> --}}
-                <div class="col-md-6 fv-row">
-                    <label class="required fs-6 fw-bold mb-2">Offer</label>
-                    <select name="offer_id" data-control="select2" data-placeholder="Select Offer"
-                        class="form-select form-select-solid form-select-lg select2-hidden-accessible" tabindex="-1"
-                        aria-hidden="true">
-                        <option value="">Select Offer </option>
-                        @foreach ($offers as $offer )
-                        <option data-kt-flag="flags/indonesia.svg" value="{{$offer->id}}">
-                            {{$offer->value}}</option>
-                        @endforeach
-                    </select>
+                            <option value="">Select Offer </option>
+                            @foreach ($offers as $offer )
+                            <option data-kt-flag="flags/indonesia.svg" value="{{$offer->id}}">
+                                {{$offer->value}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    {{-- </div> --}}
                 </div>
-                {{-- </div> --}}
-            </div>
-            {{-- end offer,size --}}
-            {{-- begin desc --}}
-            <div class="d-flex flex-column mb-12">
-                <label class="fs-6 fw-bold mb-2">Product Details</label>
-                <textarea class="form-control form-control-solid" rows="3" name="description"
-                    placeholder="Type Target Details">{{$product->description}}</textarea>
-            </div>
-            {{-- end desc --}}
-            <!--end::Card body-->
-            <!--begin::Actions-->
-            <div class="card-footer d-flex justify-content-end py-6 px-9">
-                <button type="submit" class="btn btn-primary">Update
-                    Product</button>
-            </div>
-            <!--end::Actions-->
-            {{-- <input type="hidden"> --}}
-            <div></div>
+                {{-- end offer,size --}}
+                {{-- begin desc --}}
+                <div class="d-flex flex-column mb-12">
+                    <label class="fs-6 fw-bold mb-2">Product Details</label>
+                    <textarea class="form-control form-control-solid" rows="3" name="description"
+                        placeholder="Type Target Details">{{$product->description}}</textarea>
+                </div>
+                {{-- end desc --}}
+                <div class="col-md-6 fv-row">
+                    <div class="d-flex flex-stack mb-8">
+                        <!--begin::Label-->
+                        <div class="me-5">
+                            <label class="fs-6 fw-bold">Make This Product Recomended</label>
+                            <div class="fs-7 fw-bold text-gray-400">this product will show in home page as recomend
+                            </div>
+                        </div>
+                        <!--end::Label-->
+                        <!--begin::Switch-->
+                        <label class="form-check form-switch form-check-custom form-check-solid">
+                            <input type="hidden" name="recomend" value="0" />
+                            <input class="form-check-input" type="checkbox" value="1" checked="checked" name="recomend">
+                            <span class="form-check-label fw-bold text-gray-400">Recomend</span>
+                        </label>
+                        <!--end::Switch-->
+                    </div>
+                </div>
+                <!--end::Card body-->
+                <!--begin::Actions-->
+                <div class="card-footer d-flex justify-content-end py-6 px-9">
+                    <button type="submit" class="btn btn-primary">Update
+                        Product</button>
+                </div>
+                <!--end::Actions-->
+                {{-- <input type="hidden"> --}}
+                <div></div>
         </form>
         <!--end::Form-->
     </div>

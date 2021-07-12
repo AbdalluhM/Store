@@ -3,13 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Size;
-use App\Models\Color;
 use App\Models\Product;
 use App\Traits\GeneralTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ProductDetailsResource;
-use App\Http\Resources\ProductResource;
 use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller

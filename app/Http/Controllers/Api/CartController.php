@@ -8,8 +8,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CartRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CartResource;
-use App\Http\Resources\ProductCartResource;
-use App\Http\Resources\ProductResource;
 use App\Traits\GeneralTrait;
 use Illuminate\Support\Facades\Auth;
 
