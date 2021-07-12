@@ -88,6 +88,7 @@ class OfferController extends Controller
     public function destroy(offer $offer)
     {
         $offer->delete();
+        session()->flash('success','Offer Deleted Successfully');
         return redirect()->back();
     }
 }

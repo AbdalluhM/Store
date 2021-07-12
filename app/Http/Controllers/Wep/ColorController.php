@@ -103,6 +103,7 @@ class ColorController extends Controller
     {
         Storage::disk('public')->delete('/images/colors/' . $color->image);
         $color->delete();
+        session()->flash('success','Color Deleted Successfully');
         return redirect()->back();
     }
 }

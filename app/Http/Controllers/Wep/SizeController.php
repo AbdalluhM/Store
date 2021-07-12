@@ -88,6 +88,7 @@ class SizeController extends Controller
     public function destroy(Size $size)
     {
         $size->delete();
+        session()->flash('success','Size Deleted Successfully');
         return redirect()->back();
     }
 }

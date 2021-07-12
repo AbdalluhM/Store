@@ -103,6 +103,7 @@ class SliderController extends Controller
     {
         Storage::disk('public')->delete('/images/sliders/'.$slider->image);
         $slider->delete();
+        session()->flash('success','Slider Deleted Successfully');
         return redirect()->back();
     }
 }

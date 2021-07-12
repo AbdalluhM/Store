@@ -57,12 +57,13 @@ class CategoryController extends Controller
         $sup=Category::where('parent_id',$category->id);
         $sup->delete();
         $category->delete();
+        session()->flash('success','Category Deleted Successfully');
         return redirect(route('index_category'));
     }
 
     public function sub_category()
     {
-        $supCategory = Category::where('parent_id', '!=', '')->get();
+        $supCategory = Category::whereNotNull('parent_id')->get();
         return view('categories.index2')->with('supCategory', $supCategory);
     }
 }

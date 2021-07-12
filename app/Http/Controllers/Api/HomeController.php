@@ -14,7 +14,7 @@ use App\Http\Resources\ProductResource;
 
 class HomeController extends Controller
 {
-    const PER_PAGE = 10;
+    const PER_PAGE = 4;
     use GeneralTrait;
     public function sliders()
     {

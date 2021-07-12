@@ -121,6 +121,7 @@ class ProductController extends Controller
     {
         Storage::disk('public')->delete('/images/products/' . $product->image);
         $product->delete();
+        session()->flash('success','Product Deleted Successfully');
         return redirect()->back();
     }
 }
