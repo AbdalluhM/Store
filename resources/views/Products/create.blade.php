@@ -190,6 +190,7 @@
                     <!--end::Label-->
                     <!--begin::Switch-->
                     <label class="form-check form-switch form-check-custom form-check-solid">
+                        <input type="hidden" name="recomend" value="0"/>
                         <input class="form-check-input" type="checkbox" value="1" checked="checked" name="recomend">
                         <span class="form-check-label fw-bold text-gray-400">Recomend</span>
                     </label>
