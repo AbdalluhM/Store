@@ -12,7 +12,7 @@ class CategoryController extends Controller
 {
     use GeneralTrait ;
     public function index(){
-         $categories =Category::all();
+         $categories =Category::whereNull('parent_id')->get();
         try {
             // return CategoryResource::collection($categories);
             // return  $this->returnData('Categories',$categories,"");

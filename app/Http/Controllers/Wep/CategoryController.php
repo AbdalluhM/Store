@@ -19,7 +19,7 @@ class CategoryController extends Controller
 
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::whereNull('parent_id')->get();
         return view('categories.add')->with('categories', $categories);
     }
 
@@ -35,7 +35,7 @@ class CategoryController extends Controller
     {
         // dd($category);
 
-        $supCategory = Category::where('parent_id', '!=', 'null')->get();
+        $supCategory =Category::whereNull('parent_id')->get();
         return view('categories.update')->with(['category' => $category, 'supCategories' => $supCategory]);
     }
     public function update(CategoryRequest $request, Category $category)
