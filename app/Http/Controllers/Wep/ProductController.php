@@ -106,6 +106,8 @@ class ProductController extends Controller
             $image = time() . '_' . $request->file('image')->hashName();
             $request->file('image')->storeAs('public/images/products/', $image);
             $product->update(array_merge($request->all(), ['image' => $image]));
+            $product->sizes()->sync($request->sizes);
+
         }
         session()->flash('success','Product Updated Successfully');
         return redirect()->route('products.index');

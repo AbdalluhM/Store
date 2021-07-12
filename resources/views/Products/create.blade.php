@@ -180,12 +180,29 @@
                         placeholder="Type Product Details"></textarea>
                 </div>
                 {{-- end desc --}}
+                <div class="col-md-6 fv-row">
+                <div class="d-flex flex-stack mb-8">
+                    <!--begin::Label-->
+                    <div class="me-5">
+                        <label class="fs-6 fw-bold">Make This Product Recomended</label>
+                        <div class="fs-7 fw-bold text-gray-400">this product will show in  home page as recomend</div>
+                    </div>
+                    <!--end::Label-->
+                    <!--begin::Switch-->
+                    <label class="form-check form-switch form-check-custom form-check-solid">
+                        <input class="form-check-input" type="checkbox" value="1" checked="checked" name="recomend">
+                        <span class="form-check-label fw-bold text-gray-400">Recomend</span>
+                    </label>
+                    <!--end::Switch-->
+                </div>
+            </div>
                 <!--end::Card body-->
                 <!--begin::Actions-->
                 <div class="card-footer d-flex justify-content-end py-6 px-9">
                     <button type="submit" class="btn btn-primary">Save
                         Product</button>
                 </div>
+
                 <!--end::Actions-->
                 {{-- <input type="hidden"> --}}
                 <div></div>
