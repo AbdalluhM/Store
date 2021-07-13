@@ -14,6 +14,13 @@ class SizeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+         $this->middleware('permission:size-list|size-create|size-edit|size-delete', ['only' => ['index','store']]);
+         $this->middleware('permission:size-create', ['only' => ['create','store']]);
+         $this->middleware('permission:size-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:size-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $sizes = Size::all();

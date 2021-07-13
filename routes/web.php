@@ -6,6 +6,9 @@ use App\Http\Controllers\Wep\SizeController;
 use App\Http\Controllers\Wep\ColorController;
 use App\Http\Controllers\Wep\OfferController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Dashboard\AdminController;
+use App\Http\Controllers\Dashboard\PermissionController;
+use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\Wep\SliderController;
 use App\Http\Controllers\Wep\ProductController;
 use App\Http\Controllers\Wep\CategoryController;
@@ -131,7 +134,8 @@ Route::group(
 
         Route::get('category', [CategoryController::class, ('index')])->name('index_category');
         Route::get('sup/category', [CategoryController::class, ('sub_category')])->name('index_sub_category')->middleware('checkcategory');
-        Route::get('create', [CategoryController::class, ('create')])->name('create_category');
+        Route::get('create/category', [CategoryController::class, ('createCategory')])->name('create_category');
+        Route::get('create/supcategory', [CategoryController::class, ('createSupCategory')])->name('create_sup_category');
         Route::post('store', [CategoryController::class, ('store')])->name('store_category');
         Route::get('category/{category}/edit', [CategoryController::class, ('edit')])->name('edit_category');
         Route::post('update/{category}', [CategoryController::class, ('update')])->name('update_category');
@@ -176,3 +180,12 @@ Auth::routes([
 ]);
 Route::get('login/admin', [LoginController::class, ('showLoginForm')])->name('login');
 Route::post('login/admin', [LoginController::class, ('loginAdmin')])->name('login.admin');
+
+
+// roles...permission...admin
+Route::group(['middleware' => ['auth:admin']], function() {
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', AdminController::class);
+    Route::get('permission',[ PermissionController::class,('index')])->name('permission.index');
+});
+

@@ -225,7 +225,7 @@
 											</span>
 											<div class="menu-sub menu-sub-accordion">
 												<div class="menu-item">
-													<a class="menu-link" href="apps/user-management/users/list.html">
+													<a class="menu-link" href="{{route('users.index')}}">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -233,7 +233,7 @@
 													</a>
 												</div>
 												<div class="menu-item">
-													<a class="menu-link" href="apps/user-management/users/view.html">
+													<a class="menu-link" href="#">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -252,7 +252,7 @@
 											</span>
 											<div class="menu-sub menu-sub-accordion">
 												<div class="menu-item">
-													<a class="menu-link" href="apps/user-management/roles/list.html">
+													<a class="menu-link" href="{{route('roles.index')}}">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -260,7 +260,7 @@
 													</a>
 												</div>
 												<div class="menu-item">
-													<a class="menu-link" href="apps/user-management/roles/view.html">
+													<a class="menu-link" href="#">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -270,7 +270,7 @@
 											</div>
 										</div>
 										<div class="menu-item">
-											<a class="menu-link" href="apps/user-management/permissions.html">
+											<a class="menu-link" href="{{route('permission.index')}}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>

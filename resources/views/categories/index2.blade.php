@@ -11,7 +11,7 @@
             </h3>
             <div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover"
                 title="Click to add category">
-                <a href="{{route('create_category')}}" class="btn btn-sm btn-light-primary">
+                <a href="{{route('create_sup_category')}}" class="btn btn-sm btn-light-primary">
                     <!--begin::Svg Icon | path: icons/duotone/Communication/Add-user.svg-->
                     <span class="svg-icon svg-icon-1 rotate-180">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"

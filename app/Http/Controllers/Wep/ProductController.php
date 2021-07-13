@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Wep;
 
 use App\Models\Size;
 use App\Models\Color;
-use App\Models\offer;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
+use App\Models\offer;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Validator;
 
@@ -20,6 +20,14 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    function __construct()
+    {
+         $this->middleware('permission:product-list|product-create|product-edit|product-delete', ['only' => ['index','store']]);
+         $this->middleware('permission:product-create', ['only' => ['create','store']]);
+         $this->middleware('permission:product-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:product-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $products = Product::all();
@@ -33,10 +41,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Category::where('parent_id', '!=', 'null')->get();
+        $categories = Category::whereNotNull('parent_id')->get();
         $sizes = Size::all();
         $offers = offer::all();
-        return view('Products.create')->with([
+        return view('offers.create')->with([
             'categories' => $categories,
             'offers' => $offers,
             'sizes' => $sizes
@@ -81,13 +89,13 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $categories = Category::where('parent_id', '!=', 'null')->get();
+        $categories = Category::whereNotNull('parent_id')->get();
         $sizes = Size::all();
-        $offers = offer::all();
+        $products = product::all();
         return view('Products.update')->with([
             'product' => $product,
             'categories' => $categories,
-            'offers' => $offers,
+            'products' => $products,
             'sizes' => $sizes
         ]);
     }

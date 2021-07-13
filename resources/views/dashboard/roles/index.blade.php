@@ -6,12 +6,12 @@
         <!--begin::Header-->
         <div class="card-header border-0 pt-5">
             <h3 class="card-title align-items-start flex-column">
-                <span class="card-label fw-bolder fs-3 mb-1">Categories</span>
-                <span class="text-muted mt-1 fw-bold fs-7">sup categories</span>
+                <span class="card-label fw-bolder fs-3 mb-1">Roles</span>
+                <span class="text-muted mt-1 fw-bold fs-7">roles of users.</span>
             </h3>
             <div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover"
                 title="Click to add category">
-                <a href="{{route('create_category')}}" class="btn btn-sm btn-light-primary">
+                <a href="{{route('roles.create')}}" class="btn btn-sm btn-light-primary">
                     <!--begin::Svg Icon | path: icons/duotone/Communication/Add-user.svg-->
                     <span class="svg-icon svg-icon-1 rotate-180">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
@@ -30,7 +30,7 @@
                         </svg>
                     </span>
 
-                    <!--end::Svg Icon-->New Category</a>
+                    <!--end::Svg Icon-->New Role</a>
             </div>
         </div>
         <!--end::Header-->
@@ -49,15 +49,15 @@
                                         data-kt-check-target=".widget-9-check" />
                                 </div>
                             </th>
-                            <th class="min-w-150px">Category</th>
-                            <th class="min-w-120px">Description</th>
-                            <th class="min-w-80px ">Actions</th>
+                            <th class="min-w-100px">No</th>
+                            <th class="min-w-100px">Name</th>
+                            <th class="min-w-80px ">Action</th>
                         </tr>
                     </thead>
                     <!--end::Table head-->
                     <!--begin::Table body-->
                     <tbody>
-                        @foreach ($categories as $category)
+                        @foreach ($roles as $role)
                         <tr>
                             <td>
                                 <div class="form-check form-check-sm form-check-custom form-check-solid">
@@ -65,25 +65,21 @@
                                 </div>
                             </td>
                             <td>
-                                <div class="d-flex align-items-center">
-                                    <div class="symbol symbol-45px me-5">
-                                        <img src="{{ $category->category_image_path}}" alt="" />
-                                    </div>
                                     <div class="d-flex justify-content-start flex-column">
                                         {{-- <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">Ana Simmons</a>
                                         <span class="text-muted fw-bold text-muted d-block fs-7">HTML, JS, ReactJS</span> --}}
                                         <span
-                                            class="text-dark fw-bolder text-hover-primary fs-6">{{$category->category_name}}</span>
+                                            class="text-dark fw-bolder text-hover-primary fs-6">{{$role->id}}</span>
                                     </div>
                                 </div>
                             </td>
                             <td>
                                 <p class="text-dark fw-bolder text-hover-primary d-block fs-6">
-                                    {{$category->description}}</p>
+                                    {{$role->name}}</p>
                                 {{-- <span class="text-muted fw-bold text-muted d-block fs-7">Web, UI/UX Design</span> --}}
                             </td>
                             <td class="d-flex">
-                                <a href="{{route('edit_category',$category->id)}} "
+                                <a href="{{route('roles.edit',$role->id)}} "
                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                     <!--begin::Svg Icon | path: icons/duotone/Communication/Write.svg-->
                                     <span class="svg-icon svg-icon-3">
@@ -100,7 +96,7 @@
                                     </span>
                                     <!--end::Svg Icon-->
                                 </a>
-                                <form action="{{route('category_delete',$category->id)}}" method="post" >
+                                <form action="{{route('roles.destroy',$role->id)}}" method="post" >
                                     @csrf
                                     <button href="#" type="submit" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
                                         <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
@@ -138,3 +134,5 @@
     <!--end::Tables Widget 9-->
 </div>
 @endsection
+
+

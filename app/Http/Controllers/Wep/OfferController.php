@@ -14,6 +14,16 @@ class OfferController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    function __construct()
+    {
+         $this->middleware('permission:offer-list|offer-create|offer-edit|offer-delete', ['only' => ['index','store']]);
+         $this->middleware('permission:offer-create', ['only' => ['create','store']]);
+         $this->middleware('permission:offer-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:offer-delete', ['only' => ['destroy']]);
+    }
+
+
     public function index()
     {
         $offers=offer::all();

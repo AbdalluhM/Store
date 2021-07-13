@@ -106,18 +106,20 @@
                         </div>
                         <!--end::Col-->
                     </div>
-                    <div class="row mb-6">
-                        <select name="parent_id" aria-label="Select a Main Category" data-control="select2"
-                            data-placeholder="Select a Main Category"
-                            class="form-select form-select-solid form-select-lg select2-hidden-accessible"
-                            data-select2-id="select2-data-13-i3r9" tabindex="-1" aria-hidden="true">
-                            <option value="" data-select2-id="select2-data-15-ojrf">Select a Main Category</option>
-                            @foreach ($categories as $category )
-                            <option data-kt-flag="flags/indonesia.svg" value="{{$category->id}}">{{$category->category_name}}</option>
-                            @endforeach
-                        </select>
-                        <!--end::Input-->
-                    </div>
+                   @if (isset($categories))
+                   <div class="row mb-6">
+                    <select name="parent_id" aria-label="Select a Main Category" data-control="select2"
+                        data-placeholder="Select a Main Category"
+                        class="form-select form-select-solid form-select-lg select2-hidden-accessible"
+                        data-select2-id="select2-data-13-i3r9" tabindex="-1" aria-hidden="true">
+                        <option value="" data-select2-id="select2-data-15-ojrf">Select a Main Category</option>
+                        @foreach ($categories as $category )
+                        <option data-kt-flag="flags/indonesia.svg" value="{{$category->id}}">{{$category->category_name}}</option>
+                        @endforeach
+                    </select>
+                    <!--end::Input-->
+                </div>
+                   @endif
                     <!--end::Input group-->
                 </div>
                 <!--end::Card body-->

@@ -11,13 +11,26 @@ use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:category-list|category-create|category-edit|category-delete', ['only' => ['index','store','sub_category']]);
+         $this->middleware('permission:category-create', ['only' => ['create','store']]);
+         $this->middleware('permission:category-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:category-delete', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $categories =  Category::whereNull('parent_id')->get();
         return view('categories.index')->with('categories', $categories);
     }
 
-    public function create()
+    public function createCategory()
+    {
+        // $categories = Category::whereNull('parent_id')->get();
+        return view('categories.add');
+    }
+
+    public function createSupCategory()
     {
         $categories = Category::whereNull('parent_id')->get();
         return view('categories.add')->with('categories', $categories);
