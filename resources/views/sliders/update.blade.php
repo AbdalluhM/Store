@@ -34,7 +34,7 @@
 
                             <!--begin::Preview existing avatar-->
                             <div class="image-input-wrapper w-125px h-125px"
-                                style="background-image: url(/metronic8/demo1/assets/media/avatars/150-2.jpg)"></div>
+                                style="background-image: url({{url($slider->slider_image_path)}})"></div>
                             <!--end::Preview existing avatar-->
                             <!--begin::Label-->
                             <label

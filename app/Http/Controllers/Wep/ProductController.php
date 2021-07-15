@@ -30,7 +30,7 @@ class ProductController extends Controller
     }
     public function index()
     {
-        $products = Product::all();
+        $products = Product::paginate(4);
         return view('Products.index')->with('products', $products);
     }
 
@@ -59,10 +59,13 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-
+        $input=$request->all();
+        if (request()->hasFile('image')) {
         $image = time() . '_' . $request->file('image')->hashName();
         $request->file('image')->storeAs('public/images/products/', $image);
-        $product = Product::create(array_merge($request->all(), ['image' => $image]));
+        $input['image']=$image;
+        }
+        $product = Product::create($input);
         if ($request->sizes) {
             $product->sizes()->attach($request->sizes);
         }
@@ -109,14 +112,15 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product)
     {
+        $input=$request->all();
         if (request()->hasFile('image')) {
             Storage::disk('public')->delete('/images/products/' . $product->image);
             $image = time() . '_' . $request->file('image')->hashName();
             $request->file('image')->storeAs('public/images/products/', $image);
-            $product->update(array_merge($request->all(), ['image' => $image]));
-            $product->sizes()->sync($request->sizes);
-
+            $input['image']=$image;
         }
+        $product->update( $input);
+        $product->sizes()->sync($request->sizes);
         session()->flash('success','Product Updated Successfully');
         return redirect()->route('products.index');
     }

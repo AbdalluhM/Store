@@ -32,8 +32,13 @@
                             style="background-image: url(/metronic8/demo1/assets/media/avatars/blank.png)">
 
                             <!--begin::Preview existing avatar-->
+                            @isset($categories)
                             <div class="image-input-wrapper w-125px h-125px"
-                                style="background-image: url(/metronic8/demo1/assets/media/avatars/150-2.jpg)"></div>
+                            style="background-image: url({{url($supCategory->category_image_path)}})"></div>
+                            @else
+                            <div class="image-input-wrapper w-125px h-125px"
+                            style="background-image: url({{url($category->category_image_path)}})"></div>
+                            @endisset
                             <!--end::Preview existing avatar-->
                             <!--begin::Label-->
                             <label

@@ -133,6 +133,21 @@
                 <!--end::Table-->
             </div>
             <!--end::Table container-->
+            <div class="container">
+                <div class="row">
+                    <div
+                        class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start">
+                    </div>
+                    <div class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
+                        <div class="dataTables_paginate paging_simple_numbers" id="kt_table_users_paginate">
+                            <div class="d-flex ">
+                                {!! $sliders->render() !!}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!--begin::Body-->
     </div>

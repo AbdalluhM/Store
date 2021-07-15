@@ -27,7 +27,7 @@ class ColorController extends Controller
 
     public function index()
     {
-        $colors = Color::all();
+        $colors = Color::paginate(4);
         return view('colors.index')->with('colors', $colors);
     }
 
@@ -51,9 +51,13 @@ class ColorController extends Controller
      */
     public function store(ColorRequest $request)
     {
+        $input=$request->all();
+        if (request()->hasFile('image')) {
         $image = time() . '_' . $request->file('image')->hashName();
         $request->file('image')->storeAs('public/images/colors/', $image);
-        Color::create(array_merge($request->all(), ['image' => $image]));
+        $input['image']=$image;
+        }
+        Color::create($input);
         session()->flash('success','Color Created Successfully');
         return redirect()->back();
     }
@@ -90,13 +94,15 @@ class ColorController extends Controller
      */
     public function update(ColorRequest $request, Color $color)
     {
+        $input=$request->all();
         if (request()->hasFile('image')) {
             Storage::disk('public')->delete('/images/colors/' . $color->image);
             $image = time() . '_' . $request->file('image')->hashName();
             $request->file('image')->storeAs('public/images/colors/', $image);
-            $color->update(array_merge($request->all(), ['image' => $image]));
-            session()->flash('success','Color Updated Successfully');
+            $input['image']=$image;
         }
+        $color->update($input);
+        session()->flash('success','Color Updated Successfully');
 
 
         return redirect()->route('colors.index');

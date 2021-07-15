@@ -26,10 +26,13 @@ class Admin extends Authenticatable
      *
      * @var array
      */
+
+    protected $appends = ['admin_image_path'];
     protected $fillable = [
         'name',
         'email',
         'password',
+        'image',
     ];
 
     /**
@@ -50,4 +53,8 @@ class Admin extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function getAdminImagePathAttribute()
+    {
+        return asset('storage/images/admins/' . ($this->image));
+    }
 }

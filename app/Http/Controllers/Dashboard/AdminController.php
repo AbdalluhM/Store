@@ -8,23 +8,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use Spatie\Permission\Models\Role;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
-        /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-        $data = Admin::orderBy('id','DESC')->paginate(5);
-        return view('dashboard.Admins.index',compact('data'))
-            ->with('i', ($request->input('page', 1) - 1) * 5);
+        $data = Admin::orderBy('id', 'DESC')->paginate(4);
+        return view('dashboard.Admins.index', compact('data'));
+            // ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -35,7 +36,7 @@ class AdminController extends Controller
     public function create()
     {
         $roles = Role::all();
-        return view('dashboard.Admins.create',compact('roles'));
+        return view('dashboard.Admins.create', compact('roles'));
     }
 
     /**
@@ -46,21 +47,17 @@ class AdminController extends Controller
      */
     public function store(AdminRequest $request)
     {
-        // $this->validate($request, [
-        //     'name' => 'required',
-        //     'email' => 'required|email|unique:admins,email',
-        //     'password' => 'required|same:confirm-password',
-        //     'roles' => 'required'
-        // ]);
-
         $input = $request->all();
+        if (request()->hasFile('image')) {
+            $image = time() . '_' . $request->file('image')->hashName();
+            $request->file('image')->storeAs('public/images/admins/', $image);
+            $input['image'] = $image;
+        }
         $input['password'] = Hash::make($input['password']);
-
         $Admin = Admin::create($input);
         $Admin->assignRole($request->input('roles'));
-        session()->flash('success','Role created successfully');
+        session()->flash('success', 'Role created successfully');
         return redirect()->route('users.index');
-
     }
 
     /**
@@ -72,7 +69,7 @@ class AdminController extends Controller
     public function show($id)
     {
         $Admin = Admin::find($id);
-        return view('dashboard.Admins.show',compact('Admin'));
+        return view('dashboard.Admins.show', compact('Admin'));
     }
 
     /**
@@ -85,9 +82,9 @@ class AdminController extends Controller
     {
         $user = Admin::find($id);
         $roles = Role::all();
-        $userRoles = $user->roles->pluck('name','name')->all();
+        $userRoles = $user->roles->pluck('name', 'name')->all();
 
-        return view('dashboard.Admins.edit',compact('user','roles','userRoles'));
+        return view('dashboard.Admins.edit', compact('user', 'roles', 'userRoles'));
     }
 
     /**
@@ -100,32 +97,28 @@ class AdminController extends Controller
     public function update(AdminRequest $request, $id)
     {
 
-        // $validator=Validator::make($request->all(),[
-        //     'name' => 'required',
-        //     'email' => 'required|email|unique:admins,email',
-        //     'password' => 'required|same:confirm-password',
-        //     'roles' => 'required'
-        // ]);
-
-
-        $input =$request->all();
-        // dd($input);
-        if(!empty($input['password'])){
-            $input['password'] = Hash::make($input['password']);
-        }
-        else{
-            $input = Arr::except($input,array('password'));
-        }
-
+        $input = $request->all();
         $Admin = Admin::find($id);
+        if (request()->hasFile('image')) {
+            Storage::disk('public')->delete('/images/admins/' . $Admin->image);
+            $image = time() . '_' . $request->file('image')->hashName();
+            $request->file('image')->storeAs('public/images/admins/', $image);
+            $input['image'] = $image;
+        }
+        if (!empty($input['password'])) {
+            $input['password'] = Hash::make($input['password']);
+        } else {
+            $input = Arr::except($input, array('password'));
+        }
+
+
         // dd($Admin);
         $Admin->update($input);
-        DB::table('model_has_roles')->where('model_id',$id)->delete();
+        DB::table('model_has_roles')->where('model_id', $id)->delete();
 
         $Admin->assignRole($request->input('roles'));
-        session()->flash('success','User Updated successfully');
+        session()->flash('success', 'User Updated successfully');
         return redirect()->route('users.index');
-
     }
 
     /**
@@ -136,9 +129,9 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
+        Storage::disk('public')->delete('/images/admins/' . Admin::find($id)->image);
         Admin::find($id)->delete();
-        session()->flash('success','User Deleted successfully');
+        session()->flash('success', 'User Deleted successfully');
         return redirect()->route('users.index');
-
     }
 }

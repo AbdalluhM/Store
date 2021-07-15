@@ -26,7 +26,7 @@ class OfferController extends Controller
 
     public function index()
     {
-        $offers=offer::all();
+        $offers=offer::paginate(4);
         return view('offers.index')->with('offers',$offers);
     }
 

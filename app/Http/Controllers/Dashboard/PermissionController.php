@@ -10,7 +10,7 @@ class PermissionController extends Controller
 {
     public  function index()
     {
-        $permissions = Permission::get();
+        $permissions = Permission::paginate(4);
         $i=1;
         return view('dashboard.permission.index')->with('permissions',$permissions)->with('i',$i);
     }

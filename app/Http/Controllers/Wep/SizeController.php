@@ -23,7 +23,7 @@ class SizeController extends Controller
     }
     public function index()
     {
-        $sizes = Size::all();
+        $sizes = Size::paginate(4);
         return view('sizes.index')->with('sizes', $sizes);
     }
 

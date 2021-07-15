@@ -41,7 +41,7 @@
                 <!--begin::Table-->
                 <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4 ">
                     <!--begin::Table head-->
-                    <thead >
+                    <thead>
                         <tr class="fw-bolder text-muted">
                             <th class="w-25px">
                                 <div class="form-check form-check-sm form-check-custom form-check-solid">
@@ -66,11 +66,14 @@
                                 </div>
                             </td>
                             <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="symbol symbol-45px me-5">
+                                        <img src="{{ $user->admin_image_path}}" alt="" />
+                                    </div>
                                     <div class="d-flex justify-content-start flex-column">
                                         {{-- <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">Ana Simmons</a>
                                         <span class="text-muted fw-bold text-muted d-block fs-7">HTML, JS, ReactJS</span> --}}
-                                        <span
-                                            class="text-dark fw-bolder text-hover-primary fs-6">{{$user->name}}</span>
+                                        <span class="text-dark fw-bolder text-hover-primary fs-6">{{$user->name}}</span>
                                     </div>
                                 </div>
                             </td>
@@ -108,10 +111,11 @@
                                     </span>
                                     <!--end::Svg Icon-->
                                 </a>
-                                <form action="{{route('users.destroy',$user->id)}}" method="post" >
+                                <form action="{{route('users.destroy',$user->id)}}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <button href="#" type="submit" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                    <button href="#" type="submit"
+                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
                                         <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
                                         <span class="svg-icon svg-icon-3">
                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -139,13 +143,31 @@
                     <!--end::Table body-->
                 </table>
                 <!--end::Table-->
+
             </div>
             <!--end::Table container-->
+            <div class="container">
+                <div class="row">
+                    <div
+                        class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start">
+                    </div>
+                    <div
+                        class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
+                        <div class="dataTables_paginate paging_simple_numbers" id="kt_table_users_paginate">
+                            <div class="d-flex ">
+                                {!! $data->links() !!}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!--begin::Body-->
     </div>
+
     <!--end::Tables Widget 9-->
+
 </div>
+
 @endsection
-
-

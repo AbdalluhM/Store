@@ -20,7 +20,7 @@ class CategoryController extends Controller
     }
     public function index()
     {
-        $categories =  Category::whereNull('parent_id')->get();
+        $categories =  Category::whereNull('parent_id')->paginate(4);
         return view('categories.index')->with('categories', $categories);
     }
 
@@ -64,29 +64,33 @@ class CategoryController extends Controller
 
     public function update(CategoryRequest $request, Category $category)
     {
+        $input=$request->all();
         if (request()->hasFile('category_image')) {
 
             Storage::disk('public')->delete('/images/categories/' . $category->category_image);
             $image = time() . '_' . $request->file('category_image')->hashName();
             $request->file('category_image')->storeAs('public/images/categories/', $image);
-            $category->update(array_merge($request->all(), ['category_image' => $image]));
-            session()->flash('success', 'Category Updated Successfully');
+            $input['category_image']=$image;
         }
+
+        $category->update($input);
+        session()->flash('success', 'Category Updated Successfully');
 
         return redirect()->route('categories.index');
     }
     public function update_sup_category(CategoryRequest $request,  $id)
     {
+        $input=$request->all();
+        $supCategory=Category::find($id);
         if (request()->hasFile('category_image')) {
-           $supCategory=Category::find($id);
             Storage::disk('public')->delete('/images/categories/' . $supCategory->category_image);
             $image = time() . '_' . $request->file('category_image')->hashName();
-            // dd($request->all());
             $request->file('category_image')->storeAs('public/images/categories/', $image);
-            $supCategory->update(array_merge($request->all(), ['category_image' => $image]));
-            session()->flash('success', 'Sup Category Updated Successfully');
+            $input['category_image']=$image;
         }
 
+        $supCategory->update($input);
+        session()->flash('success', 'Sup Category Updated Successfully');
         return redirect()->route('index_sub_category');
     }
     public function destroy(Category $category)
@@ -101,7 +105,7 @@ class CategoryController extends Controller
 
     public function sub_category()
     {
-        $supCategory = Category::whereNotNull('parent_id')->get();
+        $supCategory = Category::whereNotNull('parent_id')->paginate(5);
         return view('categories.index2')->with('supCategory', $supCategory);
     }
 }

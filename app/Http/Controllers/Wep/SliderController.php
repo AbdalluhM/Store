@@ -26,7 +26,7 @@ class SliderController extends Controller
     }
     public function index()
     {
-        $sliders = Slider::all();
+        $sliders = Slider::paginate(4);
         return view('sliders.index')->with('sliders', $sliders);
     }
 
@@ -37,7 +37,7 @@ class SliderController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::whereNull('parent_id')->get();
         return view('sliders.add', compact('categories', $categories));
     }
 
@@ -49,9 +49,13 @@ class SliderController extends Controller
      */
     public function store(SliderRequest $request)
     {
+        $input=$request->all();
+        if (request()->hasFile('image')) {
         $image = time() . '_' . $request->file('image')->hashName();
         $request->file('image')->storeAs('public/images/sliders/', $image);
-        Slider::create(array_merge($request->all(), ['image' => $image]));
+        $input['image']=$image;
+        }
+        Slider::create($input);
         session()->flash('success','Slider Created Successfully');
         return redirect()->back();
     }
@@ -77,7 +81,7 @@ class SliderController extends Controller
     {
         return view('sliders.update')->with([
             'slider' => $slider,
-            'categories' => Category::all(),
+            'categories' => Category::whereNull('parent_id')->get(),
         ]);
     }
 
@@ -90,13 +94,14 @@ class SliderController extends Controller
      */
     public function update(SliderRequest $request, Slider $slider)
     {
+        $input=$request->all();
         if (request()->hasFile('image')) {
             Storage::disk('public')->delete('/images/sliders/'.$slider->image);
             $image = time() . '_' . $request->file('image')->hashName();
             $request->file('image')->storeAs('public/images/sliders/', $image);
-            $slider->update(array_merge($request->all(), ['image' => $image]));
-
+            $input['image']=$image;
         }
+        $slider->update($input);
         session()->flash('success','Slider Updated Successfully');
         return redirect()->route('sliders.index');
     }

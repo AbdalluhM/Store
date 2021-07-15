@@ -25,6 +25,62 @@
             <div class="card-body border-top p-9">
                 <!--begin::Input group-->
                 <div class="row mb-6">
+                    <!--begin::Label-->
+                    <label class="col-lg-4 col-form-label fw-bold fs-6">
+                        <span class="required">Image User</span>
+                    </label>
+                    <!--end::Label-->
+                    <!--begin::Col-->
+                    <div class="col-lg-8">
+                        <!--begin::Image input-->
+                        <div class="image-input image-input-outline" data-kt-image-input="true"
+                            style="background-image: url(/metronic8/demo1/assets/media/avatars/blank.png)">
+
+                            <!--begin::Preview existing avatar-->
+                            <div class="image-input-wrapper w-125px h-125px"
+                                style="background-image: url(/metronic8/demo1/assets/media/avatars/150-2.jpg)"></div>
+                            <!--end::Preview existing avatar-->
+                            <!--begin::Label-->
+                            <label
+                                class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"
+                                data-kt-image-input-action="change" data-bs-toggle="tooltip" title=""
+                                data-bs-original-title="Change avatar">
+                                <i class="bi bi-pencil-fill fs-7"></i>
+                                <!--begin::Inputs-->
+                                <input type="file" name="image" accept=".png, .jpg, .jpeg"
+                                    class="@error('image') is-invalid @enderror">
+                                <input type="hidden" name="avatar_remove">
+                                <!--end::Inputs-->
+                                @error('image')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </label>
+                            <!--end::Label-->
+                            <!--begin::Cancel-->
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"
+                                data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title=""
+                                data-bs-original-title="Cancel avatar">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
+                            <!--end::Cancel-->
+                            <!--begin::Remove-->
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"
+                                data-kt-image-input-action="remove" data-bs-toggle="tooltip" title=""
+                                data-bs-original-title="Remove avatar">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
+                            <!--end::Remove-->
+                        </div>
+                        <!--end::Image input-->
+                        <!--begin::Hint-->
+                        <div class="form-text">Allowed file types: png, jpg, jpeg.</div>
+                        <!--end::Hint-->
+                    </div>
+                    <!--end::Col-->
+                </div>
+                <!--end::Input group-->
+                <!--begin::Input group-->
+                <div class="row mb-6">
                     <!--begin::Input group-->
                     <div class="row mb-6">
                         <!--begin::Label-->
@@ -96,8 +152,8 @@
 
                     <!--begin::Input group-->
                     <div class="row mb-6">
-                        <select name="roles[]" aria-label="Select a Main Category" data-control="select2"
-                            data-placeholder="Select a Main Category"
+                        <select name="roles[]" aria-label="Select Role" data-control="select2"
+                            data-placeholder="Select Role"
                             class="form-select form-select-solid form-select-lg select2-hidden-accessible @error('roles') is-invalid @enderror"
                             data-select2-id="select2-data-13-i3r9" tabindex="-1" aria-hidden="true" multiple>
                             <option value="" data-select2-id="select2-data-15-ojrf">Select Role</option>
@@ -127,4 +183,5 @@
     <!--end::Content-->
 </div>
 </div>
+
 @endsection

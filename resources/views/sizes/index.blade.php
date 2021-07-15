@@ -65,7 +65,7 @@
                             </td>
                             <td>
                                 <div class="d-flex align-items-center">
-                                   
+
                                     <div class="d-flex justify-content-start flex-column">
                                         {{-- <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">Ana Simmons</a>
                                         <span class="text-muted fw-bold text-muted d-block fs-7">HTML, JS, ReactJS</span> --}}
@@ -125,6 +125,21 @@
                 <!--end::Table-->
             </div>
             <!--end::Table container-->
+            <div class="container">
+                <div class="row">
+                    <div
+                        class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start">
+                    </div>
+                    <div class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
+                        <div class="dataTables_paginate paging_simple_numbers" id="kt_table_users_paginate">
+                            <div class="d-flex ">
+                                {!! $sizes->render() !!}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!--begin::Body-->
     </div>
