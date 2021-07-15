@@ -43,9 +43,13 @@
                                 data-bs-original-title="Change avatar">
                                 <i class="bi bi-pencil-fill fs-7"></i>
                                 <!--begin::Inputs-->
-                                <input type="file" name="image" accept=".png, .jpg, .jpeg">
+                                <input type="file" name="image" accept=".png, .jpg, .jpeg"
+                                    class="@error('image') is-invalid @enderror">
                                 <input type="hidden" name="avatar_remove">
                                 <!--end::Inputs-->
+                                @error('image')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </label>
                             <!--end::Label-->
                             <!--begin::Cancel-->
@@ -81,7 +85,11 @@
                         <!--begin::Col-->
                         <div class="col-lg-8 fv-row fv-plugins-icon-container">
                             <input type="text" name="color" value="{{$color->color}}"
-                                class="form-control form-control-lg form-control-solid" placeholder="Color">
+                                class="form-control form-control-lg form-control-solid @error('color') is-invalid @enderror"
+                                placeholder="Color">
+                            @error('color')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <!--end::Col-->
@@ -97,7 +105,7 @@
                         <!--begin::Col-->
                         <div class="col-lg-8 fv-row fv-plugins-icon-container">
                             <input type="tel" name="desc" class="form-control form-control-lg form-control-solid"
-                                placeholder="Description " value="{{$color->desc}}">
+                                placeholder="Description "  value="{{$color->desc}}">
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <!--end::Col-->
@@ -106,13 +114,17 @@
                         <!--begin::Input-->
                         <select name="product_id" aria-label="Select a Main Category" data-control="select2"
                             data-placeholder="Select Product"
-                            class="form-select form-select-solid form-select-lg select2-hidden-accessible"
+                            class="form-select form-select-solid form-select-lg select2-hidden-accessible @error('product_id') is-invalid @enderror"
                             data-select2-id="select2-data-13-i3r9" tabindex="-1" aria-hidden="true">
                             <option value="{{$color->product->id}}" data-select2-id="select2-data-15-ojrf">{{$color->product->name_product}}</option>
                             @foreach ($products as $product )
-                            <option data-kt-flag="flags/indonesia.svg" value="{{$product->id}}">{{$product->name_product}}</option>
+                            <option data-kt-flag="flags/indonesia.svg" value="{{$product->id}}">
+                                {{$product->name_product}}</option>
                             @endforeach
                         </select>
+                        @error('product_id')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                         <!--end::Input-->
                     </div>
                     <!--end::Input group-->
@@ -120,7 +132,7 @@
                 <!--end::Card body-->
                 <!--begin::Actions-->
                 <div class="card-footer d-flex justify-content-end py-6 px-9">
-                    <button type="submit" class="btn btn-primary">Save
+                    <button type="submit" class="btn btn-primary">Update
                         Color</button>
                 </div>
                 <!--end::Actions-->

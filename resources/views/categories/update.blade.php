@@ -14,7 +14,7 @@
     <!--begin::Content-->
     <div id="kt_account_profile_details" class="collapse show">
         <!--begin::Form-->
-        <form action="{{route('update_category',$category->id)}}" enctype="multipart/form-data" method="post">
+        <form action="{{(isset($categories)?route('supcategories.update',$supCategory->id):route('categories.update',$category->id))}}" enctype="multipart/form-data" method="post">
             @csrf
             <!--begin::Card body-->
             <div class="card-body border-top p-9">
@@ -42,7 +42,10 @@
                                 data-bs-original-title="Change avatar">
                                 <i class="bi bi-pencil-fill fs-7"></i>
                                 <!--begin::Inputs-->
-                                <input type="file" name="category_image" accept=".png, .jpg, .jpeg">
+                                <input type="file" name="category_image" accept=".png, .jpg, .jpeg" class="@error('category_image') is-invalid @enderror">
+                                @error('category_image')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                                 <input type="hidden" name="avatar_remove">
                                 <!--end::Inputs-->
                             </label>
@@ -79,8 +82,11 @@
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-8 fv-row fv-plugins-icon-container">
-                            <input type="text" name="category_name" value="{{$category->category_name}}"
-                                class="form-control form-control-lg form-control-solid" placeholder="Category name">
+                            <input type="text" name="category_name" value="{{(isset($categories)?$supCategory->category_name:$category->category_name)}}"
+                                class="form-control form-control-lg form-control-solid @error('category_image') is-invalid @enderror" placeholder="Category name">
+                                @error('category_name')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <!--end::Col-->
@@ -96,44 +102,34 @@
                         <!--begin::Col-->
                         <div class="col-lg-8 fv-row fv-plugins-icon-container">
                             <input type="tel" name="description" class="form-control form-control-lg form-control-solid"
-                                placeholder="Description "  value="{{$category->description}}">
+                                placeholder="Description " value="{{isset($categories)?$supCategory->description:$category->description}}">
+                                @error('description')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <!--end::Col-->
                     </div>
-                    <div class="row mb-6">
-                        {{-- <!--begin::Label-->
-                        <label class="col-lg-4 col-form-label fw-bold fs-6">
-                            <span class="required">Parent Id</span>
-                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title=""
-                                data-bs-original-title="parent id number" aria-label="parent id number"></i>
-                        </label>
-                        <!--end::Label--> --}}
-                        {{-- <!--begin::Col-->
-                        <div class="col-lg-8 fv-row fv-plugins-icon-container">
-                            <input type="tel" name="desc" class="form-control form-control-lg form-control-solid"
-                                placeholder="Parent id ">
-                            <div class="fv-plugins-message-container invalid-feedback"></div>
-                        </div>
-                        <!--end::Col--> --}}
-                        <!--begin::Input-->
-                        <select name="parent_id" aria-label="Select a Main Category" data-control="select2"
-                            data-placeholder="Select a Main Category"
-                            class="form-select form-select-solid form-select-lg select2-hidden-accessible"
-                            data-select2-id="select2-data-13-i3r9" tabindex="-1" aria-hidden="true">
-                            <option value="" data-select2-id="select2-data-15-ojrf">Select a Main Category</option>
-                            @foreach ($supCategories as $supcategory )
-                            <option data-kt-flag="flags/indonesia.svg" value="{{$supcategory->id}}">{{$supcategory->category_name}}</option>
-                            @endforeach
-                        </select>
-                        <!--end::Input-->
-                    </div>
+                   @if (isset($categories))
+                   <div class="row mb-6">
+                    <select name="parent_id" aria-label="Select a Main Category" data-control="select2"
+                        data-placeholder="Select a Main Category"
+                        class="form-select form-select-solid form-select-lg select2-hidden-accessible"
+                        data-select2-id="select2-data-13-i3r9" tabindex="-1" aria-hidden="true">
+                        <option value="{{$category->id}}" data-select2-id="select2-data-15-ojrf">{{$category->category_name}} </option>
+                        @foreach ($categories as $category )
+                        <option data-kt-flag="flags/indonesia.svg" value="{{$category->id}}">{{$category->category_name}}</option>
+                        @endforeach
+                    </select>
+                    <!--end::Input-->
+                </div>
+                   @endif
                     <!--end::Input group-->
                 </div>
                 <!--end::Card body-->
                 <!--begin::Actions-->
                 <div class="card-footer d-flex justify-content-end py-6 px-9">
-                    <button type="submit" class="btn btn-primary">Save
+                    <button type="submit" class="btn btn-primary">Update
                         Category</button>
                 </div>
                 <!--end::Actions-->

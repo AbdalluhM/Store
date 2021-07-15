@@ -50,4 +50,7 @@ class User extends Authenticatable
     public function address(){
         return $this->hasOne(address::class);
     }
+    public function hasRole($roleId){
+        return in_array($roleId,$this->roles->pluck('id')->toArray());
+    }
 }

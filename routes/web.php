@@ -43,7 +43,8 @@ Route::group(
 
 
             Route::resource('products', ProductController::class)->middleware('CheckSupCategory');
-
+            Route::get('product/update/{product}/quantity', [ProductController::class,('add_quantity')])->name('products.qty');
+            Route::post('product/update/{product}/quantity', [ProductController::class,('store_quantity')])->name('products.qty.update');;
     }
 );
 
@@ -132,13 +133,15 @@ Route::group(
     ],
     function () {
 
-        Route::get('category', [CategoryController::class, ('index')])->name('index_category');
+        Route::get('category', [CategoryController::class, ('index')])->name('categories.index');
         Route::get('sup/category', [CategoryController::class, ('sub_category')])->name('index_sub_category')->middleware('checkcategory');
         Route::get('create/category', [CategoryController::class, ('createCategory')])->name('create_category');
         Route::get('create/supcategory', [CategoryController::class, ('createSupCategory')])->name('create_sup_category');
         Route::post('store', [CategoryController::class, ('store')])->name('store_category');
         Route::get('category/{category}/edit', [CategoryController::class, ('edit')])->name('edit_category');
-        Route::post('update/{category}', [CategoryController::class, ('update')])->name('update_category');
+        Route::get('supcategory/{category}/edit', [CategoryController::class, ('edit_sup_category')])->name('supcategories.edit');
+        Route::post('update/{category}', [CategoryController::class, ('update')])->name('categories.update');
+        Route::post('update/{category}/supcategory', [CategoryController::class, ('update_sup_category')])->name('supcategories.update');
         Route::post('category/{category}/delete', [CategoryController::class, ('destroy')])->name('category_delete');
 
     }

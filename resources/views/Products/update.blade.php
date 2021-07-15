@@ -43,11 +43,13 @@
                                 data-bs-original-title="Change avatar">
                                 <i class="bi bi-pencil-fill fs-7"></i>
                                 <!--begin::Inputs-->
-                                <input type="file" name="image" accept=".png, .jpg, .jpeg">
-                                <input type="hidden" name="avatar_remove" value="{{$product->image}}">
-                                {{-- <img src="{{$product->product_image_path}}" alt="" /> --}}
-
+                                <input type="file" name="image" accept=".png, .jpg, .jpeg"
+                                    class="@error('image') is-invalid @enderror">
+                                <input type="hidden" name="avatar_remove">
                                 <!--end::Inputs-->
+                                @error('image')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </label>
                             <!--end::Label-->
                             <!--begin::Cancel-->
@@ -79,14 +81,17 @@
                     <div class="row mb-6">
                         <!--begin::Input-->
                         <select name="category_id" data-control="select2" data-placeholder="Select a Main Category"
-                            class="form-select form-select-solid form-select-lg select2-hidden-accessible" tabindex="-1"
-                            aria-hidden="true">
+                            class="form-select form-select-solid form-select-lg select2-hidden-accessible @error('category_id') is-invalid @enderror"
+                            tabindex="-1" aria-hidden="true">
                             <option value="{{$product->category->id}}">{{$product->category->category_name}}</option>
                             @foreach ($categories as $category )
                             <option data-kt-flag="flags/indonesia.svg" value="{{$category->id}}">
                                 {{$category->category_name}}</option>
                             @endforeach
                         </select>
+                        @error('category_id')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                         <!--end::Input-->
                     </div>
                     <!--end::Input group-->
@@ -97,7 +102,11 @@
                         <!--begin::Col-->
                         <div class="col-lg-12 fv-row fv-plugins-icon-container">
                             <input type="text" name="name_product" value="{{$product->name_product}}"
-                                class="form-control form-control-lg form-control-solid" placeholder="product name">
+                                class="form-control form-control-lg form-control-solid @error('name_product') is-invalid @enderror"
+                                placeholder="product name">
+                            @error('name_product')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <!--end::Col-->
@@ -111,8 +120,12 @@
                             <label class="required fs-5 fw-bold mb-2">Quantity</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input type="text" class="form-control form-control-solid" placeholder="product quantity"
-                                name="qty" value="{{$product->qty}}">
+                            <input type="text"
+                                class="form-control form-control-solid @error('qty') is-invalid @enderror"
+                                placeholder="product quantity" name="qty" value="{{$product->qty}}">
+                            @error('qty')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <!--end::Input-->
                             {{-- <div class="fv-plugins-message-container invalid-feedback"></div> --}}
                         </div>
@@ -125,9 +138,12 @@
                             <label class="required fs-5 fw-bold mb-2">Price</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input type="text" class="form-control form-control-solid" placeholder="product price"
-                                name="price" value="{{$product->price}}">
-
+                            <input type="text"
+                                class="form-control form-control-solid @error('price') is-invalid @enderror"
+                                placeholder="product price" name="price" value="{{$product->price}}">
+                            @error('price')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <!--end::Input-->
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
@@ -141,7 +157,9 @@
                             aria-hidden="true" multiple>
                             <option value="">Select a Size</option>
                             @foreach ($sizes as $size )
-                            <option data-kt-flag="flags/indonesia.svg" value="{{$size->id}}">
+                            <option data-kt-flag="flags/indonesia.svg" value="{{$size->id}}" @if ($product->hasSize($size->id))
+                                selected
+                                @endif>
                                 {{$size->size}}</option>
                             @endforeach
                         </select>
@@ -151,7 +169,11 @@
                         <select name="offer_id" data-control="select2" data-placeholder="Select Offer"
                             class="form-select form-select-solid form-select-lg select2-hidden-accessible" tabindex="-1"
                             aria-hidden="true">
-                            <option value="">Select Offer </option>
+                            @if (isset($product->offer))
+                            <option value="{{$product->offer->id}}">{{$product->offer->value}} </option>
+                            @else
+                            <option value="">Select Offer</option>
+                            @endif
                             @foreach ($offers as $offer )
                             <option data-kt-flag="flags/indonesia.svg" value="{{$offer->id}}">
                                 {{$offer->value}}</option>
@@ -165,7 +187,7 @@
                 <div class="d-flex flex-column mb-12">
                     <label class="fs-6 fw-bold mb-2">Product Details</label>
                     <textarea class="form-control form-control-solid" rows="3" name="description"
-                        placeholder="Type Target Details">{{$product->description}}</textarea>
+                        placeholder="Type Product Details">{{$product->description}}</textarea>
                 </div>
                 {{-- end desc --}}
                 <div class="col-md-6 fv-row">
@@ -192,6 +214,7 @@
                     <button type="submit" class="btn btn-primary">Update
                         Product</button>
                 </div>
+
                 <!--end::Actions-->
                 {{-- <input type="hidden"> --}}
                 <div></div>

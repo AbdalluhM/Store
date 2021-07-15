@@ -33,8 +33,11 @@
                         <!--begin::Col-->
                         <div class="col-lg-8 fv-row fv-plugins-icon-container">
                             <input type="text" name="name"
-                                class="form-control form-control-lg form-control-solid" placeholder="User Name">
-                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                                class="form-control form-control-lg form-control-solid @error('name') is-invalid @enderror" placeholder="User Name">
+                                @error('name')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                           <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <!--end::Col-->
                     </div>
@@ -47,7 +50,10 @@
                         <!--begin::Col-->
                         <div class="col-lg-8 fv-row fv-plugins-icon-container">
                             <input type="email" name="email"
-                                class="form-control form-control-lg form-control-solid" placeholder="Email">
+                                class="form-control form-control-lg form-control-solid  @error('email') is-invalid @enderror" placeholder="Email">
+                                @error('email')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <!--end::Col-->
@@ -61,7 +67,10 @@
                         <!--begin::Col-->
                         <div class="col-lg-8 fv-row fv-plugins-icon-container">
                             <input type="password" name="password"
-                                class="form-control form-control-lg form-control-solid" placeholder="password">
+                                class="form-control form-control-lg form-control-solid  @error('password') is-invalid @enderror" placeholder="password">
+                                @error('password')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <!--end::Col-->
@@ -75,7 +84,10 @@
                         <!--begin::Col-->
                         <div class="col-lg-8 fv-row fv-plugins-icon-container">
                             <input type="password" name="confirm-password"
-                                class="form-control form-control-lg form-control-solid" placeholder="confirm-password">
+                                class="form-control form-control-lg form-control-solid  @error('confirm-password') is-invalid @enderror" placeholder="confirm-password">
+                                @error('confirm-password')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <!--end::Col-->
@@ -86,13 +98,16 @@
                     <div class="row mb-6">
                         <select name="roles[]" aria-label="Select a Main Category" data-control="select2"
                             data-placeholder="Select a Main Category"
-                            class="form-select form-select-solid form-select-lg select2-hidden-accessible"
+                            class="form-select form-select-solid form-select-lg select2-hidden-accessible @error('roles') is-invalid @enderror"
                             data-select2-id="select2-data-13-i3r9" tabindex="-1" aria-hidden="true" multiple>
                             <option value="" data-select2-id="select2-data-15-ojrf">Select Role</option>
                             @foreach ($roles as $role )
                             <option data-kt-flag="flags/indonesia.svg" value="{{$role->id}}">{{$role->name}}</option>
                             @endforeach
                         </select>
+                        @error('roles')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                         <!--end::Input-->
                     </div>
                     <!--end::Input group-->

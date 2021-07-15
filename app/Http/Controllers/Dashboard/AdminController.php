@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -43,14 +44,14 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdminRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:admins,email',
-            'password' => 'required|same:confirm-password',
-            'roles' => 'required'
-        ]);
+        // $this->validate($request, [
+        //     'name' => 'required',
+        //     'email' => 'required|email|unique:admins,email',
+        //     'password' => 'required|same:confirm-password',
+        //     'roles' => 'required'
+        // ]);
 
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
@@ -84,9 +85,9 @@ class AdminController extends Controller
     {
         $user = Admin::find($id);
         $roles = Role::all();
-        // $userRoles = $user->roles->pluck('name','name')->all();
+        $userRoles = $user->roles->pluck('name','name')->all();
 
-        return view('dashboard.Admins.edit',compact('user','roles'));
+        return view('dashboard.Admins.edit',compact('user','roles','userRoles'));
     }
 
     /**
@@ -96,15 +97,15 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AdminRequest $request, $id)
     {
 
-        $validator=Validator::make($request->all(),[
-            'name' => 'required',
-            'email' => 'required|email|unique:admins,email',
-            'password' => 'required|same:confirm-password',
-            'roles' => 'required'
-        ]);
+        // $validator=Validator::make($request->all(),[
+        //     'name' => 'required',
+        //     'email' => 'required|email|unique:admins,email',
+        //     'password' => 'required|same:confirm-password',
+        //     'roles' => 'required'
+        // ]);
 
 
         $input =$request->all();

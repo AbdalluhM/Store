@@ -1,5 +1,12 @@
 @extends('admin.layouts.master')
 @section('content')
+@foreach ($products as $product)
+@if ($product->qty<5)
+<div class="alert alert-danger" role="alert">
+    {{$product->name_product}} must increase Qty
+  </div>
+@endif
+@endforeach
 <div class="col-xl-12 ">
     <!--begin::Tables Widget 9-->
     <div class="card card-xxl-stretch mb-5 mb-xl-8">
@@ -49,12 +56,12 @@
                                         data-kt-check-target=".widget-9-check" />
                                 </div>
                             </th>
-                            <th class="min-w-130px">Product</th>
-                            <th class="min-w-140px">Category</th>
+                            <th class="min-w-150px">Product</th>
+                            <th class="min-w-120px">Category</th>
                             <th class="min-w-120px">Price</th>
                             <th class="min-w-120px">Qty</th>
                             <th class="min-w-120px">Description</th>
-                            <th class="min-w-80px ">Actions</th>
+                            <th class="min-w-120px ">Actions</th>
                         </tr>
                     </thead>
                     <!--end::Table head-->
@@ -83,22 +90,18 @@
                             <td>
                                 <p class="text-dark fw-bolder text-hover-primary d-block fs-6">
                                     {{$product->category()->first()->category_name}}</p>
-                                <span class="text-muted fw-bold text-muted d-block fs-7">Web, UI/UX Design</span>
                             </td>
                             <td>
                                 <p class="text-dark fw-bolder text-hover-primary d-block fs-6">
                                     {{$product->price}}</p>
-                                <span class="text-muted fw-bold text-muted d-block fs-7">Web, UI/UX Design</span>
                             </td>
                             <td>
                                 <p class="text-dark fw-bolder text-hover-primary d-block fs-6">
                                     {{$product->qty}}</p>
-                                <span class="text-muted fw-bold text-muted d-block fs-7">Web, UI/UX Design</span>
                             </td>
                             <td>
                                 <p class="text-dark fw-bolder text-hover-primary d-block fs-6">
                                     {{$product->description}}</p>
-                                <span class="text-muted fw-bold text-muted d-block fs-7">Web, UI/UX Design</span>
                             </td>
                             {{-- <td class="text-end">
                                 <div class="d-flex flex-column w-100 me-2">
@@ -111,6 +114,9 @@
                                 </div>
                             </td> --}}
                             <td class="d-flex">
+                                <a href="{{route('products.qty',$product->id)}}" class="btn btn-light btn-active-color-primary btn-sm me-1">
+                                    Add Qty
+                                 </a>
                                 <a href="{{route('products.edit',$product->id)}} "
                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                     <!--begin::Svg Icon | path: icons/duotone/Communication/Write.svg-->
@@ -151,7 +157,9 @@
                                         <!--end::Svg Icon-->
                                     </button>
                                 </form>
+
                             </td>
+
                         </tr>
                         @endforeach
 

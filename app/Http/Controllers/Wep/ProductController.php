@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Wep;
 
 use App\Models\Size;
 use App\Models\Color;
+use App\Models\offer;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
-use App\Models\offer;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Validation\Validator;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -44,7 +44,7 @@ class ProductController extends Controller
         $categories = Category::whereNotNull('parent_id')->get();
         $sizes = Size::all();
         $offers = offer::all();
-        return view('offers.create')->with([
+        return view('products.create')->with([
             'categories' => $categories,
             'offers' => $offers,
             'sizes' => $sizes
@@ -91,11 +91,11 @@ class ProductController extends Controller
     {
         $categories = Category::whereNotNull('parent_id')->get();
         $sizes = Size::all();
-        $products = product::all();
+        $offers = offer::all();
         return view('Products.update')->with([
             'product' => $product,
             'categories' => $categories,
-            'products' => $products,
+            'offers' => $offers,
             'sizes' => $sizes
         ]);
     }
@@ -133,5 +133,16 @@ class ProductController extends Controller
         $product->delete();
         session()->flash('success','Product Deleted Successfully');
         return redirect()->back();
+    }
+    public function add_quantity(Product $product){
+       return view('Products.createQty')->with('product',$product);
+    }
+    public function store_quantity(Product $product,Request $request){
+        $request->validate([
+            'qty' => 'required|integer',
+        ]);
+        $product->qty=$product->qty+$request->qty;
+        $product->save();
+        return redirect()->route('products.index');
     }
 }

@@ -43,9 +43,13 @@
                                 data-bs-original-title="Change avatar">
                                 <i class="bi bi-pencil-fill fs-7"></i>
                                 <!--begin::Inputs-->
-                                <input type="file" name="image" accept=".png, .jpg, .jpeg">
+                                <input type="file" name="image" accept=".png, .jpg, .jpeg"
+                                    class="@error('image') is-invalid @enderror">
                                 <input type="hidden" name="avatar_remove">
                                 <!--end::Inputs-->
+                                @error('image')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </label>
                             <!--end::Label-->
                             <!--begin::Cancel-->
@@ -76,29 +80,32 @@
                 <br>
                 <br>
                 <div class="row mb-6">
-                      <!--begin::Input group-->
-                      <div class="row mb-6">
+                    <!--begin::Input group-->
+                    <div class="row mb-6">
                         <select name="category_id" aria-label="Select a Main Category" data-control="select2"
                             data-placeholder="Select category"
-                            class="form-select form-select-solid form-select-lg select2-hidden-accessible"
+                            class="form-select form-select-solid form-select-lg select2-hidden-accessible @error('image') is-invalid @enderror"
                             data-select2-id="select2-data-13-i3r9" tabindex="-1" aria-hidden="true">
-                            <option value="" data-select2-id="select2-data-15-ojrf">Select a Main Category</option>
+                            <option value="{{$slider->category->id}}" data-select2-id="select2-data-15-ojrf">{{$slider->category->category_name}}</option>
                             @foreach ($categories as $category )
                             <option data-kt-flag="flags/indonesia.svg" value="{{$category->id}}">
                                 {{$category->category_name}}</option>
                             @endforeach
                         </select>
+                        @error('category_id')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                         <br>
                         <br>
                         <!--end::Input-->
                     </div>
                     <!--end::Input group-->
-                     {{-- begin desc --}}
-                     <div class="row mb-6">
+                    {{-- begin desc --}}
+                    <div class="row mb-6">
                         <div class="d-flex flex-column mb-12">
                             <label class="fs-6 fw-bold mb-2">Slider Details</label>
                             <textarea class="form-control form-control-solid" rows="3" name="description"
-                                placeholder="Type Target Details">{{$slider->description}}</textarea>
+                                placeholder="Type Slider Details">{{$slider->description}}</textarea>
                         </div>
                     </div>
                     {{-- end desc --}}

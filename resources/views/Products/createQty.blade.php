@@ -6,7 +6,7 @@
         data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
         <!--begin::Card title-->
         <div class="card-title m-0">
-            <h3 class="fw-bolder m-0">Update Size</h3>
+            <h3 class="fw-bolder m-0">Increase Quantity</h3>
         </div>
         <!--end::Card title-->
     </div>
@@ -15,9 +15,8 @@
       <!--begin::Content-->
       <div id="kt_account_profile_details" class="collapse show">
         <!--begin::Form-->
-        <form action="{{route('sizes.update',$size->id)}}" enctype="multipart/form-data" method="post">
+        <form action="{{route('products.qty.update',$product->id)}}" enctype="multipart/form-data" method="post">
             @csrf
-            @method('put')
             <!--begin::Card body-->
             <div class="card-body border-top p-9">
                 <!--begin::Input group-->
@@ -25,13 +24,13 @@
                     <!--begin::Input group-->
                     <div class="row mb-6">
                         <!--begin::Label-->
-                        <label class="col-lg-4 col-form-label required fw-bold fs-6">Size</label>
+                        <label class="col-lg-4 col-form-label required fw-bold fs-6">Quantity</label>
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-12 fv-row fv-plugins-icon-container">
-                            <input type="text" name="size" value="{{$size->size}}"
-                                class="form-control form-control-lg form-control-solid @error('size') is-invalid @enderror" placeholder="Size Value">
-                                @error('size')
+                            <input type="text" name="qty"
+                                class="form-control form-control-lg form-control-solid @error('size') is-invalid @enderror" placeholder="Quantity">
+                                @error('qty')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             <div class="fv-plugins-message-container invalid-feedback"></div>
@@ -44,8 +43,8 @@
                 <!--end::Card body-->
                 <!--begin::Actions-->
                 <div class="card-footer d-flex justify-content-end py-6 px-9">
-                    <button type="submit" class="btn btn-primary">Update
-                        Size</button>
+                    <button type="submit" class="btn btn-primary">Save
+                        Quantity</button>
                 </div>
                 <!--end::Actions-->
                 {{-- <input type="hidden"> --}}

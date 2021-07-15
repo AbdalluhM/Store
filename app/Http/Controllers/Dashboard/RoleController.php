@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RoleRequest;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Validator;
 
@@ -53,12 +54,12 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoleRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required|unique:roles,name',
-            'permission' => 'required',
-        ]);
+        // $this->validate($request, [
+        //     'name' => 'required|unique:roles,name',
+        //     'permission' => 'required',
+        // ]);
 
         $role = Role::create(['name' => $request->input('name'),'guard_name'=>'admin']);
         $role->syncPermissions($request->input('permission'));
@@ -92,10 +93,10 @@ class RoleController extends Controller
     {
         $role = Role::find($id);
         $permission = Permission::get();
-        $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
-            ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
-            ->all();
-
+        // $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
+        //     ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
+        //     ->toArray();
+        $rolePermissions=$role->permissions->pluck('id')->toArray();
         return view('dashboard.roles.edit',compact('role','permission','rolePermissions'));
     }
 
@@ -106,13 +107,13 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RoleRequest $request, $id)
     {
 
-        $validator=Validator::make($request->all(),[
-            'name' => 'required',
-            'permission' => 'required',
-        ]);
+        // $validator=Validator::make($request->all(),[
+        //     'name' => 'required',
+        //     'permission' => 'required',
+        // ]);
 
         $role = Role::find($id);
         $role->name = $request->input('name');

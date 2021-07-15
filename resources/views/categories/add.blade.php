@@ -47,7 +47,10 @@
                                 data-bs-original-title="Change avatar">
                                 <i class="bi bi-pencil-fill fs-7"></i>
                                 <!--begin::Inputs-->
-                                <input type="file" name="category_image" accept=".png, .jpg, .jpeg">
+                                <input type="file" name="category_image" accept=".png, .jpg, .jpeg" class="@error('category_image') is-invalid @enderror">
+                                @error('category_image')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                                 <input type="hidden" name="avatar_remove">
                                 <!--end::Inputs-->
                             </label>
@@ -85,7 +88,10 @@
                         <!--begin::Col-->
                         <div class="col-lg-8 fv-row fv-plugins-icon-container">
                             <input type="text" name="category_name"
-                                class="form-control form-control-lg form-control-solid" placeholder="Category name">
+                                class="form-control form-control-lg form-control-solid @error('category_image') is-invalid @enderror" placeholder="Category name">
+                                @error('category_name')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <!--end::Col-->
@@ -102,6 +108,9 @@
                         <div class="col-lg-8 fv-row fv-plugins-icon-container">
                             <input type="tel" name="description" class="form-control form-control-lg form-control-solid"
                                 placeholder="Description ">
+                                @error('description')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <!--end::Col-->

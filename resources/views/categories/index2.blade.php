@@ -94,7 +94,7 @@
                                 </div>
                             </td> --}}
                             <td class="d-flex">
-                                <a href="{{route('edit_category',$supCategory->id)}} "
+                                <a href="{{route('supcategories.edit',$supCategory->id)}} "
                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                     <!--begin::Svg Icon | path: icons/duotone/Communication/Write.svg-->
                                     <span class="svg-icon svg-icon-3">

@@ -48,4 +48,11 @@ class Product extends Model
     {
         return asset('storage/images/products/' . ($this->image));
     }
+
+    public function hasSize($sizeId){
+        return in_array($sizeId,$this->sizes->pluck('id')->toArray());
+    }
+    // public function hasOffer($offerId){
+    //     return in_array($offerId,$this->sizes->pluck('id')->toArray());
+    // }
 }

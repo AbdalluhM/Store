@@ -43,15 +43,25 @@
                     <!--begin::Input group-->
                     <div class="row mb-6">
                         <select name="permission[]" aria-label="Select a Main Category" data-control="select2"
-                            data-placeholder="Select a Main Category"
-                            class="form-select form-select-solid form-select-lg select2-hidden-accessible"
+                            data-placeholder="Select Permission"
+                            class="form-select form-select-solid form-select-lg select2-hidden-accessible @error('permission') is-invalid @enderror"
                             data-select2-id="select2-data-13-i3r9" tabindex="-1" aria-hidden="true" multiple>
                             <option value="" data-select2-id="select2-data-15-ojrf">Select permission</option>
 
                             @foreach ($permission as $permission )
-                            <option data-kt-flag="flags/indonesia.svg" value="{{$permission->id}}">{{$permission->name}}</option>
+                            <option data-kt-flag="flags/indonesia.svg" value="{{$permission->id}}" @foreach (
+                                $rolePermissions as $rolePermission) @if ($rolePermission===$permission->id)
+                                selected
+                                @endif
+                                @endforeach
+                                >
+                                {{$permission->name}}
+                            </option>
                             @endforeach
                         </select>
+                        @error('permission')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                         <!--end::Input-->
                     </div>
                     <!--end::Input group-->

@@ -28,7 +28,11 @@
                         <!--begin::Col-->
                         <div class="col-lg-12 fv-row fv-plugins-icon-container">
                             <input type="text" name="name" value="{{$offer->name}}"
-                                class="form-control form-control-lg form-control-solid" placeholder="Offer Name">
+                                class="form-control form-control-lg form-control-solid @error('name') is-invalid @enderror"
+                                placeholder="Offer Name">
+                            @error('name')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <!--end::Col-->
@@ -42,7 +46,11 @@
                         <!--begin::Col-->
                         <div class="col-lg-12 fv-row fv-plugins-icon-container">
                             <input type="text" name="value" value="{{$offer->value}}"
-                                class="form-control form-control-lg form-control-solid" placeholder="Offer Value">
+                                class="form-control form-control-lg form-control-solid @error('value') is-invalid @enderror"
+                                placeholder="Offer Value">
+                            @error('value')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <!--end::Col-->
@@ -56,7 +64,11 @@
                         <!--begin::Col-->
                         <div class="col-lg-12 fv-row fv-plugins-icon-container">
                             <input type="text" name="type" value="{{$offer->type}}"
-                                class="form-control form-control-lg form-control-solid" placeholder="Offer Type">
+                                class="form-control form-control-lg form-control-solid @error('value') is-invalid @enderror"
+                                placeholder="Offer Type">
+                            @error('type')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <!--end::Col-->

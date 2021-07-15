@@ -110,6 +110,7 @@
                                 </a>
                                 <form action="{{route('users.destroy',$user->id)}}" method="post" >
                                     @csrf
+                                    @method('delete')
                                     <button href="#" type="submit" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
                                         <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
                                         <span class="svg-icon svg-icon-3">

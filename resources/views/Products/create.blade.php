@@ -156,7 +156,7 @@
                             aria-hidden="true" multiple>
                             <option value="">Select a Size</option>
                             @foreach ($sizes as $size )
-                            <option data-kt-flag="flags/indonesia.svg" value="{{$size->id}}">
+                            <option data-kt-flag="flags/indonesia.svg" value="{{$size->id}}" >
                                 {{$size->size}}</option>
                             @endforeach
                         </select>
