@@ -68,7 +68,7 @@
                             <div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
                                 data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end"
                                 data-kt-menu-flip="bottom">
-                                <img src="{{isset(Auth::user()->image)?Auth::user()->admin_image_path:asset('assets/media/avatars/150-2.jpg')}}" alt="metronic" />
+                                <img src="{{isset(Auth::user()->image)?Auth::user()->admin_image_path:asset('assets/media/avatars/profile.jpg')}}" alt="metronic" />
                             </div>
                             <!--begin::Menu-->
                             <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold py-4 fs-6 w-275px"
@@ -78,7 +78,7 @@
                                     <div class="menu-content d-flex align-items-center px-3">
                                         <!--begin::Avatar-->
                                         <div class="symbol symbol-50px me-5">
-                                            <img alt="Logo" src="{{isset(Auth::user()->image)?Auth::user()->admin_image_path:asset('assets/media/avatars/150-2.jpg')}}" />
+                                            <img alt="Logo" src="{{isset(Auth::user()->image)?Auth::user()->admin_image_path:asset('assets/media/avatars/profile.jpg')}}" />
                                         </div>
                                         <!--end::Avatar-->
                                         <!--begin::Username-->

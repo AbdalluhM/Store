@@ -68,7 +68,7 @@
                             <td>
                                 <div class="d-flex align-items-center">
                                     <div class="symbol symbol-45px me-5">
-                                        <img src="{{ isset($user->image)?$user->admin_image_path:asset('assets/media/avatars/150-2.jpg')}}" alt="" />
+                                        <img src="{{ isset($user->image)?$user->admin_image_path:asset('assets/media/avatars/profile.jpg')}}" alt="" />
                                     </div>
                                     <div class="d-flex justify-content-start flex-column">
                                         {{-- <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">Ana Simmons</a>
