@@ -4,7 +4,7 @@
 					<!--begin::Brand-->
 					<div class="aside-logo flex-column-auto" id="kt_aside_logo">
 						<!--begin::Logo-->
-						<a href="index.html">
+						<a href="{{route('home')}}">
 							<img alt="Logo" src="{{asset('assets/media/logos/logo-1.svg')}}" class="h-15px logo" />
 						</a>
 						<!--end::Logo-->

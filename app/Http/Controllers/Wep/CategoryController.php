@@ -108,4 +108,10 @@ class CategoryController extends Controller
         $supCategory = Category::whereNotNull('parent_id')->paginate(5);
         return view('categories.index2')->with('supCategory', $supCategory);
     }
+    public function search(Request $request)
+    {
+        $category_name=trim($request->searchName);
+        $category = Category::where('category_name','like',"%{$category_name}%")->paginate(5);
+        return view('categories.index')->with('categories', $category);
+    }
 }

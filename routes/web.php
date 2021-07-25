@@ -132,7 +132,7 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:admin']
     ],
     function () {
-
+        Route::get('category/search',[CategoryController::class, ('search')] )->name('categories.search');
         Route::get('category', [CategoryController::class, ('index')])->name('categories.index');
         Route::get('sup/category', [CategoryController::class, ('sub_category')])->name('index_sub_category')->middleware('checkcategory');
         Route::get('create/category', [CategoryController::class, ('createCategory')])->name('create_category');
@@ -167,6 +167,7 @@ Route::group(
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     }
 );
+
 
 
 // Route::get('test', function () {

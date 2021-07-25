@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    const PER_PAGE = 4;
     /**
      * Create a new controller instance.
      *
@@ -23,6 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard.dashboard');
+        $newProduct = Product::orderBy('id','DESC')->paginate(self::PER_PAGE);
+        $popularProduct = Product::orderBy('sell_date','DESC')->paginate(self::PER_PAGE);
+        return view('dashboard.dashboard')->with([
+            'newProduct'=>$newProduct,
+            'popularProduct'=>$popularProduct
+        ]);
     }
 }
