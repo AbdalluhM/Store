@@ -31,12 +31,13 @@ use App\Http\Controllers\Api\UserProfileController;
 */
 
 
+
 // route : orders
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('order/store', [OrderController::class, 'store'])->name('store_order');
     Route::get('order', [OrderController::class, 'index'])->name('order');
-    Route::post('cart', [CartController::class, 'store'])->name('cart');
-    Route::get('cart/index', [CartController::class, 'index'])->name('cart');
+    Route::post('cart/store', [CartController::class, 'store'])->name('carts.create');
+    Route::get('carts', [CartController::class, 'index'])->name('carts.index');
 });
 
 // route:profile user

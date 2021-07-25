@@ -12,6 +12,7 @@ use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\Wep\SliderController;
 use App\Http\Controllers\Wep\ProductController;
 use App\Http\Controllers\Wep\CategoryController;
+use App\Http\Controllers\Wep\CustomerController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -30,6 +31,20 @@ Route::get('/', function () {
 });
 
 
+// route customers
+
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:admin']
+    ],
+    function () {
+
+        Route::get('customers', [CustomerController::class,('index')])->name('customers.index');
+
+
+    }
+);
 
 
 // route products

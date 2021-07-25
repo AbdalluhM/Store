@@ -54,7 +54,7 @@ class AuthController extends Controller
             'password' => 'required',
             'confirm_password' => 'required|same:password',
             'phone' => 'required|string|unique:users',
-            'image' => 'image|mimes:png,jpg',
+            'image' => 'image',
         ]);
 
         if ($validator->fails()) {
