@@ -1,5 +1,11 @@
 @extends('admin.layouts.master')
 @section('content')
+@section('title')
+Users
+@endsection
+@section('defintion')
+Home | all - users
+@endsection
 <div class="col-xl-12 ">
     <!--begin::Tables Widget 9-->
     <div class="card card-xxl-stretch mb-5 mb-xl-8">

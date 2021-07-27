@@ -1,5 +1,11 @@
 @extends('admin.layouts.master')
 @section('content')
+@section('title')
+Customers
+@endsection
+@section('defintion')
+Home |All Customers
+@endsection
 <div id="kt_content_container" class="container">
     <!--begin::Card-->
     <div class="card">
@@ -86,7 +92,9 @@
                                 <!--begin::Payment method=-->
                                 <td data-filter="mastercard">
                                     <img src="{{asset('/assets/media/svg/card-logos/mastercard.svg')}}"
-                                        class="w-35px me-3" alt=""></td>
+                                        class="w-35px me-3" alt="">
+
+                                    </td>
                                 <!--end::Payment method=-->
                                 <!--begin::Date=-->
                                 <td data-order="2020-12-14T20:43:00+02:00">{{$user->created_at}}</td>
@@ -117,7 +125,7 @@
                                         data-kt-menu="true" style="">
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="/metronic8/demo1/../demo1/apps/customers/view.html"
+                                            <a href="{{route('customers.details',$user->id)}}"
                                                 class="menu-link px-3">View</a>
                                         </div>
                                         <!--end::Menu item-->
@@ -137,38 +145,16 @@
                         <!--end::Table body-->
                     </table>
                 </div>
-                <div class="row">
+                 <div class="row">
                     <div
                         class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start">
-                        <div class="dataTables_length" id="kt_customers_table_length"><label><select
-                                    name="kt_customers_table_length" aria-controls="kt_customers_table"
-                                    class="form-select form-select-sm form-select-solid">
-                                    <option value="10">10</option>
-                                    <option value="25">25</option>
-                                    <option value="50">50</option>
-                                    <option value="100">100</option>
-                                </select></label></div>
                     </div>
-                    <div
-                        class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
-                        <div class="dataTables_paginate paging_simple_numbers" id="kt_customers_table_paginate">
-                            <ul class="pagination">
-                                <li class="paginate_button page-item previous disabled"
-                                    id="kt_customers_table_previous"><a href="#" aria-controls="kt_customers_table"
-                                        data-dt-idx="0" tabindex="0" class="page-link"><i class="previous"></i></a></li>
-                                <li class="paginate_button page-item active"><a href="#"
-                                        aria-controls="kt_customers_table" data-dt-idx="1" tabindex="0"
-                                        class="page-link">1</a></li>
-                                <li class="paginate_button page-item "><a href="#" aria-controls="kt_customers_table"
-                                        data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                                <li class="paginate_button page-item "><a href="#" aria-controls="kt_customers_table"
-                                        data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
-                                <li class="paginate_button page-item "><a href="#" aria-controls="kt_customers_table"
-                                        data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
-                                <li class="paginate_button page-item next" id="kt_customers_table_next"><a href="#"
-                                        aria-controls="kt_customers_table" data-dt-idx="5" tabindex="0"
-                                        class="page-link"><i class="next"></i></a></li>
-                            </ul>
+                    <div class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
+                        <div class="dataTables_paginate paging_simple_numbers" id="kt_table_users_paginate">
+                            <div class="d-flex ">
+                                {!! $users->render() !!}
+                            </div>
+
                         </div>
                     </div>
                 </div>

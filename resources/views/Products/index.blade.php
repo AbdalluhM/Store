@@ -1,5 +1,11 @@
 @extends('admin.layouts.master')
 @section('content')
+@section('title')
+Products
+@endsection
+@section('defintion')
+Home | all - products
+@endsection
 @foreach ($products as $product)
 @if ($product->qty<5)
 <div class="alert alert-danger" role="alert">

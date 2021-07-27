@@ -27,22 +27,19 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return "view('welcome')";
 });
 
-
 // route customers
-
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:admin']
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath','auth:admin']
     ],
     function () {
 
-        Route::get('customers', [CustomerController::class,('index')])->name('customers.index');
-
-
+        Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
+        Route::get('/customers/{customer}/details', [CustomerController::class, 'customer_details'])->name('customers.details');
     }
 );
 

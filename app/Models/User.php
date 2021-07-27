@@ -20,6 +20,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $appends = ['user_image_path'];
     protected $fillable = [
         'name',
         'email',
@@ -50,7 +51,17 @@ class User extends Authenticatable
     public function address(){
         return $this->hasOne(address::class);
     }
-    public function hasRole($roleId){
-        return in_array($roleId,$this->roles->pluck('id')->toArray());
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
+    public function socials(){
+        return $this->hasMany(Social::class);
+    }
+    public function payments(){
+        return $this->hasMany(Payment::class);
+    }
+    public function getUserImagePathAttribute()
+    {
+        return asset('storage/images/users/' . ($this->image));
     }
 }

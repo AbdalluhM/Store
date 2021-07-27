@@ -24,23 +24,23 @@ class AuthController extends Controller
             'password' => 'required|string|min:5',
         ]);
         if ($req->fails()) {
-            return $this->returnError(422,$req->errors());
+            return $this->returnError(422, $req->errors());
         }
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $authUser = Auth::user();
             $success['token'] =  $authUser->createToken('MyAuthApp')->plainTextToken;
             $success['name'] =  $authUser->name;
 
-            return $this->returnData("access_token",$success,'User Signed in');
+            return $this->returnData("access_token", $success, 'User Signed in');
         } elseif (Auth::attempt(['phone' => $request->email, 'password' => $request->password])) {
             $authUser = Auth::user();
             $success['token'] =  $authUser->createToken('MyAuthApp')->plainTextToken;
             $success['name'] =  $authUser->name;
 
-            return $this->returnData("access_token",$success,'User Signed in');
+            return $this->returnData("access_token", $success, 'User Signed in');
         } else {
             // return $this->sendError('Unauthorised.', ['error' => 'Unauthorised']);
-            return $this->returnError(400,['error'=>'Unauthorised']);
+            return $this->returnError(400, ['error' => 'Unauthorised']);
         }
     }
 
@@ -58,26 +58,22 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return $this->returnError(422,$validator->errors());
+            return $this->returnError(422, $validator->errors());
         }
 
+        $input = $request->all();
         if (request()->hasFile('image')) {
-            $input = $request->all();
-            $image = $request->image->store('images/users');
+            $image = time() . '_' . $request->file('image')->hashName();
+            $request->file('image')->storeAs('public/images/users/', $image);
             $input['image'] = $image;
-            $input['password'] = bcrypt($input['password']);
-            $user = User::create($input);
-        } else {
-
-            $input = $request->all();
-            $input['password'] = bcrypt($input['password']);
-            $user = User::create($input);
         }
+            $input['password'] = bcrypt($input['password']);
+            $user = User::create($input);
+        
         $success['token'] =  $user->createToken('MyAuthApp')->plainTextToken;
         $success['name'] =  $user->name;
 
-        return $this->returnData("access_token",$success,'User created successfully.');
-
+        return $this->returnData("access_token", $success, 'User created successfully.');
     }
 
 
@@ -109,11 +105,9 @@ class AuthController extends Controller
             }
             $success['token'] =  $user->createToken('MyAuthApp')->plainTextToken;
             $success['name'] =  $user->name;
-            return $this->returnData("access_token",$success,'User Signed in');
-
+            return $this->returnData("access_token", $success, 'User Signed in');
         } catch (\Throwable $th) {
-            return $this->returnError(400,['Server Error'=>$th->getMessage()]);
-
+            return $this->returnError(400, ['Server Error' => $th->getMessage()]);
         }
     }
 

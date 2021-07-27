@@ -28,5 +28,7 @@ return [
     'All-Sizes'=>'Sizes',
     'sliders'=>'Sliders',
     'All-Sliders'=>'All-Sliders',
+    'customers'=>'Customers',
+    'customers-list'=>'Customer Listing'
 
 ];

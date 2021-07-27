@@ -29,7 +29,7 @@ return [
     'All-Sizes'=>'المقاسات  ',
     'sliders'=>'الاعلانات ',
     'All-Sliders'=>'كل الاعلانات  ',
-
-
+    'customers'=>'العملاء',
+    'customers-list'=>'قائمة العملاء'
 
 ];

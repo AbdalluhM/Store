@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\User;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -27,9 +30,17 @@ class HomeController extends Controller
     {
         $newProduct = Product::orderBy('id','DESC')->paginate(self::PER_PAGE);
         $popularProduct = Product::orderBy('sell_date','DESC')->paginate(self::PER_PAGE);
+        $orders=Order::sum('total_price');
+        $products=Product::all();
+        $customers=User::all();
+        $newcustomers=User::where( 'created_at', '>', Carbon::now()->subDays(10))->get();
         return view('dashboard.dashboard')->with([
             'newProduct'=>$newProduct,
-            'popularProduct'=>$popularProduct
+            'popularProduct'=>$popularProduct,
+            'orders'=>$orders,
+            'products'=>$products,
+            'customers'=>$customers,
+            'newcustomers'=>$newcustomers
         ]);
     }
 }
