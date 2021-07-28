@@ -34,6 +34,7 @@ class HomeController extends Controller
         $products=Product::all();
         $customers=User::all();
         $newcustomers=User::where( 'created_at', '>', Carbon::now()->subDays(10))->get();
+        // $popular=Product::where('sell_data','>',Carbon::now()->subDay(10))->get();
         return view('dashboard.dashboard')->with([
             'newProduct'=>$newProduct,
             'popularProduct'=>$popularProduct,

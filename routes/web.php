@@ -13,6 +13,7 @@ use App\Http\Controllers\Wep\SliderController;
 use App\Http\Controllers\Wep\ProductController;
 use App\Http\Controllers\Wep\CategoryController;
 use App\Http\Controllers\Wep\CustomerController;
+use App\Http\Controllers\Wep\OrderController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -40,6 +41,18 @@ Route::group(
 
         Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
         Route::get('/customers/{customer}/details', [CustomerController::class, 'customer_details'])->name('customers.details');
+    }
+);
+// route customers
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath','auth:admin']
+    ],
+    function () {
+
+        Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+        Route::get('/orders/{order}/details', [OrderController::class, 'order_details'])->name('orders.details');
     }
 );
 
@@ -199,7 +212,12 @@ Route::post('login/admin', [LoginController::class, ('loginAdmin')])->name('logi
 
 
 // roles...permission...admin
-Route::group(['middleware' => ['auth:admin']], function() {
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:admin']
+    ],
+    function () {
     Route::resource('roles', RoleController::class);
     Route::resource('users', AdminController::class);
     Route::get('permission',[ PermissionController::class,('index')])->name('permission.index');

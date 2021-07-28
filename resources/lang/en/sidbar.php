@@ -29,6 +29,8 @@ return [
     'sliders'=>'Sliders',
     'All-Sliders'=>'All-Sliders',
     'customers'=>'Customers',
-    'customers-list'=>'Customer Listing'
+    'customers-list'=>'Customer Listing',
+    'orders'=>'Orders',
+    'orders-list'=>'Orders Listing'
 
 ];

@@ -30,6 +30,8 @@ return [
     'sliders'=>'الاعلانات ',
     'All-Sliders'=>'كل الاعلانات  ',
     'customers'=>'العملاء',
-    'customers-list'=>'قائمة العملاء'
+    'customers-list'=>'قائمة العملاء',
+    'orders'=>'الطلبات',
+    'orders-list'=>'قائمة الطلبات'
 
 ];

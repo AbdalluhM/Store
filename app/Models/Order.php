@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Order extends Model
 {
     use HasFactory;
-    protected $fillable=['user_id','address_id','number_order','total_price'];
+    protected $fillable=['user_id','address_id','number_order','total_price','status'];
     public function adress()
     {
         return $this->belongsTo(address::class);

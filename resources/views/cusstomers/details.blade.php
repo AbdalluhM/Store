@@ -56,57 +56,6 @@ Home | Customer-Details
                                         </div>
                                         <div class="fw-bold text-muted">Orders</div>
                                     </div>
-                                    <!--end::Stats-->
-                                    {{-- <!--begin::Stats-->
-                                    <div class="border border-gray-300 border-dashed rounded py-3 px-3 mx-4 mb-3">
-                                        <div class="fs-4 fw-bolder text-gray-700">
-                                            <span class="w-50px">130</span>
-                                            <!--begin::Svg Icon | path: icons/duotone/Navigation/Arrow-down.svg-->
-                                            <span class="svg-icon svg-icon-3 svg-icon-danger">
-                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
-                                                    height="24px" viewBox="0 0 24 24" version="1.1">
-                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                        <polygon points="0 0 24 0 24 24 0 24"></polygon>
-                                                        <rect fill="#000000" opacity="0.5" x="11" y="5" width="2"
-                                                            height="14" rx="1"></rect>
-                                                        <path
-                                                            d="M6.70710678,18.7071068 C6.31658249,19.0976311 5.68341751,19.0976311 5.29289322,18.7071068 C4.90236893,18.3165825 4.90236893,17.6834175 5.29289322,17.2928932 L11.2928932,11.2928932 C11.6714722,10.9143143 12.2810586,10.9010687 12.6757246,11.2628459 L18.6757246,16.7628459 C19.0828436,17.1360383 19.1103465,17.7686056 18.7371541,18.1757246 C18.3639617,18.5828436 17.7313944,18.6103465 17.3242754,18.2371541 L12.0300757,13.3841378 L6.70710678,18.7071068 Z"
-                                                            fill="#000000" fill-rule="nonzero"
-                                                            transform="translate(12.000003, 14.999999) scale(1, -1) translate(-12.000003, -14.999999)">
-                                                        </path>
-                                                    </g>
-                                                </svg>
-                                            </span>
-                                            <!--end::Svg Icon-->
-                                        </div>
-                                        <div class="fw-bold text-muted">Tasks</div>
-                                    </div>
-                                    <!--end::Stats-->
-                                    <!--begin::Stats-->
-                                    <div class="border border-gray-300 border-dashed rounded py-3 px-3 mb-3">
-                                        <div class="fs-4 fw-bolder text-gray-700">
-                                            <span class="w-50px">500</span>
-                                            <!--begin::Svg Icon | path: icons/duotone/Navigation/Arrow-up.svg-->
-                                            <span class="svg-icon svg-icon-3 svg-icon-success">
-                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
-                                                    height="24px" viewBox="0 0 24 24" version="1.1">
-                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                        <polygon points="0 0 24 0 24 24 0 24"></polygon>
-                                                        <rect fill="#000000" opacity="0.5" x="11" y="5" width="2"
-                                                            height="14" rx="1"></rect>
-                                                        <path
-                                                            d="M6.70710678,12.7071068 C6.31658249,13.0976311 5.68341751,13.0976311 5.29289322,12.7071068 C4.90236893,12.3165825 4.90236893,11.6834175 5.29289322,11.2928932 L11.2928932,5.29289322 C11.6714722,4.91431428 12.2810586,4.90106866 12.6757246,5.26284586 L18.6757246,10.7628459 C19.0828436,11.1360383 19.1103465,11.7686056 18.7371541,12.1757246 C18.3639617,12.5828436 17.7313944,12.6103465 17.3242754,12.2371541 L12.0300757,7.38413782 L6.70710678,12.7071068 Z"
-                                                            fill="#000000" fill-rule="nonzero"></path>
-                                                    </g>
-                                                </svg>
-                                            </span>
-                                            <!--end::Svg Icon-->
-                                        </div>
-                                        <div class="fw-bold text-muted">Hours</div>
-                                    </div>
-                                    <!--end::Stats--> --}}
                                 </div>
                                 <!--end::Info-->
                             </div>
@@ -481,7 +430,7 @@ Home | Customer-Details
                                                             <tr class="text-start text-muted gs-0" role="row">
                                                                 <th class="min-w-50px">Order Id</th>
                                                                 <th class="min-w-120px">Amount</th>
-                                                                <th class="min-w-120px">status</th>
+                                                                <th class="min-w-120px">Status</th>
                                                             </tr>
                                                         </thead>
                                                         <!--end::Thead-->
@@ -495,8 +444,7 @@ Home | Customer-Details
                                                                 </td>
                                                                 <td class="text-success">{{$order->total_price}}</td>
                                                                 <td class="text-end">
-                                                                    <button
-                                                                        class="btn btn-sm btn-light btn-active-light-primary">Download</button>
+                                                                   {{$order->status}}
                                                                 </td>
                                                             </tr>
                                                             @endforeach

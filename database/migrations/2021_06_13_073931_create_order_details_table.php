@@ -23,6 +23,7 @@ class CreateOrderDetailsTable extends Migration
                     ->references('id')->on('orders');
             $table->integer('qty');
             $table->double('discount');
+            $table->string('status');
             $table->timestamps();
         });
     }
