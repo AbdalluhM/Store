@@ -32,6 +32,7 @@ class Admin extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
         'image',
     ];
 
@@ -52,7 +53,7 @@ class Admin extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-    ]; 
+    ];
     public function getAdminImagePathAttribute()
     {
         return asset('storage/images/admins/' . ($this->image));

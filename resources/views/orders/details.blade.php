@@ -36,6 +36,7 @@ Home | Order-Details
                             <th class="min-w-120px">Price</th>
                             <th class="min-w-120px">Qty</th>
                             <th class="min-w-120px">Discount</th>
+                            <th class="min-w-120px">Delivery</th>
                             <th class="min-w-120px">New Price</th>
                         </tr>
                     </thead>
@@ -76,7 +77,11 @@ Home | Order-Details
                             </td>
                             <td>
                                 <p class="text-dark fw-bolder text-hover-primary d-block fs-6">
-                                    {{$order->product->price*$order->qty-$order->discount}}</p>
+                                    {{$order->product->delivery}}</p>
+                            </td>
+                            <td>
+                                <p class="text-dark fw-bolder text-hover-primary d-block fs-6">
+                                    {{$order->product->price*$order->qty-$order->discount +$order->product->delivery}}</p>
                             </td>
                             {{-- <td class="text-end">
                                 <div class="d-flex flex-column w-100 me-2">

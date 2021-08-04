@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Product extends Model
 {
     use HasFactory;
-    protected $fillable = ['category_id', 'name_product', 'description', 'price', 'image', 'offer_id', 'qty','recomend'];
+    protected $fillable = ['category_id', 'name_product', 'description', 'price', 'image', 'offer_id', 'qty','recomend','delivery'];
     protected $appends = ['product_image_path'];
 
 

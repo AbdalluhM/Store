@@ -47,6 +47,7 @@ class AdminController extends Controller
      */
     public function store(AdminRequest $request)
     {
+        // dd('sdf');
         $input = $request->all();
         if (request()->hasFile('image')) {
             $image = time() . '_' . $request->file('image')->hashName();
@@ -56,7 +57,7 @@ class AdminController extends Controller
         $input['password'] = Hash::make($input['password']);
         $Admin = Admin::create($input);
         $Admin->assignRole($request->input('roles'));
-        session()->flash('success', 'Role created successfully');
+        session()->flash('success', 'User created successfully');
         return redirect()->route('users.index');
     }
 
@@ -118,7 +119,7 @@ class AdminController extends Controller
 
         $Admin->assignRole($request->input('roles'));
         session()->flash('success', 'User Updated successfully');
-        return redirect()->route('users.index');
+        return redirect()->route('profile.index');
     }
 
     /**
@@ -129,9 +130,14 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        Storage::disk('public')->delete('/images/admins/' . Admin::find($id)->image);
+        if (request()->hasFile('image')) {
+            Storage::disk('public')->delete('/images/admins/' . Admin::find($id)->image);
+        }
         Admin::find($id)->delete();
         session()->flash('success', 'User Deleted successfully');
         return redirect()->route('users.index');
+    }
+    public function profile_user(){
+        return view('dashboard.Admins.profile');
     }
 }

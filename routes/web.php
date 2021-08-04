@@ -35,7 +35,7 @@ Route::get('/', function () {
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath','auth:admin']
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:admin']
     ],
     function () {
 
@@ -47,7 +47,7 @@ Route::group(
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath','auth:admin']
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:admin']
     ],
     function () {
 
@@ -67,9 +67,9 @@ Route::group(
     function () {
 
 
-            Route::resource('products', ProductController::class)->middleware('CheckSupCategory');
-            Route::get('product/update/{product}/quantity', [ProductController::class,('add_quantity')])->name('products.qty');
-            Route::post('product/update/{product}/quantity', [ProductController::class,('store_quantity')])->name('products.qty.update');;
+        Route::resource('products', ProductController::class)->middleware('CheckSupCategory');
+        Route::get('product/update/{product}/quantity', [ProductController::class, ('add_quantity')])->name('products.qty');
+        Route::post('product/update/{product}/quantity', [ProductController::class, ('store_quantity')])->name('products.qty.update');;
     }
 );
 
@@ -83,8 +83,6 @@ Route::group(
     function () {
 
         Route::resource('colors', ColorController::class);
-
-
     }
 );
 
@@ -102,8 +100,6 @@ Route::group(
     function () {
 
         Route::resource('offers', OfferController::class);
-
-
     }
 );
 
@@ -121,8 +117,6 @@ Route::group(
     function () {
 
         Route::resource('sizes', SizeController::class);
-
-
     }
 );
 
@@ -140,8 +134,6 @@ Route::group(
     function () {
 
         Route::resource('sliders', SliderController::class);
-
-
     }
 );
 
@@ -157,7 +149,7 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:admin']
     ],
     function () {
-        Route::get('category/search',[CategoryController::class, ('search')] )->name('categories.search');
+        Route::get('category/search', [CategoryController::class, ('search')])->name('categories.search');
         Route::get('category', [CategoryController::class, ('index')])->name('categories.index');
         Route::get('sup/category', [CategoryController::class, ('sub_category')])->name('index_sub_category')->middleware('checkcategory');
         Route::get('create/category', [CategoryController::class, ('createCategory')])->name('create_category');
@@ -168,7 +160,6 @@ Route::group(
         Route::post('update/{category}', [CategoryController::class, ('update')])->name('categories.update');
         Route::post('update/{category}/supcategory', [CategoryController::class, ('update_sup_category')])->name('supcategories.update');
         Route::post('category/{category}/delete', [CategoryController::class, ('destroy')])->name('category_delete');
-
     }
 );
 
@@ -205,7 +196,7 @@ Route::group(
 
 Auth::routes([
     'register' => false,
-    'login'=>false,
+    'login' => false,
 ]);
 Route::get('login/admin', [LoginController::class, ('showLoginForm')])->name('login');
 Route::post('login/admin', [LoginController::class, ('loginAdmin')])->name('login.admin');
@@ -218,8 +209,9 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:admin']
     ],
     function () {
-    Route::resource('roles', RoleController::class);
-    Route::resource('users', AdminController::class);
-    Route::get('permission',[ PermissionController::class,('index')])->name('permission.index');
-});
-
+        Route::get('profile/user', [AdminController::class, ('profile_user')])->name('profile.index');
+        Route::resource('roles', RoleController::class);
+        Route::resource('users', AdminController::class);
+        Route::get('permission', [PermissionController::class, ('index')])->name('permission.index');
+    }
+);

@@ -55,7 +55,7 @@ class LoginController extends Controller
             'password' => ['required', 'string', 'min:5'],
         ]);
 
-        Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password]);
+        Auth::guard('admin')->attempt($validatedData);
 
         return redirect('/home');
     }

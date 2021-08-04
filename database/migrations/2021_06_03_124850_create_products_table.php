@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->string('description')->nullable();
             $table->double('price');
             $table->string('image');
+            $table->integer('delivery')->nullable();
             $table->integer('offer_id')->nullable();
             $table->enum('recomend', ['1', '0']);
             $table->dateTime('sell_date')->nullable();

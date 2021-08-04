@@ -148,6 +148,23 @@
                         </div>
                     </div>
                     <!--end::Col-->
+                    <div class="row mb-6">
+                        <!--begin::Col-->
+                        <div class="col-md-6 fv-row fv-plugins-icon-container">
+                            <!--begin::Label-->
+                            <label class="required fs-5 fw-bold mb-2">Delivery</label>
+                            <!--end::Label-->
+                            <!--begin::Input-->
+                            <input type="text"
+                                class="form-control form-control-solid @error('delivery') is-invalid @enderror"
+                                placeholder="product Delivery" name="delivery">
+                            @error('delivery')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                            <!--end::Input-->
+                            {{-- <div class="fv-plugins-message-container invalid-feedback"></div> --}}
+                        </div>
+                    </div>
                     {{-- begin offer,size --}}
                     <div class="col-md-6 fv-row">
                         <label class="required fs-6 fw-bold mb-2">Sizes</label>
@@ -175,6 +192,7 @@
                     </div>
                     {{-- </div> --}}
                 </div>
+
                 {{-- end offer,size --}}
                 {{-- begin desc --}}
                 <div class="d-flex flex-column mb-12">

@@ -31,7 +31,7 @@ class HomeController extends Controller
         $offers = Product::whereHas('offer')->paginate(self::PER_PAGE);
         try {
             if ($offers->count()==0) {
-                return $this->returnError(400,'noting product have offer');
+                return $this->returnError(400,'noting product has offer');
             }
             return $this->returnData('offers', OfferResource::collection($offers), "");
         } catch (\Throwable $th) {
@@ -42,7 +42,7 @@ class HomeController extends Controller
     public function populars()
     {
       try {
-        $products = Product::orderBy('sell_date','DESC')->paginate(self::PER_PAGE);
+        $products = Product::orderBy('order_count','DESC')->paginate(self::PER_PAGE,['name_product','price']);
         return $this->returnData('popular_product',$products , "");
       } catch (\Throwable $th) {
           return $this->returnError(500,$th->getMessage());
@@ -50,7 +50,7 @@ class HomeController extends Controller
     }
     public function newProduct(){
        try {
-        $products = Product::orderBy('id','DESC')->paginate(self::PER_PAGE);
+        $products = Product::orderBy('id','DESC')->paginate(self::PER_PAGE,['name_product','price']);
         return $this->returnData('new_products',$products, "");
        } catch (\Throwable $th) {
           return $this->returnError(500,$th->getMessage());
@@ -60,7 +60,7 @@ class HomeController extends Controller
 
     public function recommend(){
         try {
-            $products = Product::where('recomend',1)->paginate(self::PER_PAGE);
+            $products = Product::where('recomend',1)->paginate(self::PER_PAGE,['name_product','price']);
             // dd($products);
      return $this->returnData('recomended_product', $products, "");
     } catch (\Throwable $th) {

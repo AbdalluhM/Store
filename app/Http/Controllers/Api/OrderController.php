@@ -62,6 +62,7 @@ class OrderController extends Controller
                       $product=Product::where('id',$cart->product_id)->first();
                       $price=$product->price;
                       $offer=$product->offer->value;
+                      $delivery=$product->delivery;
                     //   dd($offer);
                     $orderDetails= OrderDetails::create([
                         'product_id'=>$cart->product_id,
@@ -69,10 +70,11 @@ class OrderController extends Controller
                         'qty'=>$cart->qty,
                         'discount'=>(double)$offer*$price*$cart->qty,
                     ]);
-                    $total+=$orderDetails['qty']*$price-$orderDetails['discount'];
+                    $total+=$orderDetails['qty'] * $price - $orderDetails['discount'] + $delivery;
                     $product->qty-=$cart->qty;
                     // if ($product->sell==0) {
                         $product->sell_date=Carbon::now();
+                        $product->order_count+=1;
                     // }
                     $product->save();
                   }

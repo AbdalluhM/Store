@@ -194,193 +194,10 @@ Dashobord
                         </div>
                         <!--end::Mixed Widget 2-->
                     </div>
-                    <!--end::Col-->
-                    <div class="row g-5 g-xl-8">
-                        <div class="col-xl-4">
-                            <!--begin::Statistics Widget 5-->
-                            <a href="#" class="card bg-danger hoverable card-xl-stretch mb-xl-8">
-                                <!--begin::Body-->
-                                <div class="card-body">
-                                    <!--begin::Svg Icon | path: icons/duotone/Shopping/Cart3.svg-->
-                                    <span class="svg-icon svg-icon-white svg-icon-3x ms-n1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24"></rect>
-                                                <path d="M12,4.56204994 L7.76822128,9.6401844 C7.4146572,10.0644613 6.7840925,10.1217854 6.3598156,9.76822128 C5.9355387,9.4146572 5.87821464,8.7840925 6.23177872,8.3598156 L11.2317787,2.3598156 C11.6315738,1.88006147 12.3684262,1.88006147 12.7682213,2.3598156 L17.7682213,8.3598156 C18.1217854,8.7840925 18.0644613,9.4146572 17.6401844,9.76822128 C17.2159075,10.1217854 16.5853428,10.0644613 16.2317787,9.6401844 L12,4.56204994 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"></path>
-                                                <path d="M3.5,9 L20.5,9 C21.0522847,9 21.5,9.44771525 21.5,10 C21.5,10.132026 21.4738562,10.2627452 21.4230769,10.3846154 L17.7692308,19.1538462 C17.3034221,20.271787 16.2111026,21 15,21 L9,21 C7.78889745,21 6.6965779,20.271787 6.23076923,19.1538462 L2.57692308,10.3846154 C2.36450587,9.87481408 2.60558331,9.28934029 3.11538462,9.07692308 C3.23725479,9.02614384 3.36797398,9 3.5,9 Z M12,17 C13.1045695,17 14,16.1045695 14,15 C14,13.8954305 13.1045695,13 12,13 C10.8954305,13 10,13.8954305 10,15 C10,16.1045695 10.8954305,17 12,17 Z" fill="#000000"></path>
-                                            </g>
-                                        </svg>
-                                    </span>
-                                    <!--end::Svg Icon-->
-                                    <div class="text-inverse-danger fw-bolder fs-2 mb-2 mt-5">Shopping Cart</div>
-                                    <div class="fw-bold text-inverse-danger fs-7">Lands, Houses, Ranchos, Farms</div>
-                                </div>
-                                <!--end::Body-->
-                            </a>
-                            <!--end::Statistics Widget 5-->
-                        </div>
-                        <div class="col-xl-4">
-                            <!--begin::Statistics Widget 5-->
-                            <a href="#" class="card bg-primary hoverable card-xl-stretch mb-xl-8">
-                                <!--begin::Body-->
-                                <div class="card-body">
-                                    <!--begin::Svg Icon | path: icons/duotone/Home/Building.svg-->
-                                    <span class="svg-icon svg-icon-white svg-icon-3x ms-n1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24"></rect>
-                                                <path d="M13.5,21 L13.5,18 C13.5,17.4477153 13.0522847,17 12.5,17 L11.5,17 C10.9477153,17 10.5,17.4477153 10.5,18 L10.5,21 L5,21 L5,4 C5,2.8954305 5.8954305,2 7,2 L17,2 C18.1045695,2 19,2.8954305 19,4 L19,21 L13.5,21 Z M9,4 C8.44771525,4 8,4.44771525 8,5 L8,6 C8,6.55228475 8.44771525,7 9,7 L10,7 C10.5522847,7 11,6.55228475 11,6 L11,5 C11,4.44771525 10.5522847,4 10,4 L9,4 Z M14,4 C13.4477153,4 13,4.44771525 13,5 L13,6 C13,6.55228475 13.4477153,7 14,7 L15,7 C15.5522847,7 16,6.55228475 16,6 L16,5 C16,4.44771525 15.5522847,4 15,4 L14,4 Z M9,8 C8.44771525,8 8,8.44771525 8,9 L8,10 C8,10.5522847 8.44771525,11 9,11 L10,11 C10.5522847,11 11,10.5522847 11,10 L11,9 C11,8.44771525 10.5522847,8 10,8 L9,8 Z M9,12 C8.44771525,12 8,12.4477153 8,13 L8,14 C8,14.5522847 8.44771525,15 9,15 L10,15 C10.5522847,15 11,14.5522847 11,14 L11,13 C11,12.4477153 10.5522847,12 10,12 L9,12 Z M14,12 C13.4477153,12 13,12.4477153 13,13 L13,14 C13,14.5522847 13.4477153,15 14,15 L15,15 C15.5522847,15 16,14.5522847 16,14 L16,13 C16,12.4477153 15.5522847,12 15,12 L14,12 Z" fill="#000000"></path>
-                                                <rect fill="#FFFFFF" x="13" y="8" width="3" height="3" rx="1"></rect>
-                                                <path d="M4,21 L20,21 C20.5522847,21 21,21.4477153 21,22 L21,22.4 C21,22.7313708 20.7313708,23 20.4,23 L3.6,23 C3.26862915,23 3,22.7313708 3,22.4 L3,22 C3,21.4477153 3.44771525,21 4,21 Z" fill="#000000" opacity="0.3"></path>
-                                            </g>
-                                        </svg>
-                                    </span>
-                                    <!--end::Svg Icon-->
-                                    <div class="text-inverse-primary fw-bolder fs-2 mb-2 mt-5">Appartments</div>
-                                    <div class="fw-bold text-inverse-primary fs-7">Flats, Shared Rooms, Duplex</div>
-                                </div>
-                                <!--end::Body-->
-                            </a>
-                            <!--end::Statistics Widget 5-->
-                        </div>
-                        <div class="col-xl-4">
-                            <!--begin::Statistics Widget 5-->
-                            <a href="#" class="card bg-success hoverable card-xl-stretch mb-5 mb-xl-8">
-                                <!--begin::Body-->
-                                <div class="card-body">
-                                    <!--begin::Svg Icon | path: icons/duotone/Shopping/Chart-bar1.svg-->
-                                    <span class="svg-icon svg-icon-white svg-icon-3x ms-n1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24"></rect>
-                                                <rect fill="#000000" opacity="0.3" x="12" y="4" width="3" height="13" rx="1.5"></rect>
-                                                <rect fill="#000000" opacity="0.3" x="7" y="9" width="3" height="8" rx="1.5"></rect>
-                                                <path d="M5,19 L20,19 C20.5522847,19 21,19.4477153 21,20 C21,20.5522847 20.5522847,21 20,21 L4,21 C3.44771525,21 3,20.5522847 3,20 L3,4 C3,3.44771525 3.44771525,3 4,3 C4.55228475,3 5,3.44771525 5,4 L5,19 Z" fill="#000000" fill-rule="nonzero"></path>
-                                                <rect fill="#000000" opacity="0.3" x="17" y="11" width="3" height="6" rx="1.5"></rect>
-                                            </g>
-                                        </svg>
-                                    </span>
-                                    <!--end::Svg Icon-->
-                                    <div class="text-inverse-success fw-bolder fs-2 mb-2 mt-5">Sales Stats</div>
-                                    <div class="fw-bold text-inverse-success fs-7">50% Increased for FY20</div>
-                                </div>
-                                <!--end::Body-->
-                            </a>
-                            <!--end::Statistics Widget 5-->
-                        </div>
-                    </div>
-                        <!--begin::Row-->
-                <div class="row g-5 gx-xxl-8">
-                    <!--begin::Col-->
-                    <div class="col-xxl-8">
-                        <!--begin::Tables Widget 5-->
-                        <div class="card card-xxl-stretch mb-5 mb-xxl-8">
-                            <!--begin::Header-->
-                            <div class="card-header border-0 pt-5">
-                                <h3 class="card-title align-items-start flex-column">
-                                    <span class="card-label fw-bolder fs-3 mb-1">Latest Products</span>
-                                    <span class="text-muted mt-1 fw-bold fs-7">number of product is : {{$newProduct->count()}}</span>
-                                </h3>
-
-                            </div>
-                            <!--end::Header-->
-                            <!--begin::Body-->
-                            <div class="card-body py-3">
-                                <!--begin::Table container-->
-                                <div class="table-responsive d-flex">
-                                    <!--begin::Table-->
-                                    <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4 ">
-                                        <!--begin::Table head-->
-                                        <thead >
-                                            <tr class="fw-bolder text-muted">
-                                                <th class="w-25px">
-                                                    <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                                        <input class="form-check-input" type="checkbox" value="1" data-kt-check="true"
-                                                            data-kt-check-target=".widget-9-check" />
-                                                    </div>
-                                                </th>
-                                                <th class="min-w-150px">Product</th>
-                                                <th class="min-w-120px">Category</th>
-                                                <th class="min-w-120px">Price</th>
-                                                <th class="min-w-120px">Qty</th>
-                                                <th class="min-w-120px">Description</th>
-                                            </tr>
-                                        </thead>
-                                        <!--end::Table head-->
-                                        <!--begin::Table body-->
-                                        <tbody>
-                                            @foreach ($newProduct as $product)
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                                        <input class="form-check-input widget-9-check" type="checkbox" value="1" />
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="symbol symbol-45px me-5">
-                                                            <img src="{{$product->product_image_path}}" alt="" />
-                                                        </div>
-                                                        <div class="d-flex justify-content-start flex-column">
-                                                            {{-- <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">Ana Simmons</a>
-                                                            <span class="text-muted fw-bold text-muted d-block fs-7">HTML, JS, ReactJS</span> --}}
-                                                            <span
-                                                                class="text-dark fw-bolder text-hover-primary fs-6">{{$product->name_product}}</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <p class="text-dark fw-bolder text-hover-primary d-block fs-6">
-                                                        {{$product->category()->first()->category_name}}</p>
-                                                </td>
-                                                <td>
-                                                    <p class="text-dark fw-bolder text-hover-primary d-block fs-6">
-                                                        {{$product->price}}</p>
-                                                </td>
-                                                <td>
-                                                    <p class="text-dark fw-bolder text-hover-primary d-block fs-6">
-                                                        {{$product->qty}}</p>
-                                                </td>
-                                                <td>
-                                                    <p class="text-dark fw-bolder text-hover-primary d-block fs-6">
-                                                        {{$product->description}}</p>
-                                                </td>
-                                            </tr>
-                                            @endforeach
-
-                                        </tbody>
-                                        <!--end::Table body-->
-                                    </table>
-                                    <!--end::Table-->
-                                </div>
-                                <!--end::Table container-->
-                                <div class="container">
-                                    <div class="row">
-                                        <div
-                                            class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start">
-                                        </div>
-                                        <div class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
-                                            <div class="dataTables_paginate paging_simple_numbers" id="kt_table_users_paginate">
-                                                <div class="d-flex ">
-                                                    {!! $newProduct->render() !!}
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end::Body-->
-                        </div>
-                        <!--end::Tables Widget 5-->
-                    </div>
-                    <!--end::Col-->
-                </div>
-                <!--end::Row-->
-                    <!--begin::Col-->
                     <div class="col-xxl-4">
                         <!--begin::List Widget 5-->
                         <div class="row g-5 g-xl-8">
+
                             <div class="col-xl-3">
                                 <!--begin::Statistics Widget 5-->
                                 <a href="#" class="card bg-body hoverable card-xl-stretch mb-xl-8">
@@ -399,8 +216,31 @@ Dashobord
                                             </svg>
                                         </span>
                                         <!--end::Svg Icon-->
-                                        <div class="text-inverse-body fw-bolder fs-2 mb-2 mt-5">{{$products->count()}}</div>
-                                        <div class="fw-bold text-inverse-body fs-7">sum of all product</div>
+                                        <div class="text-inverse-body fw-bolder fs-2 mb-2 mt-5">{{$orders->count()}}</div>
+                                        <div class="fw-bold text-inverse-body fs-7">Total Orders</div>
+                                    </div>
+                                    <!--end::Body-->
+                                </a>
+                                <!--end::Statistics Widget 5-->
+                            </div>
+                            <div class="col-xl-3">
+                                <!--begin::Statistics Widget 5-->
+                                <a href="#" class="card bg-info hoverable card-xl-stretch mb-5 mb-xl-8">
+                                    <!--begin::Body-->
+                                    <div class="card-body">
+                                        <!--begin::Svg Icon | path: icons/duotone/Shopping/Chart-pie.svg-->
+                                        <span class="svg-icon svg-icon-white svg-icon-3x ms-n1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect x="0" y="0" width="24" height="24"></rect>
+                                                    <path d="M4.00246329,12.2004927 L13,14 L13,4.06189375 C16.9463116,4.55399184 20,7.92038235 20,12 C20,16.418278 16.418278,20 12,20 C7.64874861,20 4.10886412,16.5261253 4.00246329,12.2004927 Z" fill="#000000" opacity="0.3"></path>
+                                                    <path d="M3.0603968,10.0120794 C3.54712466,6.05992157 6.91622084,3 11,3 L11,11.6 L3.0603968,10.0120794 Z" fill="#000000"></path>
+                                                </g>
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                        <div class="text-inverse-info fw-bolder fs-2 mb-2 mt-5">{{$orders->sum('total_price')}}$</div>
+                                        <div class="fw-bold text-inverse-info fs-7">Total Order Price</div>
                                     </div>
                                     <!--end::Body-->
                                 </a>
@@ -444,30 +284,7 @@ Dashobord
                                         </span>
                                         <!--end::Svg Icon-->
                                         <div class="text-inverse-warning fw-bolder fs-2 mb-2 mt-5">{{$customers->count()}}</div>
-                                        <div class="fw-bold text-inverse-warning fs-7">All Customers</div>
-                                    </div>
-                                    <!--end::Body-->
-                                </a>
-                                <!--end::Statistics Widget 5-->
-                            </div>
-                            <div class="col-xl-3">
-                                <!--begin::Statistics Widget 5-->
-                                <a href="#" class="card bg-info hoverable card-xl-stretch mb-5 mb-xl-8">
-                                    <!--begin::Body-->
-                                    <div class="card-body">
-                                        <!--begin::Svg Icon | path: icons/duotone/Shopping/Chart-pie.svg-->
-                                        <span class="svg-icon svg-icon-white svg-icon-3x ms-n1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                    <rect x="0" y="0" width="24" height="24"></rect>
-                                                    <path d="M4.00246329,12.2004927 L13,14 L13,4.06189375 C16.9463116,4.55399184 20,7.92038235 20,12 C20,16.418278 16.418278,20 12,20 C7.64874861,20 4.10886412,16.5261253 4.00246329,12.2004927 Z" fill="#000000" opacity="0.3"></path>
-                                                    <path d="M3.0603968,10.0120794 C3.54712466,6.05992157 6.91622084,3 11,3 L11,11.6 L3.0603968,10.0120794 Z" fill="#000000"></path>
-                                                </g>
-                                            </svg>
-                                        </span>
-                                        <!--end::Svg Icon-->
-                                        <div class="text-inverse-info fw-bolder fs-2 mb-2 mt-5">{{$orders}}$</div>
-                                        <div class="fw-bold text-inverse-info fs-7">Total Order Price</div>
+                                        <div class="fw-bold text-inverse-warning fs-7">Total Customers</div>
                                     </div>
                                     <!--end::Body-->
                                 </a>
@@ -477,6 +294,172 @@ Dashobord
                         <!--end: List Widget 5-->
                     </div>
                     <!--end::Col-->
+                    <!--end::Col-->
+                    <div class="row g-5 g-xl-8">
+                        <div class="col-xl-4">
+                            <!--begin::List Widget 2-->
+                            <div class="card card-xl-stretch mb-xl-8">
+                                <!--begin::Header-->
+                                <div class="card-header border-0">
+                                    <h3 class="card-title fw-bolder text-dark">Product most sell</h3>
+                                    <div class="card-toolbar">
+                                        <!--begin::Menu-->
+                                        <button type="button" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end">
+                                            <!--begin::Svg Icon | path: icons/duotone/Layout/Layout-4-blocks-2.svg-->
+                                            <span class="svg-icon svg-icon-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="5" y="5" width="5" height="5" rx="1" fill="#000000"></rect>
+                                                        <rect x="14" y="5" width="5" height="5" rx="1" fill="#000000" opacity="0.3"></rect>
+                                                        <rect x="5" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3"></rect>
+                                                        <rect x="14" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3"></rect>
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                            <!--end::Svg Icon-->
+                                        </button>
+                                        <!--begin::Menu 2-->
+                                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px" data-kt-menu="true">
+                                        </div>
+                                        <!--end::Menu 2-->
+                                        <!--end::Menu-->
+                                    </div>
+                                </div>
+                                <!--end::Header-->
+                                <!--begin::Body-->
+                                <div class="card-body pt-2">
+                                    @foreach ($popular as$popular )
+                                    <!--begin::Item-->
+                                    <div class="d-flex align-items-center mb-7">
+                                        <!--begin::Avatar-->
+                                        <div class="symbol symbol-50px me-5">
+                                            <img src={{$popular->product_image_path}} class="" alt="">
+                                        </div>
+                                        <!--end::Avatar-->
+                                        <!--begin::Text-->
+                                        <div class="flex-grow-1">
+                                            <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">Name : {{$popular->name_product}}</a>
+                                            <span class="text-muted d-block fw-bold">Qty : {{$popular->qty}}</span>
+                                        </div>
+                                        <!--end::Text-->
+                                    </div>
+                                    <!--end::Item-->
+                                    @endforeach
+                                </div>
+                                <!--end::Body-->
+                            </div>
+                            <!--end::List Widget 2-->
+                        </div>
+                        <div class="col-xl-4">
+                            <!--begin::List Widget 2-->
+                            <div class="card card-xl-stretch mb-xl-8">
+                                <!--begin::Header-->
+                                <div class="card-header border-0">
+                                    <h3 class="card-title fw-bolder text-dark">New arrival</h3>
+                                    <div class="card-toolbar">
+                                        <!--begin::Menu-->
+                                        <button type="button" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end">
+                                            <!--begin::Svg Icon | path: icons/duotone/Layout/Layout-4-blocks-2.svg-->
+                                            <span class="svg-icon svg-icon-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="5" y="5" width="5" height="5" rx="1" fill="#000000"></rect>
+                                                        <rect x="14" y="5" width="5" height="5" rx="1" fill="#000000" opacity="0.3"></rect>
+                                                        <rect x="5" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3"></rect>
+                                                        <rect x="14" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3"></rect>
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                            <!--end::Svg Icon-->
+                                        </button>
+                                        <!--begin::Menu 2-->
+                                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px" data-kt-menu="true">
+                                        </div>
+                                        <!--end::Menu 2-->
+                                        <!--end::Menu-->
+                                    </div>
+                                </div>
+                                <!--end::Header-->
+                                <!--begin::Body-->
+                                <div class="card-body pt-2">
+                                    @foreach ($newArrival as$newArrival )
+                                    <!--begin::Item-->
+                                    <div class="d-flex align-items-center mb-7">
+                                        <!--begin::Avatar-->
+                                        <div class="symbol symbol-50px me-5">
+                                            <img src={{$newArrival->product_image_path}} class="" alt="">
+                                        </div>
+                                        <!--end::Avatar-->
+                                        <!--begin::Text-->
+                                        <div class="flex-grow-1">
+                                            <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">Name : {{$newArrival->name_product}}</a>
+                                            <span class="text-muted d-block fw-bold">Qty : {{$newArrival->qty}}</span>
+                                        </div>
+                                        <!--end::Text-->
+                                    </div>
+                                    <!--end::Item-->
+                                    @endforeach
+                                </div>
+                                <!--end::Body-->
+                            </div>
+                            <!--end::List Widget 2-->
+                        </div>
+                        <div class="col-xl-4">
+                            <!--begin::List Widget 2-->
+                            <div class="card card-xl-stretch mb-xl-8">
+                                <!--begin::Header-->
+                                <div class="card-header border-0">
+                                    <h3 class="card-title fw-bolder text-dark">New Product</h3>
+                                    <div class="card-toolbar">
+                                        <!--begin::Menu-->
+                                        <button type="button" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end">
+                                            <!--begin::Svg Icon | path: icons/duotone/Layout/Layout-4-blocks-2.svg-->
+                                            <span class="svg-icon svg-icon-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="5" y="5" width="5" height="5" rx="1" fill="#000000"></rect>
+                                                        <rect x="14" y="5" width="5" height="5" rx="1" fill="#000000" opacity="0.3"></rect>
+                                                        <rect x="5" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3"></rect>
+                                                        <rect x="14" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3"></rect>
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                            <!--end::Svg Icon-->
+                                        </button>
+                                        <!--begin::Menu 2-->
+                                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px" data-kt-menu="true">
+                                        </div>
+                                        <!--end::Menu 2-->
+                                        <!--end::Menu-->
+                                    </div>
+                                </div>
+                                <!--end::Header-->
+                                <!--begin::Body-->
+                                <div class="card-body pt-2">
+                                    @foreach ($newProduct as$newProduct )
+                                    <!--begin::Item-->
+                                    <div class="d-flex align-items-center mb-7">
+                                        <!--begin::Avatar-->
+                                        <div class="symbol symbol-50px me-5">
+                                            <img src={{$newProduct->product_image_path}} class="" alt="">
+                                        </div>
+                                        <!--end::Avatar-->
+                                        <!--begin::Text-->
+                                        <div class="flex-grow-1">
+                                            <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">Name :{{$newProduct->name_product}}</a>
+                                            <span class="text-muted d-block fw-bold">Qty : {{$newProduct->qty}}</span>
+                                        </div>
+                                        <!--end::Text-->
+                                    </div>
+                                    <!--end::Item-->
+                                    @endforeach
+                                </div>
+                                <!--end::Body-->
+                            </div>
+                            <!--end::List Widget 2-->
+                        </div>
+                    </div>
+                    <!--begin::Col-->
 
                 </div>
                 <!--end::Row-->

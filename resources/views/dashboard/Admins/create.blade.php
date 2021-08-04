@@ -81,23 +81,23 @@
                 <!--end::Input group-->
                 <!--begin::Input group-->
                 <div class="row mb-6">
-                    <!--begin::Input group-->
-                    <div class="row mb-6">
-                        <!--begin::Label-->
-                        <label class="col-lg-4 col-form-label required fw-bold fs-6">User Name</label>
-                        <!--end::Label-->
-                        <!--begin::Col-->
-                        <div class="col-lg-8 fv-row fv-plugins-icon-container">
-                            <input type="text" name="name"
-                                class="form-control form-control-lg form-control-solid @error('name') is-invalid @enderror" placeholder="User Name">
-                                @error('name')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                           <div class="fv-plugins-message-container invalid-feedback"></div>
+                        <!--begin::Input group-->
+                        <div class="row mb-6">
+                            <!--begin::Label-->
+                            <label class="col-lg-4 col-form-label required fw-bold fs-6">User Name</label>
+                            <!--end::Label-->
+                            <!--begin::Col-->
+                            <div class="col-lg-8 fv-row fv-plugins-icon-container">
+                                <input type="text" name="name"
+                                    class="form-control form-control-lg form-control-solid  @error('name') is-invalid @enderror" placeholder="User Name">
+                                    @error('name')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                <div class="fv-plugins-message-container invalid-feedback"></div>
+                            </div>
+                            <!--end::Col-->
                         </div>
-                        <!--end::Col-->
-                    </div>
-                    <!--end::Input group-->
+                        <!--end::Input group-->
                      <!--begin::Input group-->
                      <div class="row mb-6">
                         <!--begin::Label-->
@@ -110,21 +110,21 @@
                                 @error('email')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
-                            <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <!--end::Col-->
                     </div>
                     <!--end::Input group-->
-                    <!--begin::Input group-->
-                    <div class="row mb-6">
+
+                     <!--begin::Input group-->
+                     <div class="row mb-6">
                         <!--begin::Label-->
-                        <label class="col-lg-4 col-form-label required fw-bold fs-6">Password</label>
+                        <label class="col-lg-4 col-form-label required fw-bold fs-6">Phone</label>
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-8 fv-row fv-plugins-icon-container">
-                            <input type="password" name="password"
-                                class="form-control form-control-lg form-control-solid  @error('password') is-invalid @enderror" placeholder="password">
-                                @error('password')
+                            <input type="text" name="phone"
+                                class="form-control form-control-lg form-control-solid  @error('phone') is-invalid @enderror" placeholder="Phone">
+                                @error('phone')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             <div class="fv-plugins-message-container invalid-feedback"></div>
@@ -132,6 +132,23 @@
                         <!--end::Col-->
                     </div>
                     <!--end::Input group-->
+                         <!--begin::Input group-->
+                         <div class="row mb-6">
+                            <!--begin::Label-->
+                            <label class="col-lg-4 col-form-label required fw-bold fs-6">Password</label>
+                            <!--end::Label-->
+                            <!--begin::Col-->
+                            <div class="col-lg-8 fv-row fv-plugins-icon-container">
+                                <input type="password" name="password"
+                                    class="form-control form-control-lg form-control-solid  @error('password') is-invalid @enderror" placeholder="password">
+                                    @error('password')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                <div class="fv-plugins-message-container invalid-feedback"></div>
+                            </div>
+                            <!--end::Col-->
+                        </div>
+                        <!--end::Input group-->
                     <!--begin::Input group-->
                     <div class="row mb-6">
                         <!--begin::Label-->

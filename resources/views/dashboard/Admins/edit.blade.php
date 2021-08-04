@@ -107,8 +107,25 @@
                         <!--begin::Col-->
                         <div class="col-lg-8 fv-row fv-plugins-icon-container">
                             <input type="email" name="email" value="{{$user->email}}"
-                                class="form-control form-control-lg form-control-solid  @error('email') is-invalid @enderror" placeholder="Email">
+                                class="form-control form-control-lg form-control-solid @error('email') is-invalid @enderror " placeholder="Email">
                                 @error('email')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                        </div>
+                        <!--end::Col-->
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div class="row mb-6">
+                        <!--begin::Label-->
+                        <label class="col-lg-4 col-form-label required fw-bold fs-6">Phone</label>
+                        <!--end::Label-->
+                        <!--begin::Col-->
+                        <div class="col-lg-8 fv-row fv-plugins-icon-container">
+                            <input type="phone" name="phone" value="{{$user->phone}}"
+                                class="form-control form-control-lg form-control-solid  @error('phone') is-invalid @enderror" placeholder="Phone">
+                                @error('phone')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             <div class="fv-plugins-message-container invalid-feedback"></div>

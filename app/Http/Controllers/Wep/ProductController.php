@@ -60,6 +60,7 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $input=$request->all();
+        // dd($input);
         if (request()->hasFile('image')) {
         $image = time() . '_' . $request->file('image')->hashName();
         $request->file('image')->storeAs('public/images/products/', $image);

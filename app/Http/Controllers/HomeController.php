@@ -28,20 +28,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $newProduct = Product::orderBy('id','DESC')->paginate(self::PER_PAGE);
-        $popularProduct = Product::orderBy('sell_date','DESC')->paginate(self::PER_PAGE);
-        $orders=Order::sum('total_price');
+        $newProduct = Product::orderBy('id','DESC')->paginate(4);
+        $orders=Order::all();
         $products=Product::all();
         $customers=User::all();
         $newcustomers=User::where( 'created_at', '>', Carbon::now()->subDays(10))->get();
-        // $popular=Product::where('sell_data','>',Carbon::now()->subDay(10))->get();
+        $popular=Product::orderBy('order_count','DESC')->paginate(4);
+        $newArrival=Product::orderBy('sell_date','DESC')->paginate(4);
         return view('dashboard.dashboard')->with([
             'newProduct'=>$newProduct,
-            'popularProduct'=>$popularProduct,
             'orders'=>$orders,
             'products'=>$products,
             'customers'=>$customers,
-            'newcustomers'=>$newcustomers
+            'newcustomers'=>$newcustomers,
+            'popular'=>$popular,
+            'newArrival'=>$newArrival,
         ]);
     }
 }

@@ -21,15 +21,7 @@
 	<!--end::Head-->
 	<!--begin::Body-->
 	<body id="kt_body" class="bg-white">
-        @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+
 		<!--begin::Main-->
 		<div class="d-flex flex-column flex-root">
 			<!--begin::Authentication - Sign-in -->
@@ -46,10 +38,10 @@
 							</a>
 							<!--end::Logo-->
 							<!--begin::Title-->
-							<h1 class="fw-bolder fs-2qx pb-5 pb-md-10" style="color: #986923;">Welcome to Metronic</h1>
+							<h1 class="fw-bolder fs-2qx pb-5 pb-md-10" style="color: #986923;">Welcome to Ecomerce Dashboard</h1>
 							<!--end::Title-->
 							<!--begin::Description-->
-							<p class="fw-bold fs-2" style="color: #986923;">Discover Amazing Metronic
+							<p class="fw-bold fs-2" style="color: #986923;">Discover Amazing Dashboard
 							<br />with great build tools</p>
 							<!--end::Description-->
 						</div>
@@ -87,7 +79,10 @@
 									<label class="form-label fs-6 fw-bolder text-dark">Email</label>
 									<!--end::Label-->
 									<!--begin::Input-->
-									<input class="form-control form-control-lg form-control-solid" type="text" name="email" autocomplete="off" />
+									<input class="form-control form-control-lg form-control-solid @error('email') is-invalid @enderror" type="text" name="email" autocomplete="off" />
+                                    @error('email')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
 									<!--end::Input-->
 								</div>
 								<!--end::Input group-->
@@ -104,7 +99,10 @@
 									</div>
 									<!--end::Wrapper-->
 									<!--begin::Input-->
-									<input class="form-control form-control-lg form-control-solid" type="password" name="password" autocomplete="off" />
+									<input class="form-control form-control-lg form-control-solid @error('email') is-invalid @enderror " type="password" name="password" autocomplete="off" />
+                                    @error('password')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
 									<!--end::Input-->
 								</div>
 								<!--end::Input group-->

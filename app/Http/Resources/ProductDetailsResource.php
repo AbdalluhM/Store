@@ -19,12 +19,13 @@ class ProductDetailsResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name_product,
             'image' => $this->image,
-            'image_path'=>$this->product_image_path,
+            'image_path' => $this->product_image_path,
             'recomend' => $this->recomend,
             'desc' => $this->description,
             'sell' => $this->sell,
             'price' => $this->price,
-            'size'=>$this->get_size(),
+            'delivery' => $this->delivery,
+            'size' => $this->get_size(),
             'offer' => $this->get_offer(),
             'new_price' => $this->get_new_price(),
             'colors' => $this->get_color(),
@@ -46,15 +47,15 @@ class ProductDetailsResource extends JsonResource
     {
         if ($this->sizes) {
             $sizeProduct = $this->sizes;
-        return SizeResource::collection($sizeProduct);
+            return SizeResource::collection($sizeProduct);
         }
-        return "null" ;
+        return "null";
     }
     public function get_color()
     {
         if ($this->colors) {
             $colorProduct = $this->colors;
-        return ColorResource::collection($colorProduct);
+            return ColorResource::collection($colorProduct);
         }
         return "null";
     }
@@ -69,15 +70,14 @@ class ProductDetailsResource extends JsonResource
     public function get_new_price()
     {
         if ($this->offer) {
-        $offer=$this->offer;
-          $valueOffer=$offer->value;
-          $price=$this->price;
-          $newPrice=$price-$valueOffer*$price;
-        return $newPrice;
-    }else{
-        return $this->price;
-    }
-
+            $delivery = $this->delivery;
+            $offer = $this->offer;
+            $valueOffer = $offer->value;
+            $price = $this->price;
+            $newPrice = $price - $valueOffer * $price + $delivery;
+            return $newPrice;
+        } else {
+            return $this->price;
+        }
     }
 }
-
