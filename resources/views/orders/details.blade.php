@@ -77,7 +77,12 @@ Home | Order-Details
                             </td>
                             <td>
                                 <p class="text-dark fw-bolder text-hover-primary d-block fs-6">
-                                    {{$order->product->delivery}}</p>
+                                    @if (isset($order->product->delivery))
+                                    {{$order->product->delivery}}
+                                    @else
+                                    <span class="badge badge-light-danger">Free</span>
+                                    @endif
+                                    </p>
                             </td>
                             <td>
                                 <p class="text-dark fw-bolder text-hover-primary d-block fs-6">

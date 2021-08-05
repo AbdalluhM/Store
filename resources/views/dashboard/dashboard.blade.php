@@ -399,6 +399,21 @@ Dashobord
                                     </div>
                                     <!--end::Item-->
                                     @endforeach
+                                    {{-- <div class="container">
+                                        <div class="row">
+                                            <div
+                                                class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start">
+                                            </div>
+                                            <div class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
+                                                <div class="dataTables_paginate paging_simple_numbers" id="kt_table_users_paginate">
+                                                    <div class="d-flex ">
+                                                        {!! $newArrival->render() !!}
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> --}}
                                 </div>
                                 <!--end::Body-->
                             </div>
@@ -436,7 +451,7 @@ Dashobord
                                 <!--end::Header-->
                                 <!--begin::Body-->
                                 <div class="card-body pt-2">
-                                    @foreach ($newProduct as$newProduct )
+                                    @foreach ($newProducts as$newProduct )
                                     <!--begin::Item-->
                                     <div class="d-flex align-items-center mb-7">
                                         <!--begin::Avatar-->
@@ -453,7 +468,21 @@ Dashobord
                                     </div>
                                     <!--end::Item-->
                                     @endforeach
-                                </div>
+                                {{-- </div><div class="container">
+                                    <div class="row">
+                                        <div
+                                            class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start">
+                                        </div>
+                                        <div class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
+                                            <div class="dataTables_paginate paging_simple_numbers" id="kt_table_users_paginate">
+                                                <div class="d-flex ">
+                                                    {!! $newProduct->render() !!}
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> --}}
                                 <!--end::Body-->
                             </div>
                             <!--end::List Widget 2-->
@@ -463,8 +492,6 @@ Dashobord
 
                 </div>
                 <!--end::Row-->
-
-
 
             </div>
             <!--end::Container-->

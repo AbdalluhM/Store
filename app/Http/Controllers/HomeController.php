@@ -28,7 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $newProduct = Product::orderBy('id','DESC')->paginate(4);
+        $newProducts = Product::orderBy('id','DESC')->paginate(4);
         $orders=Order::all();
         $products=Product::all();
         $customers=User::all();
@@ -36,7 +36,7 @@ class HomeController extends Controller
         $popular=Product::orderBy('order_count','DESC')->paginate(4);
         $newArrival=Product::orderBy('sell_date','DESC')->paginate(4);
         return view('dashboard.dashboard')->with([
-            'newProduct'=>$newProduct,
+            'newProducts'=>$newProducts,
             'orders'=>$orders,
             'products'=>$products,
             'customers'=>$customers,
