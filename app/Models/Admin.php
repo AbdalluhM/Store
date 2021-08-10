@@ -34,6 +34,7 @@ class Admin extends Authenticatable
         'password',
         'phone',
         'image',
+        'device_token',
     ];
 
     /**

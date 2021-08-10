@@ -77,7 +77,7 @@ Home |All Customers
                                 <!--end::Checkbox-->
                                 <!--begin::Name=-->
                                 <td>
-                                    <a href="/metronic8/demo1/../demo1/apps/customers/view.html"
+                                    <a href="#"
                                         class="text-gray-800 text-hover-primary mb-1">{{$user->name}}</a>
                                 </td>
                                 <!--end::Name=-->

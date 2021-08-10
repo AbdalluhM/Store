@@ -430,7 +430,7 @@ Home | Customer-Details
                                                             <tr class="text-start text-muted gs-0" role="row">
                                                                 <th class="min-w-50px">Order Id</th>
                                                                 <th class="min-w-120px">Amount</th>
-                                                                <th class="min-w-120px">Status</th>
+                                                                <th class="min-w-120px text-end">Status</th>
                                                             </tr>
                                                         </thead>
                                                         <!--end::Thead-->

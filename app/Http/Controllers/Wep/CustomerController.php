@@ -25,7 +25,7 @@ class CustomerController extends Controller
     public function customer_details($id){
       $customer=User::find($id);
       $address=address::where('user_id',$customer->id)->first();
-      $orders=Order::where('user_id',$customer->id)->get();
+      $orders=Order::where('user_id',$customer->id)->paginate(5);
       return view('cusstomers.details')->with('customer',$customer)->with('address',$address)->with('orders',$orders);
     }
 }

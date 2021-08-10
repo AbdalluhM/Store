@@ -5,15 +5,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Wep\SizeController;
 use App\Http\Controllers\Wep\ColorController;
 use App\Http\Controllers\Wep\OfferController;
+use App\Http\Controllers\Wep\OrderController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Dashboard\AdminController;
-use App\Http\Controllers\Dashboard\PermissionController;
-use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\Wep\SliderController;
 use App\Http\Controllers\Wep\ProductController;
 use App\Http\Controllers\Wep\CategoryController;
 use App\Http\Controllers\Wep\CustomerController;
-use App\Http\Controllers\Wep\OrderController;
+use App\Http\Controllers\Dashboard\RoleController;
+use App\Http\Controllers\Dashboard\AdminController;
+use App\Http\Controllers\Dashboard\PermissionController;
+use App\Http\Controllers\Notification\NotficationController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -28,7 +29,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 */
 
 Route::get('/', function () {
-    return "view('welcome')";
+    return view('welcome');
 });
 
 // route customers
@@ -213,5 +214,18 @@ Route::group(
         Route::resource('roles', RoleController::class);
         Route::resource('users', AdminController::class);
         Route::get('permission', [PermissionController::class, ('index')])->name('permission.index');
+    }
+);
+
+// notification
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:admin']
+    ],
+    function () {
+        Route::get('/notification', [NotficationController::class, 'index'])->name('notification');
+        Route::post('/save-token', [NotficationController::class, 'saveToken'])->name('save-token');
+        Route::post('/send-notification', [NotficationController::class, 'sendNotification'])->name('send.notification');
     }
 );

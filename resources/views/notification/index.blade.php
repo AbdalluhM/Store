@@ -1,6 +1,12 @@
-@extends('layouts.app')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+@extends('admin.layouts.master')
+<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
 @section('content')
+@section('title')
+Customers
+@endsection
+@section('defintion')
+Home |All Customers
+@endsection
 <<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -53,6 +59,7 @@
             measurementId: "G-BJ10QFNQK2"
         };
 
+
         firebase.initializeApp(firebaseConfig);
         const messaging = firebase.messaging();
 
@@ -101,4 +108,3 @@
         });
 
     </script>
-
